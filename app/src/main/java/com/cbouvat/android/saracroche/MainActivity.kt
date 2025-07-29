@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
@@ -22,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -67,12 +69,12 @@ fun SaracrocheApp() {
         bottomBar = { BottomNavigationBar(navController) },
         contentWindowInsets = WindowInsets(0)
     ) { innerPadding ->
-        AppNavigation(navController, Modifier)
+        AppNavigation(navController, innerPadding)
     }
 }
 
 @Composable
-private fun BottomNavigationBar(navController: androidx.navigation.NavHostController) {
+private fun BottomNavigationBar(navController: NavHostController) {
     NavigationBar(
         windowInsets = WindowInsets.navigationBars
     ) {
@@ -100,13 +102,12 @@ private fun BottomNavigationBar(navController: androidx.navigation.NavHostContro
 
 @Composable
 private fun AppNavigation(
-    navController: androidx.navigation.NavHostController,
-    modifier: Modifier = Modifier
+    navController: NavHostController,
+    innerPadding: PaddingValues,
 ) {
     NavHost(
         navController = navController,
-        startDestination = "home",
-        modifier = modifier
+        startDestination = "home"
     ) {
         composable("home") { HomeScreen() }
         composable("report") { ReportScreen() }
