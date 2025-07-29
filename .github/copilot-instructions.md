@@ -2,6 +2,7 @@
 
 ## Project Context
 Saracroche is an Android call blocking app:
+- Targets Android 10 (API 29) and above
 - Jetpack Compose for UI
 - Kotlin for business logic
 - Follows MVVM architecture
