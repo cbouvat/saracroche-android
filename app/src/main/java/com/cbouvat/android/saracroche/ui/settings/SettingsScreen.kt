@@ -217,7 +217,7 @@ fun SettingsScreen() {
         ) {
             // Permission Section
             SettingsSection(
-                title = "Permission de l'application",
+                title = "Permissions de l'application",
                 items = listOf(
                     SettingsItem.Action(
                         title = "Permissions",
