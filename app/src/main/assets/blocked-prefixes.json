@@ -1,5 +1,10 @@
 [
     {
+        "operator": "TEST",
+        "prefix": "336731846",
+        "pattern": "33673######"
+    },
+    {
         "operator": "ARCEP",
         "prefix": "33162",
         "pattern": "33162######"

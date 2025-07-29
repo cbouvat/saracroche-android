@@ -30,6 +30,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +43,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.cbouvat.android.saracroche.util.PermissionUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,11 +56,25 @@ fun HomeScreen() {
     val scrollState = rememberScrollState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
     var isCallScreeningEnabled by remember { mutableStateOf(false) }
 
-    // Check permission status
+    // Check permission status on initial load
     LaunchedEffect(Unit) {
         isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
+    }
+
+    // Check permission status when app resumes (user returns from settings)
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
     }
 
     Scaffold(
@@ -87,9 +106,8 @@ fun HomeScreen() {
             PermissionStatusCard(
                 isEnabled = isCallScreeningEnabled,
                 onSettingsClick = {
+                    Log.d("HomeScreen", "Settings button clicked")
                     PermissionUtils.openCallScreeningSettings(context)
-                    // Refresh status after user returns
-                    isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
                 }
             )
         }
@@ -101,6 +119,8 @@ fun PermissionStatusCard(
     isEnabled: Boolean,
     onSettingsClick: () -> Unit
 ) {
+    Log.d("PermissionStatusCard", "isEnabled: $isEnabled")
+    
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -156,9 +176,13 @@ fun PermissionStatusCard(
             )
 
             if (!isEnabled) {
+                Log.d("PermissionStatusCard", "Showing button")
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
-                    onClick = onSettingsClick,
+                    onClick = {
+                        Log.d("PermissionStatusCard", "Button clicked")
+                        onSettingsClick()
+                    },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Icon(
@@ -169,6 +193,8 @@ fun PermissionStatusCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Activer la protection")
                 }
+            } else {
+                Log.d("PermissionStatusCard", "Button hidden (protection enabled)")
             }
         }
     }
