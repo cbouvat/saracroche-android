@@ -45,12 +45,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
-import com.cbouvat.android.saracroche.ui.components.SettingsSection
+
+@Composable
+fun HelpSection(
+    title: String,
+    items: @Composable () -> Unit
+) {
+    Column {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleSmall.copy(
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
+
+        items()
+    }
+}
 
 data class HelpItem(
     val title: String,
@@ -60,108 +79,6 @@ data class HelpItem(
     val actionIcon: ImageVector? = null,
     val onActionClick: ((Context) -> Unit)? = null
 )
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview
-@Composable
-fun HelpScreen() {
-    val context = LocalContext.current
-    val scrollState = rememberScrollState()
-
-    val faqItems = listOf(
-        HelpItem(
-            title = "Quels numéros sont bloqués ?",
-            icon = Icons.Default.QuestionMark,
-            content = "L'application bloque les préfixes suivants, communiqués par l'ARCEP : 0162, 0163, 0270, 0271, 0377, 0378, 0424, 0425, 0568, 0569, 0948, 0949, ainsi que ceux allant de 09475 à 09479. Ces préfixes sont réservés au démarchage téléphonique. Elle bloque aussi des numéros de téléphone de certains opérateurs comme Manifone, DVS Connect, Ze Telecom, Oxilog, BJT Partners, Ubicentrex, Destiny, Kav El International, Spartel Services et d'autres."
-        ),
-        HelpItem(
-            title = "Comment fonctionne l'application ?",
-            icon = Icons.Default.Info,
-            content = "L'application utilise une extension de blocage d'appels et de SMS fournie par le système pour filtrer les numéros indésirables. Elle est conçue pour être simple et efficace, sans nécessiter de configuration complexe."
-        ),
-        HelpItem(
-            title = "Comment signaler un numéro ?",
-            icon = Icons.Default.Shield,
-            content = "Pour signaler un numéro indésirable, allez dans l'onglet 'Signaler' de l'application. Cela aide à améliorer la liste de blocage et à rendre l'application plus efficace."
-        ),
-        HelpItem(
-            title = "Respect de la vie privée",
-            icon = Icons.Default.Lock,
-            content = "Saracroche ne collecte aucune donnée personnelle, n'utilise aucun service tiers et ne transmet aucune information à qui que ce soit. Toutes les données restent sur votre appareil. Le respect de la vie privée est un droit fondamental, même si on n'a rien à cacher."
-        )
-    )
-
-    val supportItems = listOf(
-        HelpItem(
-            title = "Pourquoi l'application est-elle gratuite et sans publicité ?",
-            icon = Icons.Default.AttachMoney,
-            content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
-            actionText = "Faire un don",
-            actionIcon = Icons.Default.Favorite,
-            onActionClick = {
-                // TODO: Implement donation functionality
-            }
-        ),
-        HelpItem(
-            title = "Comment signaler un bug ?",
-            icon = Icons.Default.BugReport,
-            content = "En cas de bug ou de problème avec l'application, merci de le signaler sur GitHub ou par e-mail.",
-            actionText = "Signaler un bug",
-            actionIcon = Icons.Default.Email,
-            onActionClick = { context ->
-                openEmailClient(context)
-            }
-        ),
-        HelpItem(
-            title = "Comment noter l'application ?",
-            icon = Icons.Default.Star,
-            content = "Si l'application Saracroche vous est utile, une évaluation sur le Play Store serait appréciée. Ce soutien aide à toucher davantage de personnes et à améliorer continuellement l'application.",
-            actionText = "Noter l'application",
-            actionIcon = Icons.Default.Star,
-            onActionClick = { context ->
-                openPlayStore(context)
-            }
-        )
-    )
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Aide") }
-            )
-        }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .verticalScroll(scrollState)
-        ) {
-            SettingsSection(title = "Questions fréquentes") {
-                faqItems.forEach { item ->
-                    HelpItemView(helpItem = item)
-                }
-            }
-
-            SettingsSection(title = "Support") {
-                supportItems.forEach { item ->
-                    HelpItemView(helpItem = item)
-                }
-            }
-
-            Text(
-                text = "Bisou 😘",
-                style = MaterialTheme.typography.bodySmall.copy(
-                    textAlign = TextAlign.Center
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(32.dp),
-                textAlign = TextAlign.Center
-            )
-        }
-    }
-}
 
 @Composable
 fun HelpItemView(helpItem: HelpItem) {
@@ -231,6 +148,108 @@ fun HelpItemView(helpItem: HelpItem) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+fun HelpScreen() {
+    val context = LocalContext.current
+    val scrollState = rememberScrollState()
+
+    val faqItems = listOf(
+        HelpItem(
+            title = "Quels numéros sont bloqués ?",
+            icon = Icons.Default.QuestionMark,
+            content = "L'application bloque les préfixes suivants, communiqués par l'ARCEP : 0162, 0163, 0270, 0271, 0377, 0378, 0424, 0425, 0568, 0569, 0948, 0949, ainsi que ceux allant de 09475 à 09479. Ces préfixes sont réservés au démarchage téléphonique. Elle bloque aussi des numéros de téléphone de certains opérateurs comme Manifone, DVS Connect, Ze Telecom, Oxilog, BJT Partners, Ubicentrex, Destiny, Kav El International, Spartel Services et d'autres."
+        ),
+        HelpItem(
+            title = "Comment fonctionne l'application ?",
+            icon = Icons.Default.Info,
+            content = "L'application utilise une extension de blocage d'appels et de SMS fournie par le système pour filtrer les numéros indésirables. Elle est conçue pour être simple et efficace, sans nécessiter de configuration complexe."
+        ),
+        HelpItem(
+            title = "Comment signaler un numéro ?",
+            icon = Icons.Default.Shield,
+            content = "Pour signaler un numéro indésirable, allez dans l'onglet 'Signaler' de l'application. Cela aide à améliorer la liste de blocage et à rendre l'application plus efficace."
+        ),
+        HelpItem(
+            title = "Respect de la vie privée",
+            icon = Icons.Default.Lock,
+            content = "Saracroche ne collecte aucune donnée personnelle, n'utilise aucun service tiers et ne transmet aucune information à qui que ce soit. Toutes les données restent sur votre appareil. Le respect de la vie privée est un droit fondamental, même si on n'a rien à cacher."
+        )
+    )
+
+    val supportItems = listOf(
+        HelpItem(
+            title = "Pourquoi l'application est-elle gratuite et sans publicité ?",
+            icon = Icons.Default.AttachMoney,
+            content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
+            actionText = "Faire un don",
+            actionIcon = Icons.Default.Favorite,
+            onActionClick = { context ->
+                // TODO: Implement donation functionality
+            }
+        ),
+        HelpItem(
+            title = "Comment signaler un bug ?",
+            icon = Icons.Default.BugReport,
+            content = "En cas de bug ou de problème avec l'application, merci de le signaler sur GitHub ou par e-mail.",
+            actionText = "Signaler un bug",
+            actionIcon = Icons.Default.Email,
+            onActionClick = { context ->
+                openEmailClient(context)
+            }
+        ),
+        HelpItem(
+            title = "Comment noter l'application ?",
+            icon = Icons.Default.Star,
+            content = "Si l'application Saracroche vous est utile, une évaluation sur le Play Store serait appréciée. Ce soutien aide à toucher davantage de personnes et à améliorer continuellement l'application.",
+            actionText = "Noter l'application",
+            actionIcon = Icons.Default.Star,
+            onActionClick = { context ->
+                openPlayStore(context)
+            }
+        )
+    )
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Aide") }
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .verticalScroll(scrollState)
+        ) {
+            HelpSection(title = "Questions fréquentes") {
+                faqItems.forEach { item ->
+                    HelpItemView(helpItem = item)
+                }
+            }
+
+            HelpSection(title = "Support") {
+                supportItems.forEach { item ->
+                    HelpItemView(helpItem = item)
+                }
+            }
+
+            Text(
+                text = "Bisou 😘",
+                style = MaterialTheme.typography.bodySmall.copy(
+                    textAlign = TextAlign.Center
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(32.dp),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
 private fun openEmailClient(context: Context) {
     try {
         val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
@@ -278,3 +297,4 @@ private fun openPlayStore(context: Context) {
         }
     }
 }
+
