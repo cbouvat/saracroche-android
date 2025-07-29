@@ -56,6 +56,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
+import com.cbouvat.android.saracroche.ui.donation.DonationSheet
 
 @Composable
 fun HelpSection(
@@ -82,7 +83,7 @@ data class HelpItem(
     val content: String,
     val actionText: String? = null,
     val actionIcon: ImageVector? = null,
-    val onActionClick: ((Context) -> Unit)? = null
+    val onActionClick: (() -> Unit)? = null
 )
 
 @Composable
@@ -137,7 +138,7 @@ fun HelpItemView(helpItem: HelpItem) {
             if (helpItem.actionText != null && helpItem.actionIcon != null && helpItem.onActionClick != null) {
                 Spacer(modifier = Modifier.height(8.dp))
                 TextButton(
-                    onClick = { helpItem.onActionClick.invoke(context) },
+                    onClick = { helpItem.onActionClick.invoke() },
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
                     Icon(
@@ -160,6 +161,7 @@ fun HelpScreen() {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    var showDonationSheet by remember { mutableStateOf(false) }
 
     val faqItems = listOf(
         HelpItem(
@@ -188,8 +190,8 @@ fun HelpScreen() {
             content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
             actionText = "Faire un don",
             actionIcon = Icons.Default.Favorite,
-            onActionClick = { context ->
-                // TODO: Implement donation functionality
+            onActionClick = { 
+                showDonationSheet = true
             }
         )
     )
@@ -201,7 +203,7 @@ fun HelpScreen() {
             content = "En cas de bug ou de problème avec l'application, merci de le signaler sur GitHub ou par e-mail.",
             actionText = "Signaler un bug",
             actionIcon = Icons.Default.Email,
-            onActionClick = { context ->
+            onActionClick = {
                 openEmailClient(context)
             }
         ),
@@ -211,7 +213,7 @@ fun HelpScreen() {
             content = "Si l'application Saracroche vous est utile, une évaluation sur le Play Store serait appréciée. Ce soutien aide à toucher davantage de personnes et à améliorer continuellement l'application.",
             actionText = "Noter l'application",
             actionIcon = Icons.Default.Star,
-            onActionClick = { context ->
+            onActionClick = {
                 openPlayStore(context)
             }
         )
@@ -269,6 +271,12 @@ fun HelpScreen() {
                 }
             }
         }
+    }
+
+    if (showDonationSheet) {
+        DonationSheet(
+            onDismiss = { showDonationSheet = false }
+        )
     }
 }
 

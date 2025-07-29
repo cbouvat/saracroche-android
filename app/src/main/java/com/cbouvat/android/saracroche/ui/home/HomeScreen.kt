@@ -21,14 +21,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddModerator
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Numbers
+import androidx.compose.material.icons.filled.Redeem
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -41,6 +45,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -49,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.cbouvat.android.saracroche.ui.donation.DonationSheet
 import com.cbouvat.android.saracroche.util.BlockedPrefixManager
 import com.cbouvat.android.saracroche.util.PermissionUtils
 
@@ -62,6 +68,7 @@ fun HomeScreen() {
     val lifecycleOwner = LocalLifecycleOwner.current
     var isCallScreeningEnabled by remember { mutableStateOf(false) }
     var totalBlockedNumbers by remember { mutableStateOf(0L) }
+    var showDonationSheet by remember { mutableStateOf(false) }
 
     val callScreeningRoleLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -96,6 +103,17 @@ fun HomeScreen() {
         topBar = {
             LargeTopAppBar(
                 title = { Text("Saracroche", fontWeight = FontWeight.Bold) },
+                actions = {
+                    IconButton(
+                        onClick = { showDonationSheet = true }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Redeem,
+                            contentDescription = "Faire un don",
+                            tint = Color.Red
+                        )
+                    }
+                },
                 scrollBehavior = scrollBehavior,
                 windowInsets = WindowInsets.statusBars
             )
@@ -128,6 +146,12 @@ fun HomeScreen() {
                 context = context
             )
         }
+    }
+
+    if (showDonationSheet) {
+        DonationSheet(
+            onDismiss = { showDonationSheet = false }
+        )
     }
 }
 
