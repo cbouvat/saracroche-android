@@ -2,6 +2,7 @@ package com.cbouvat.android.saracroche.utils
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -32,6 +33,15 @@ fun Activity.hasBlockingPermissions(): Boolean {
 }
 
 /**
+ * Vérifie si toutes les permissions nécessaires sont accordées (version Context)
+ */
+fun hasBlockingPermissions(context: Context): Boolean {
+    return BlockingPermissions.REQUIRED_PERMISSIONS.all { permission ->
+        ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+    }
+}
+
+/**
  * Demande les permissions nécessaires pour la gestion des numéros bloqués
  */
 fun Activity.requestBlockingPermissions() {
@@ -40,6 +50,15 @@ fun Activity.requestBlockingPermissions() {
         BlockingPermissions.REQUIRED_PERMISSIONS,
         BlockingPermissions.PERMISSION_REQUEST_CODE
     )
+}
+
+/**
+ * Demande les permissions nécessaires (version Context)
+ */
+fun requestBlockingPermissions(context: Context) {
+    if (context is Activity) {
+        context.requestBlockingPermissions()
+    }
 }
 
 /**
