@@ -175,10 +175,7 @@ fun HelpScreen() {
             title = "Respect de la vie privée",
             icon = Icons.Default.Lock,
             content = "Saracroche ne collecte aucune donnée personnelle, n'utilise aucun service tiers et ne transmet aucune information à qui que ce soit. Toutes les données restent sur votre appareil. Le respect de la vie privée est un droit fondamental, même si on n'a rien à cacher."
-        )
-    )
-
-    val supportItems = listOf(
+        ),
         HelpItem(
             title = "Pourquoi l'application est-elle gratuite et sans publicité ?",
             icon = Icons.Default.AttachMoney,
@@ -188,7 +185,10 @@ fun HelpScreen() {
             onActionClick = { context ->
                 // TODO: Implement donation functionality
             }
-        ),
+        )
+    )
+
+    val supportItems = listOf( 
         HelpItem(
             title = "Comment signaler un bug ?",
             icon = Icons.Default.BugReport,
