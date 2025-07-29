@@ -232,19 +232,6 @@ fun SettingsScreen() {
                 .padding(paddingValues)
                 .verticalScroll(scrollState)
         ) {
-            // Permission Section
-            SettingsSection(
-                title = "Permissions de l'application",
-                items = listOf(
-                    SettingsItem.Action(
-                        title = "Permissions",
-                        subtitle = "Gérer les permissions de l'application",
-                        icon = Icons.Default.Security,
-                        onClick = { openAppSettings(context) }
-                    )
-                )
-            )
-
             // Links Section
             SettingsSection(
                 title = "Liens utiles",
@@ -304,16 +291,6 @@ fun SettingsScreen() {
     }
 }
 
-private fun openAppSettings(context: Context) {
-    try {
-        val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        intent.data = Uri.parse("package:${context.packageName}")
-        context.startActivity(intent)
-    } catch (e: Exception) {
-        // Handle error silently
-    }
-}
-
 private fun openGitHub(context: Context) {
     try {
         val intent =
@@ -338,7 +315,7 @@ private fun openBugReport(context: Context) {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, arrayOf("saracroche@cbouvat.com"))
-            putExtra(Intent.EXTRA_SUBJECT, "Bug Report - Saracroche Android")
+            putExtra(Intent.EXTRA_SUBJECT, "Bug - Saracroche Android")
         }
         context.startActivity(intent)
     } catch (e: Exception) {
