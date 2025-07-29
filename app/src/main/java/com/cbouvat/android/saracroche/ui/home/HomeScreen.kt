@@ -21,6 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddModerator
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.Numbers
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -48,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.cbouvat.android.saracroche.util.BlockedPrefixManager
 import com.cbouvat.android.saracroche.util.PermissionUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,6 +61,7 @@ fun HomeScreen() {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     var isCallScreeningEnabled by remember { mutableStateOf(false) }
+    var totalBlockedNumbers by remember { mutableStateOf(0L) }
 
     val callScreeningRoleLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -69,6 +72,7 @@ fun HomeScreen() {
     // Update permissions status on app resume or initial load
     fun updatePermissionsStatus() {
         isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
+        totalBlockedNumbers = BlockedPrefixManager.calculateTotalBlockedNumbers(context)
     }
 
     LaunchedEffect(Unit) {
@@ -117,6 +121,11 @@ fun HomeScreen() {
                         PermissionUtils.openCallScreeningSettings(context)
                     }
                 }
+            )
+
+            BlockedPatternsStatsCard(
+                totalBlockedNumbers = totalBlockedNumbers,
+                context = context
             )
         }
     }
@@ -176,6 +185,45 @@ fun CallScreeningPermissionCard(
                     Text("Activer le bloqueur")
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun BlockedPatternsStatsCard(
+    totalBlockedNumbers: Long,
+    context: android.content.Context
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Filled.Numbers,
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "$totalBlockedNumbers numéros bloqués",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            Text(
+                text = "La liste des numéros bloqués est basée sur des préfixes d'opérateurs téléphoniques.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }

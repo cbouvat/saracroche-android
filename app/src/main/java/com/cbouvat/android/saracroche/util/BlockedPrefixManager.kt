@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader
+import kotlin.math.pow
 
 /**
  * Data class representing a blocked prefix pattern
@@ -48,5 +49,19 @@ object BlockedPrefixManager {
      */
     fun clearCache() {
         cachedPrefixes = null
+    }
+
+    /**
+     * Calculate total number of blocked numbers from patterns
+     */
+    fun calculateTotalBlockedNumbers(context: Context): Long {
+        var totalCount = 0L
+
+        for (prefix in getBlockedPrefixes(context)) {
+            val hashCount = prefix.pattern.count { it == '#' }
+            totalCount += 10.0.pow(hashCount.toDouble()).toLong()
+        }
+
+        return totalCount
     }
 }
