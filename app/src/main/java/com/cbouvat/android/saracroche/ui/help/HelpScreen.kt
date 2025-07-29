@@ -188,7 +188,7 @@ fun HelpScreen() {
         )
     )
 
-    val supportItems = listOf( 
+    val supportItems = listOf(
         HelpItem(
             title = "Comment signaler un bug ?",
             icon = Icons.Default.BugReport,
