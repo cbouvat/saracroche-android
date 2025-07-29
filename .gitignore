@@ -10,3 +10,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Configuration files with sensitive data
+app/src/main/java/com/cbouvat/android/saracroche/config/Config.kt

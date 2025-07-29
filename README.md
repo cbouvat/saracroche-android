@@ -31,14 +31,27 @@ Saracroche will be available on the Google Play Store (coming soon).
 
 ### Building from Source
 1. Clone the repository
-2. Open the project in Android Studio
-3. Sync the project with Gradle files
-4. Build and run the project on your device or emulator
+2. Copy `app/src/main/java/com/cbouvat/android/saracroche/config/Config.kt.example` to `Config.kt`
+3. Update the configuration with your server URL
+4. Open the project in Android Studio
+5. Sync the project with Gradle files
+6. Build and run the project on your device or emulator
 
 **Requirements:**
 - Android Studio
 - Android SDK API level 29 or higher
 - Gradle 8.0+
+
+## Configuration
+
+The app requires a configuration file `Config.kt` that contains sensitive information like server URLs. This file is gitignored for security.
+
+1. Copy the example configuration:
+   ```bash
+   cp app/src/main/java/com/cbouvat/android/saracroche/config/Config.kt.example app/src/main/java/com/cbouvat/android/saracroche/config/Config.kt
+   ```
+
+2. Edit `Config.kt` with your actual configuration values.
 
 ## Technology Stack
 

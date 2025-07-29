@@ -255,7 +255,7 @@ fun HelpScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(32.dp),
+                    .padding(64.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Column(
