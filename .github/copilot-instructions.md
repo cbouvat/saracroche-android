@@ -15,4 +15,5 @@ KISS (Keep It Simple, Stupid) principles are followed to ensure clarity and main
 - Use Jetpack Compose for UI components.
 - Follow Kotlin coding conventions.
 - Use `@Composable` functions for UI elements.
-- English comments for complex logic
+- English comments for complex logic.
+- On mac "JAVA_HOME": "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
