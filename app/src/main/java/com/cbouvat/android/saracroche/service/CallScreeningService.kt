@@ -2,6 +2,7 @@ package com.cbouvat.android.saracroche.service
 
 import android.telecom.Call
 import android.telecom.CallScreeningService
+import android.util.Log
 import com.cbouvat.android.saracroche.util.BlockedPrefixManager
 
 /**
@@ -9,30 +10,33 @@ import com.cbouvat.android.saracroche.util.BlockedPrefixManager
  */
 class CallScreeningService : CallScreeningService() {
 
+    private companion object {
+        private const val TAG = "CallScreeningService"
+    }
+
     override fun onScreenCall(callDetails: Call.Details) {
         val phoneNumber = callDetails.handle?.schemeSpecificPart
+        Log.d(TAG, "Incoming call from: $phoneNumber")
 
-        if (phoneNumber != null && shouldBlockNumber(phoneNumber)) {
-            // Block the call
-            respondToCall(
-                callDetails,
-                CallResponse.Builder()
-                    .setDisallowCall(true)
-                    .setRejectCall(true)
-                    .setSkipCallLog(false)
-                    .setSkipNotification(false)
-                    .build()
-            )
+        val shouldBlock = phoneNumber?.let { shouldBlockNumber(it) } ?: false
+
+        val response = if (shouldBlock) {
+            Log.d(TAG, "Blocking call from: $phoneNumber")
+            CallResponse.Builder()
+                .setDisallowCall(true)
+                .setRejectCall(true)
+                .setSkipCallLog(false)
+                .setSkipNotification(true)
+                .build()
         } else {
-            // Allow the call
-            respondToCall(
-                callDetails,
-                CallResponse.Builder()
-                    .setDisallowCall(false)
-                    .setRejectCall(false)
-                    .build()
-            )
+            Log.d(TAG, "Allowing call from: $phoneNumber")
+            CallResponse.Builder()
+                .setDisallowCall(false)
+                .setRejectCall(false)
+                .build()
         }
+
+        respondToCall(callDetails, response)
     }
 
     /**
@@ -40,32 +44,6 @@ class CallScreeningService : CallScreeningService() {
      */
     private fun shouldBlockNumber(phoneNumber: String): Boolean {
         val blockedPrefixes = BlockedPrefixManager.getBlockedPrefixes(this)
-        val cleanNumber = phoneNumber.replace(Regex("[^0-9+]"), "")
-
-        return blockedPrefixes.any { prefix ->
-            matchesPattern(cleanNumber, prefix.pattern)
-        }
-    }
-
-    /**
-     * Check if a number matches a pattern where # represents any digit
-     */
-    private fun matchesPattern(number: String, pattern: String): Boolean {
-        if (number.length != pattern.length) return false
-
-        for (i in pattern.indices) {
-            when (pattern[i]) {
-                '#' -> {
-                    // # matches any digit
-                    if (!number[i].isDigit()) return false
-                }
-
-                else -> {
-                    // Exact character match required
-                    if (number[i] != pattern[i]) return false
-                }
-            }
-        }
-        return true
+        return blockedPrefixes.any { it.prefix.let(phoneNumber::startsWith) }
     }
 }

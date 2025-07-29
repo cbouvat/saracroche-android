@@ -18,20 +18,23 @@ object PermissionUtils {
      * Check if the app is set as the default call screening app
      */
     fun isCallScreeningEnabled(context: Context): Boolean {
-        Log.d(TAG, "Checking call screening status")
         return try {
-            val telecomManager = context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager?
+            val telecomManager =
+                context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager?
+
+            // Check if app is default dialer
             val isDefaultDialer = telecomManager?.defaultDialerPackage == context.packageName
+
+            // Check if call screening role is granted (API 29+)
             val hasCallScreeningRole = isCallScreeningRoleGranted(context)
-            
-            Log.d(TAG, "Package name: ${context.packageName}")
-            Log.d(TAG, "Default dialer package: ${telecomManager?.defaultDialerPackage}")
-            Log.d(TAG, "Is default dialer: $isDefaultDialer")
-            Log.d(TAG, "Has call screening role: $hasCallScreeningRole")
-            
-            val result = isDefaultDialer || hasCallScreeningRole
-            Log.d(TAG, "Call screening enabled: $result")
-            result
+
+            Log.d(
+                TAG,
+                "Call screening status - isDefaultDialer: $isDefaultDialer, hasCallScreeningRole: $hasCallScreeningRole"
+            )
+
+            // Return true if any of the call screening mechanisms are enabled
+            isDefaultDialer || hasCallScreeningRole
         } catch (e: Exception) {
             Log.e(TAG, "Error checking call screening status", e)
             false
@@ -43,16 +46,9 @@ object PermissionUtils {
      */
     private fun isCallScreeningRoleGranted(context: Context): Boolean {
         return try {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                val roleManager =
-                    context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
-                val result = roleManager?.isRoleHeld(android.app.role.RoleManager.ROLE_CALL_SCREENING) ?: false
-                Log.d(TAG, "Call screening role granted: $result")
-                result
-            } else {
-                Log.d(TAG, "API < Q, no call screening role")
-                false
-            }
+            val roleManager =
+                context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
+            roleManager?.isRoleHeld(android.app.role.RoleManager.ROLE_CALL_SCREENING) ?: false
         } catch (e: Exception) {
             Log.e(TAG, "Error checking call screening role", e)
             false
@@ -60,71 +56,145 @@ object PermissionUtils {
     }
 
     /**
+     * Create an intent to request the call screening role (API 29+).
+     * Returns the intent to be launched by the caller.
+     */
+    fun createCallScreeningRoleIntent(context: Context): Intent? {
+        return try {
+            val roleManager =
+                context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
+            roleManager?.createRequestRoleIntent(android.app.role.RoleManager.ROLE_CALL_SCREENING)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error creating call screening role intent", e)
+            null
+        }
+    }
+
+    /**
      * Open call screening settings
      */
     fun openCallScreeningSettings(context: Context) {
-        Log.d(TAG, "openCallScreeningSettings called")
         try {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                Log.d(TAG, "API >= Q, using RoleManager")
-                val roleManager =
-                    context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager
-                val intent =
-                    roleManager.createRequestRoleIntent(android.app.role.RoleManager.ROLE_CALL_SCREENING)
+            Log.d(TAG, "Opening call screening settings")
+
+            // First try to request call screening role (API 29+)
+            Log.d(TAG, "Attempting to request call screening role (API 29+)")
+            val intent = createCallScreeningRoleIntent(context)
+            if (intent != null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                
-                // Check if the intent can be resolved
                 if (context.packageManager.resolveActivity(intent, 0) != null) {
+                    Log.d(TAG, "Starting call screening role request")
                     context.startActivity(intent)
-                    Log.d(TAG, "Role intent launched successfully")
-                } else {
-                    Log.w(TAG, "Role intent cannot be resolved, falling back to phone settings")
-                    openPhoneSettings(context)
+                    return
                 }
-            } else {
-                Log.d(TAG, "API < Q, using phone settings")
-                openPhoneSettings(context)
             }
+
+            // Fallback: Try to open default apps settings
+            Log.d(TAG, "Fallback: Opening default apps settings")
+            if (openDefaultAppsSettings(context)) {
+                return
+            }
+
+            // Final fallback: open general phone settings
+            Log.d(TAG, "Final fallback: Opening phone settings")
+            openPhoneSettings(context)
         } catch (e: Exception) {
             Log.e(TAG, "Error opening call screening settings", e)
             openPhoneSettings(context)
         }
     }
-    
-    private fun openPhoneSettings(context: Context) {
-        try {
-            // Try to open phone app settings first
-            val phoneIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            phoneIntent.data = Uri.parse("package:com.google.android.dialer")
-            phoneIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            
-            if (context.packageManager.resolveActivity(phoneIntent, 0) != null) {
-                context.startActivity(phoneIntent)
-                Log.d(TAG, "Phone app settings opened")
-                return
-            }
-        } catch (e: Exception) {
-            Log.w(TAG, "Could not open phone app settings", e)
-        }
-        
-        try {
-            // Fallback to general phone settings
-            val phoneSettingsIntent = Intent(Settings.ACTION_SOUND_SETTINGS)
-            phoneSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(phoneSettingsIntent)
-            Log.d(TAG, "General phone settings opened")
-        } catch (e: Exception) {
-            Log.w(TAG, "Could not open phone settings", e)
-            // Final fallback to app settings
-            try {
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                intent.data = Uri.parse("package:${context.packageName}")
+
+    /**
+     * Request call screening role for API 29+
+     */
+    private fun requestCallScreeningRole(context: Context): Boolean {
+        return try {
+            val roleManager =
+                context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
+            roleManager?.let {
+                val intent =
+                    it.createRequestRoleIntent(android.app.role.RoleManager.ROLE_CALL_SCREENING)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(intent)
-                Log.d(TAG, "App settings opened as final fallback")
-            } catch (fallbackException: Exception) {
-                Log.e(TAG, "Error in all fallback attempts", fallbackException)
+
+                if (context.packageManager.resolveActivity(intent, 0) != null) {
+                    Log.d(TAG, "Starting call screening role request")
+                    context.startActivity(intent)
+                    true
+                } else {
+                    Log.w(TAG, "No activity found to handle call screening role request")
+                    false
+                }
+            } ?: false
+        } catch (e: Exception) {
+            Log.e(TAG, "Error requesting call screening role", e)
+            false
+        }
+    }
+
+    /**
+     * Open default apps settings
+     */
+    private fun openDefaultAppsSettings(context: Context): Boolean {
+        val defaultAppsIntents = listOf(
+            // Try to open specific default apps settings for calls
+            Intent("android.settings.MANAGE_DEFAULT_APPS_SETTINGS"),
+            Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS),
+            // Try to open assistant and voice input settings (sometimes includes call screening)
+            Intent(Settings.ACTION_VOICE_INPUT_SETTINGS)
+        )
+
+        for (intent in defaultAppsIntents) {
+            try {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                if (context.packageManager.resolveActivity(intent, 0) != null) {
+                    Log.d(TAG, "Opening default apps settings with intent: ${intent.action}")
+                    context.startActivity(intent)
+                    return true
+                }
+            } catch (e: Exception) {
+                Log.w(TAG, "Could not open default apps settings with intent: ${intent.action}", e)
             }
         }
+
+        return false
+    }
+
+    /**
+     * Open phone settings as fallback
+     */
+    private fun openPhoneSettings(context: Context) {
+        val settingsIntents = listOf(
+            // Try to open default apps settings for calls
+            Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS),
+            // Try phone app settings
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.parse("package:com.android.phone")
+            },
+            // Try Google Dialer settings
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.parse("package:com.google.android.dialer")
+            },
+            // General phone settings
+            Intent(Settings.ACTION_SOUND_SETTINGS),
+            // App settings as last resort
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.parse("package:${context.packageName}")
+            }
+        )
+
+        for (intent in settingsIntents) {
+            try {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                if (context.packageManager.resolveActivity(intent, 0) != null) {
+                    context.startActivity(intent)
+                    Log.d(TAG, "Opened settings with intent: ${intent.action}")
+                    return
+                }
+            } catch (e: Exception) {
+                Log.w(TAG, "Could not open settings with intent: ${intent.action}", e)
+            }
+        }
+
+        Log.e(TAG, "Failed to open any settings")
     }
 }
