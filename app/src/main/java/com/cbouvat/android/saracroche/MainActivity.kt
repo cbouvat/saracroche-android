@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.QuestionMark
@@ -63,15 +64,18 @@ fun SaracrocheApp() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        bottomBar = { BottomNavigationBar(navController) }
+        bottomBar = { BottomNavigationBar(navController) },
+        contentWindowInsets = WindowInsets(0)
     ) { innerPadding ->
-        AppNavigation(navController, Modifier.padding(innerPadding))
+        AppNavigation(navController, Modifier)
     }
 }
 
 @Composable
 private fun BottomNavigationBar(navController: androidx.navigation.NavHostController) {
-    NavigationBar {
+    NavigationBar(
+        windowInsets = WindowInsets.navigationBars
+    ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
