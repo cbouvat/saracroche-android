@@ -15,13 +15,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.MoneyOff
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Savings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -75,7 +75,7 @@ fun DonationSheet(
                 )
                 IconButton(onClick = onDismiss) {
                     Icon(
-                        imageVector = Icons.Default.Close,
+                        imageVector = Icons.Rounded.Close,
                         contentDescription = "Fermer"
                     )
                 }
@@ -85,7 +85,7 @@ fun DonationSheet(
 
             // Heart icon
             Icon(
-                imageVector = Icons.Default.Favorite,
+                imageVector = Icons.Rounded.Favorite,
                 contentDescription = null,
                 modifier = Modifier.size(48.dp),
                 tint = Color(0xFFE91E63) // Pink color
@@ -114,31 +114,31 @@ fun DonationSheet(
             Spacer(modifier = Modifier.height(16.dp))
 
             DonationBenefitRow(
-                icon = Icons.Default.Code,
+                icon = Icons.Rounded.Code,
                 title = "Projet open-source",
                 description = "Code source ouvert et transparent"
             )
 
             DonationBenefitRow(
-                icon = Icons.Default.MoneyOff,
+                icon = Icons.Rounded.Savings,
                 title = "Entièrement gratuit",
                 description = "Pas de pub, pas d'abonnement, pas de version premium"
             )
 
             DonationBenefitRow(
-                icon = Icons.Default.Person,
+                icon = Icons.Rounded.Person,
                 title = "Développeur indépendant",
                 description = "Camille développe bénévolement sur son temps libre"
             )
 
             DonationBenefitRow(
-                icon = Icons.Default.Refresh,
+                icon = Icons.Rounded.Refresh,
                 title = "Mises à jour régulières",
                 description = "Nouvelles listes de blocage et améliorations continues"
             )
 
             DonationBenefitRow(
-                icon = Icons.Default.Lock,
+                icon = Icons.Rounded.Lock,
                 title = "Confidentialité respectée",
                 description = "Aucune donnée collectée, tout reste sur votre appareil"
             )
@@ -230,7 +230,7 @@ fun DonationButton(
         )
     ) {
         Icon(
-            imageVector = Icons.Default.Favorite,
+            imageVector = Icons.Rounded.Favorite,
             contentDescription = null,
             modifier = Modifier.size(18.dp)
         )
