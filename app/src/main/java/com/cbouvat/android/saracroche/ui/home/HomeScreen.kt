@@ -141,10 +141,12 @@ fun HomeScreen() {
                 }
             )
 
-            BlockedPatternsStatsCard(
-                totalBlockedNumbers = totalBlockedNumbers,
-                context = context
-            )
+            if (isCallScreeningEnabled) {
+                BlockedPatternsStatsCard(
+                    totalBlockedNumbers = totalBlockedNumbers,
+                    context = context
+                )
+            }
         }
     }
 
