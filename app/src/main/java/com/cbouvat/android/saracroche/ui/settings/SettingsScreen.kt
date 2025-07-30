@@ -3,6 +3,7 @@ package com.cbouvat.android.saracroche.ui.settings
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Link
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -231,6 +233,19 @@ fun SettingsScreen() {
                 .padding(paddingValues)
                 .verticalScroll(scrollState)
         ) {
+            // System Settings Section
+            SettingsSection(
+                title = "Configuration système",
+                items = listOf(
+                    SettingsItem.Action(
+                        title = "Réglages de blocage d'appels",
+                        subtitle = "Configurer l'application par défaut pour le blocage de spam",
+                        icon = Icons.Filled.Settings,
+                        onClick = { openCallBlockingSettings(context) }
+                    )
+                )
+            )
+
             // Links Section
             SettingsSection(
                 title = "Liens utiles",
@@ -286,6 +301,21 @@ fun SettingsScreen() {
                     )
                 }
             }
+        }
+    }
+}
+
+private fun openCallBlockingSettings(context: Context) {
+    try {
+        val intent = Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        // If the specific setting is not available, open general settings
+        try {
+            val intent = Intent(Settings.ACTION_SETTINGS)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            // Handle error silently
         }
     }
 }
