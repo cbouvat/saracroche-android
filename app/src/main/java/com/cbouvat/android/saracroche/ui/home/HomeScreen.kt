@@ -21,6 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AddModerator
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Error
+import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Numbers
 import androidx.compose.material.icons.rounded.Redeem
 import androidx.compose.material3.Button
@@ -106,8 +107,8 @@ fun HomeScreen() {
                         onClick = { showDonationSheet = true }
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Redeem,
-                            contentDescription = "Faire un don",
+                            imageVector = Icons.Rounded.Favorite,
+                            contentDescription = "Soutenir Saracroche",
                             tint = Color.Red
                         )
                     }
