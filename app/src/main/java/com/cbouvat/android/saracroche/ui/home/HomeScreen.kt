@@ -18,11 +18,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddModerator
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Error
-import androidx.compose.material.icons.filled.Numbers
-import androidx.compose.material.icons.filled.Redeem
+import androidx.compose.material.icons.rounded.AddModerator
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Error
+import androidx.compose.material.icons.rounded.Numbers
+import androidx.compose.material.icons.rounded.Redeem
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -106,7 +106,7 @@ fun HomeScreen() {
                         onClick = { showDonationSheet = true }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Redeem,
+                            imageVector = Icons.Rounded.Redeem,
                             contentDescription = "Faire un don",
                             tint = Color.Red
                         )
@@ -172,7 +172,7 @@ fun CallScreeningPermissionCard(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    imageVector = if (isEnabled) Icons.Default.CheckCircle else Icons.Default.Error,
+                    imageVector = if (isEnabled) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = if (isEnabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
@@ -201,7 +201,7 @@ fun CallScreeningPermissionCard(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.AddModerator,
+                        imageVector = Icons.Rounded.AddModerator,
                         contentDescription = null,
                         modifier = Modifier.size(18.dp)
                     )
@@ -230,7 +230,7 @@ fun BlockedPatternsStatsCard(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    imageVector = Icons.Filled.Numbers,
+                    imageVector = Icons.Rounded.Numbers,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.primary

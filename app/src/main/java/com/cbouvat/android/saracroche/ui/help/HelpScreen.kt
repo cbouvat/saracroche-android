@@ -22,16 +22,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AttachMoney
-import androidx.compose.material.icons.filled.BugReport
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.QuestionMark
-import androidx.compose.material.icons.filled.Shield
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.rounded.AttachMoney
+import androidx.compose.material.icons.rounded.BugReport
+import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.ExpandMore
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.QuestionMark
+import androidx.compose.material.icons.rounded.Shield
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
@@ -118,7 +118,7 @@ fun HelpItemView(helpItem: HelpItem) {
                 modifier = Modifier.weight(1f)
             )
             Icon(
-                imageVector = Icons.Default.ExpandMore,
+                imageVector = Icons.Rounded.ExpandMore,
                 contentDescription = "Expand",
                 modifier = Modifier.rotate(rotationAngle),
                 tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
@@ -166,30 +166,30 @@ fun HelpScreen() {
     val faqItems = listOf(
         HelpItem(
             title = "Quels numéros sont bloqués ?",
-            icon = Icons.Default.QuestionMark,
+            icon = Icons.Rounded.QuestionMark,
             content = "L'application bloque les préfixes suivants, communiqués par l'ARCEP : 0162, 0163, 0270, 0271, 0377, 0378, 0424, 0425, 0568, 0569, 0948, 0949, ainsi que ceux allant de 09475 à 09479. Ces préfixes sont réservés au démarchage téléphonique. Elle bloque aussi des numéros de téléphone de certains opérateurs comme Manifone, DVS Connect, Ze Telecom, Oxilog, BJT Partners, Ubicentrex, Destiny, Kav El International, Spartel Services et d'autres."
         ),
         HelpItem(
             title = "Comment fonctionne l'application ?",
-            icon = Icons.Default.Info,
+            icon = Icons.Rounded.Info,
             content = "L'application utilise une extension de blocage d'appels et de SMS fournie par le système pour filtrer les numéros indésirables. Elle est conçue pour être simple et efficace, sans nécessiter de configuration complexe."
         ),
         HelpItem(
             title = "Comment signaler un numéro ?",
-            icon = Icons.Default.Shield,
+            icon = Icons.Rounded.Shield,
             content = "Pour signaler un numéro indésirable, allez dans l'onglet 'Signaler' de l'application. Cela aide à améliorer la liste de blocage et à rendre l'application plus efficace."
         ),
         HelpItem(
             title = "Respect de la vie privée",
-            icon = Icons.Default.Lock,
+            icon = Icons.Rounded.Lock,
             content = "Saracroche ne collecte aucune donnée personnelle, n'utilise aucun service tiers et ne transmet aucune information à qui que ce soit. Toutes les données restent sur votre appareil. Le respect de la vie privée est un droit fondamental, même si on n'a rien à cacher."
         ),
         HelpItem(
             title = "Pourquoi l'application est-elle gratuite et sans publicité ?",
-            icon = Icons.Default.AttachMoney,
+            icon = Icons.Rounded.AttachMoney,
             content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
             actionText = "Faire un don",
-            actionIcon = Icons.Default.Favorite,
+            actionIcon = Icons.Rounded.Favorite,
             onActionClick = {
                 showDonationSheet = true
             }
@@ -199,20 +199,20 @@ fun HelpScreen() {
     val supportItems = listOf(
         HelpItem(
             title = "Comment signaler un bug ?",
-            icon = Icons.Default.BugReport,
+            icon = Icons.Rounded.BugReport,
             content = "En cas de bug ou de problème avec l'application, merci de le signaler sur GitHub ou par e-mail.",
             actionText = "Signaler un bug",
-            actionIcon = Icons.Default.Email,
+            actionIcon = Icons.Rounded.Email,
             onActionClick = {
                 openEmailClient(context)
             }
         ),
         HelpItem(
             title = "Comment noter l'application ?",
-            icon = Icons.Default.Star,
+            icon = Icons.Rounded.Star,
             content = "Si l'application Saracroche vous est utile, une évaluation sur le Play Store serait appréciée. Ce soutien aide à toucher davantage de personnes et à améliorer continuellement l'application.",
             actionText = "Noter l'application",
-            actionIcon = Icons.Default.Star,
+            actionIcon = Icons.Rounded.Star,
             onActionClick = {
                 openPlayStore(context)
             }

@@ -20,10 +20,10 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowCircleRight
-import androidx.compose.material.icons.filled.Flag
-import androidx.compose.material.icons.filled.PhoneEnabled
-import androidx.compose.material.icons.filled.Quiz
+import androidx.compose.material.icons.rounded.ArrowCircleRight
+import androidx.compose.material.icons.rounded.Flag
+import androidx.compose.material.icons.rounded.PhoneEnabled
+import androidx.compose.material.icons.rounded.Quiz
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -103,7 +103,7 @@ fun ReportScreen(
             // Service 33700 card
             ServiceCard(
                 title = "Service 33700",
-                icon = Icons.Default.Flag,
+                icon = Icons.Rounded.Flag,
                 description = "Le service 33700 est un service gratuit mis en place par les opérateurs de téléphonie mobile pour signaler les appels et SMS indésirables. Il permet aux utilisateurs de signaler les numéros directement auprès de leur opérateur, qui peut ensuite prendre des mesures pour bloquer ces numéros.",
                 buttonText = "Accéder au service 33700",
                 url = "https://www.33700.fr/",
@@ -113,7 +113,7 @@ fun ReportScreen(
             // ARCEP service card
             ServiceCard(
                 title = "Connaître l'opérateur du numéro",
-                icon = Icons.Filled.Quiz,
+                icon = Icons.Rounded.Quiz,
                 description = "Pour connaître l'opérateur d'un numéro, vous pouvez utiliser le service gratuit de l'ARCEP. Le service est accessible via le lien ci-dessous. Il vous suffit de saisir le numéro de téléphone pour obtenir des informations sur l'opérateur.",
                 buttonText = "Connaître l'opérateur",
                 url = "https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/base-numerotation.html",
@@ -163,7 +163,7 @@ private fun ReportCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.Default.PhoneEnabled,
+                    imageVector = Icons.Rounded.PhoneEnabled,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
                 )
@@ -228,7 +228,7 @@ private fun ReportCard(
                     )
                 } else {
                     Icon(
-                        imageVector = Icons.Filled.ArrowCircleRight,
+                        imageVector = Icons.Rounded.ArrowCircleRight,
                         contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(8.dp))

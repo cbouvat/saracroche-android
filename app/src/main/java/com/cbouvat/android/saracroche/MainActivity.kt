@@ -9,10 +9,10 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.QuestionMark
-import androidx.compose.material.icons.filled.Report
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.QuestionMark
+import androidx.compose.material.icons.rounded.Report
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -41,10 +41,10 @@ data class BottomNavItem(
 )
 
 private val bottomNavItems = listOf(
-    BottomNavItem("home", "Accueil", Icons.Filled.Home),
-    BottomNavItem("report", "Signaler", Icons.Filled.Report),
-    BottomNavItem("help", "Aide", Icons.Filled.QuestionMark),
-    BottomNavItem("settings", "Réglages", Icons.Filled.Settings)
+    BottomNavItem("home", "Accueil", Icons.Rounded.Home),
+    BottomNavItem("report", "Signaler", Icons.Rounded.Report),
+    BottomNavItem("help", "Aide", Icons.Rounded.QuestionMark),
+    BottomNavItem("settings", "Réglages", Icons.Rounded.Settings)
 )
 
 class MainActivity : ComponentActivity() {
