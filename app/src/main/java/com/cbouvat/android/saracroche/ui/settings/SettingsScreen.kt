@@ -3,6 +3,7 @@ package com.cbouvat.android.saracroche.ui.settings
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -344,7 +345,22 @@ private fun openBugReport(context: Context) {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, arrayOf("saracroche@cbouvat.com"))
-            putExtra(Intent.EXTRA_SUBJECT, "Bug - Saracroche Android")
+            putExtra(Intent.EXTRA_SUBJECT, "Contact - Saracroche Android")
+            // Add info about the device, version in French
+            val deviceInfo = """
+                Appareil : ${Build.MODEL} (${Build.MANUFACTURER})
+                Version Android : ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})
+                Version de l'application : ${
+                context.packageManager.getPackageInfo(
+                    context.packageName,
+                    0
+                ).versionName
+            }
+            """.trimIndent()
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "Bonjour,\n\nJe souhaite signaler un problème ou faire une suggestion concernant l'application :\n\n$deviceInfo\n\nBisou 😘"
+            )
         }
         context.startActivity(intent)
     } catch (e: Exception) {
