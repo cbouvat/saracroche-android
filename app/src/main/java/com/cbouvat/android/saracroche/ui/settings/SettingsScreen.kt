@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -296,7 +297,7 @@ fun SettingsScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(64.dp),
+                    .padding(32.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Column(
@@ -314,6 +315,9 @@ fun SettingsScreen() {
                     )
                 }
             }
+
+            // Space to ensure content is not cut off
+            Spacer(modifier = Modifier.height(64.dp))
         }
     }
 }
