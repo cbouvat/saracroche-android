@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AddComment
+import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Link
@@ -262,6 +263,12 @@ fun SettingsScreen() {
                         subtitle = "Consulter le site officiel",
                         icon = Icons.Rounded.Link,
                         onClick = { openOfficialWebsite(context) }
+                    ),
+                    SettingsItem.Action(
+                        title = "Mastodon : @cbouvat",
+                        subtitle = "Me suivre sur Mastodon et discuter",
+                        icon = Icons.Rounded.ChatBubble,
+                        onClick = { openMastodon(context) }
                     )
                 )
             )
@@ -339,6 +346,15 @@ private fun openGitHub(context: Context) {
 private fun openOfficialWebsite(context: Context) {
     try {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/"))
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        // Handle error silently
+    }
+}
+
+private fun openMastodon(context: Context) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://mastodon.social/@cbouvat"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
