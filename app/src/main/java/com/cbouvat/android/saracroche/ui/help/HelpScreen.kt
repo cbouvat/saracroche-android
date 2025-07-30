@@ -23,6 +23,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AttachMoney
+import androidx.compose.material.icons.rounded.Bolt
 import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.ClearAll
 import androidx.compose.material.icons.rounded.Email
@@ -209,6 +210,11 @@ fun HelpScreen() {
             onActionClick = {
                 showDonationSheet = true
             }
+        ),
+        HelpItem(
+            title = "Pourquoi une patte d'ours ?",
+            icon = Icons.Rounded.Bolt,
+            content = "Sarah est une ourse qui a été sauvée par Camille, le développeur de l'application. C'est elle qui raccroche en disant : « Tu connais Sarah ? », l'autre répond : « Sarah qui ? », et elle répond : « Sarah Croche ! » à chaque appel indésirable qu'elle reçoit. Merci à Sarah",
         )
     )
 
@@ -273,7 +279,7 @@ fun HelpScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(64.dp),
+                    .padding(32.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Column(
@@ -286,6 +292,9 @@ fun HelpScreen() {
                     )
                 }
             }
+
+            // Space to ensure content is not cut off
+            Spacer(modifier = Modifier.height(64.dp))
         }
     }
 
