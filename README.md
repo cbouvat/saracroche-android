@@ -1,5 +1,7 @@
 # Saracroche Android
 
+> 📱 **Also available for iOS**: Check out [Saracroche iOS](https://github.com/cbouvat/saracroche) for iPhone and iPad users!
+
 ## 🇫🇷 Description
 
 Saracroche est une application Android qui vous protège des appels indésirables en bloquant les appels téléphoniques indésirables. Elle est conçue pour être simple, efficace et respectueuse de la vie privée.
@@ -14,6 +16,8 @@ Saracroche est une application Android qui vous protège des appels indésirable
 ## 🇬🇧 Description
 
 Saracroche is an Android app that protects you from unwanted calls by blocking spam phone calls. It's designed to be simple, effective, and privacy-friendly.
+
+> 📱 **Also available for iOS**: Check out [Saracroche iOS](https://github.com/cbouvat/saracroche) for iPhone and iPad users!
 
 ## 🇬🇧 Features
 
