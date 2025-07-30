@@ -282,29 +282,19 @@ fun HelpScreen() {
 
 private fun openEmailClient(context: Context) {
     try {
-        val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
-        val versionName = packageInfo.versionName
-        val versionCode = packageInfo.longVersionCode
-
-        val deviceInfo = """
-      
-      
-      -----------
-      Version de l'application : $versionName ($versionCode)
-      Appareil : ${Build.MANUFACTURER} ${Build.MODEL}
-      Version Android : ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})
-    """.trimIndent()
-
         val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = "mailto:".toUri()
+            data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, arrayOf("saracroche@cbouvat.com"))
-            putExtra(Intent.EXTRA_SUBJECT, "Bug Android")
-            putExtra(Intent.EXTRA_TEXT, deviceInfo)
+            putExtra(Intent.EXTRA_SUBJECT, "Bug - Saracroche Android")
+            // Add info about the device, version in French
+            val deviceInfo = """
+                Appareil : ${Build.MODEL} (${Build.MANUFACTURER})
+                Version Android : ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})
+                Version de l'application : ${context.packageManager.getPackageInfo(context.packageName, 0).versionName}
+            """.trimIndent()
+            putExtra(Intent.EXTRA_TEXT, "Bonjour,\n\nJ'ai rencontré un problème avec l'application et voici une capture d'écran :\n\n$deviceInfo\n\nBisou 😘")
         }
-
-        if (intent.resolveActivity(context.packageManager) != null) {
-            context.startActivity(intent)
-        }
+        context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
     }
