@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets
 
 class NetworkService(private val context: Context) {
     private val gson = Gson()
-    
+
     companion object {
         private const val TIMEOUT_SECONDS = 10
         private const val RESOURCE_TIMEOUT_SECONDS = 30
@@ -26,7 +26,7 @@ class NetworkService(private val context: Context) {
         withContext(Dispatchers.IO) {
             val url = URL(Config.REPORT_SERVER_URL)
             val connection = url.openConnection() as HttpURLConnection
-            
+
             try {
                 // Configuration de la connexion
                 connection.requestMethod = "POST"
@@ -49,16 +49,17 @@ class NetworkService(private val context: Context) {
                 }
 
                 // Vérification de la réponse
-                val responseCode = connection.responseCode
-                when (responseCode) {
+                when (val responseCode = connection.responseCode) {
                     in 200..299 -> {
                         // Succès, rien à faire
                         return@withContext
                     }
+
                     in 400..499, in 500..599 -> {
                         val errorMessage = extractErrorMessage(connection)
                         throw NetworkError.ServerError(responseCode, errorMessage)
                     }
+
                     else -> {
                         throw NetworkError.Unknown
                     }
@@ -82,7 +83,7 @@ class NetworkService(private val context: Context) {
             val errorStream = connection.errorStream
             if (errorStream != null) {
                 val errorText = errorStream.bufferedReader().use { it.readText() }
-                
+
                 // Tentative de parsing JSON
                 try {
                     val errorResponse = gson.fromJson(errorText, ErrorResponse::class.java)
@@ -101,7 +102,8 @@ class NetworkService(private val context: Context) {
 
     private fun getDeviceId(): String {
         return try {
-            Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: "unknown"
+            Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+                ?: "unknown"
         } catch (e: Exception) {
             "unknown"
         }
