@@ -24,6 +24,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AttachMoney
 import androidx.compose.material.icons.rounded.BugReport
+import androidx.compose.material.icons.rounded.ClearAll
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.Favorite
@@ -178,6 +179,21 @@ fun HelpScreen() {
             title = "Comment signaler un numéro ?",
             icon = Icons.Rounded.Shield,
             content = "Pour signaler un numéro indésirable, allez dans l'onglet 'Signaler' de l'application. Cela aide à améliorer la liste de blocage et à rendre l'application plus efficace."
+        ),
+        HelpItem(
+            title = "Pourquoi les numéros bloqués apparaissent-ils dans l'historique des appels ?",
+            icon = Icons.Rounded.ClearAll,
+            content = "L'application utilise une extension de blocage d'appels, le choix a été fait de ne pas supprimer les appels bloqués de l'historique. Cela permet de garder une trace des appels indésirables et de signaler les numéros si nécessaire. Vous pouvez supprimer manuellement les appels bloqués de l'historique si vous le souhaitez."
+        ),
+        HelpItem(
+            title = "Comment soutenir le projet ?",
+            icon = Icons.Rounded.Favorite,
+            content = "Si vous appréciez l'application et souhaitez soutenir son développement, vous pouvez faire un don. Cela permet de financer le temps de développement et d'amélioration de l'application. Vous pouvez également partager l'application avec vos amis et votre famille pour aider à la faire connaître.",
+            actionText = "Faire un don",
+            actionIcon = Icons.Rounded.Favorite,
+            onActionClick = {
+                showDonationSheet = true
+            }
         ),
         HelpItem(
             title = "Respect de la vie privée",
