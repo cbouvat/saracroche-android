@@ -20,12 +20,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BugReport
-import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.Link
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.rounded.AddComment
+import androidx.compose.material.icons.rounded.ChevronRight
+import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.Link
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
@@ -136,7 +136,7 @@ fun SettingsActionItem(
             }
         }
         Icon(
-            imageVector = Icons.Default.ChevronRight,
+            imageVector = Icons.Rounded.ChevronRight,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
         )
@@ -238,9 +238,9 @@ fun SettingsScreen() {
                 title = "Configuration système",
                 items = listOf(
                     SettingsItem.Action(
-                        title = "Réglages de blocage d'appels",
-                        subtitle = "Configurer l'application par défaut pour le blocage de spam",
-                        icon = Icons.Filled.Settings,
+                        title = "Application par défaut pour le blocage d'appels",
+                        subtitle = "Configurer l'application par défaut pour le blocage de spam dans les réglages du téléphone",
+                        icon = Icons.Rounded.Settings,
                         onClick = { openCallBlockingSettings(context) }
                     )
                 )
@@ -253,13 +253,13 @@ fun SettingsScreen() {
                     SettingsItem.Action(
                         title = "Code source",
                         subtitle = "Voir le code sur GitHub",
-                        icon = Icons.Filled.Code,
+                        icon = Icons.Rounded.Code,
                         onClick = { openGitHub(context) }
                     ),
                     SettingsItem.Action(
                         title = "Site officiel",
                         subtitle = "Consulter le site officiel",
-                        icon = Icons.Filled.Link,
+                        icon = Icons.Rounded.Link,
                         onClick = { openOfficialWebsite(context) }
                     )
                 )
@@ -272,13 +272,13 @@ fun SettingsScreen() {
                     SettingsItem.Action(
                         title = "Noter l'application",
                         subtitle = "Évaluer l'app sur le Play Store",
-                        icon = Icons.Default.Star,
+                        icon = Icons.Rounded.Star,
                         onClick = { openPlayStore(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Signaler un problème",
-                        subtitle = "Nous faire part d'un bug ou problème",
-                        icon = Icons.Default.BugReport,
+                        title = "Signaler un bug ou suggérer une amélioration",
+                        subtitle = "Nous faire part d'un bug ou d'une suggestion",
+                        icon = Icons.Rounded.AddComment,
                         onClick = { openBugReport(context) }
                     )
                 )
