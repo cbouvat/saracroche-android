@@ -27,7 +27,7 @@ Saracroche is an Android app that protects you from unwanted calls by blocking s
 ## Installation
 
 ### Google Play Store
-Saracroche will be available on the Google Play Store (coming soon).
+Saracroche is available on the Google Play Store : [Download Saracroche](https://play.google.com/store/apps/details?id=com.cbouvat.android.saracroche)
 
 ### Building from Source
 1. Clone the repository
