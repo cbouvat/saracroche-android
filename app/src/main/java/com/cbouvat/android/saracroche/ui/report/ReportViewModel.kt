@@ -28,7 +28,7 @@ enum class AlertType(val title: String) {
 class ReportViewModel(private val context: Context) : ViewModel() {
     private val _uiState = MutableStateFlow(ReportUiState())
     val uiState: StateFlow<ReportUiState> = _uiState.asStateFlow()
-    
+
     private val networkService = NetworkService(context)
 
     fun updatePhoneNumber(number: String) {
@@ -71,6 +71,7 @@ class ReportViewModel(private val context: Context) : ViewModel() {
                 showError("Veuillez saisir un numéro de téléphone.")
                 return false
             }
+
             !isValidFormat -> {
                 showError("Le numéro doit être au format E.164 (ex: +33612345678).")
                 return false

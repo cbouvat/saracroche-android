@@ -190,7 +190,7 @@ fun HelpScreen() {
             content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
             actionText = "Faire un don",
             actionIcon = Icons.Default.Favorite,
-            onActionClick = { 
+            onActionClick = {
                 showDonationSheet = true
             }
         )
@@ -290,9 +290,17 @@ private fun openEmailClient(context: Context) {
             val deviceInfo = """
                 Appareil : ${Build.MODEL} (${Build.MANUFACTURER})
                 Version Android : ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})
-                Version de l'application : ${context.packageManager.getPackageInfo(context.packageName, 0).versionName}
+                Version de l'application : ${
+                context.packageManager.getPackageInfo(
+                    context.packageName,
+                    0
+                ).versionName
+            }
             """.trimIndent()
-            putExtra(Intent.EXTRA_TEXT, "Bonjour,\n\nJ'ai rencontré un problème avec l'application et voici une capture d'écran :\n\n$deviceInfo\n\nBisou 😘")
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "Bonjour,\n\nJ'ai rencontré un problème avec l'application et voici une capture d'écran :\n\n$deviceInfo\n\nBisou 😘"
+            )
         }
         context.startActivity(intent)
     } catch (e: Exception) {
