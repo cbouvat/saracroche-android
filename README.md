@@ -1,32 +1,17 @@
 # Saracroche Android
 
-> 📱 **Also available for iOS**: Check out [Saracroche iOS](https://github.com/cbouvat/saracroche) for iPhone and iPad users!
+> 📱 **Also available for iOS**: Check out [Saracroche iOS](https://github.com/cbouvat/saracroche-ios) for iPhone and iPad users!
 
-## 🇫🇷 Description
-
-Saracroche est une application Android qui vous protège des appels indésirables en bloquant les appels téléphoniques indésirables. Elle est conçue pour être simple, efficace et respectueuse de la vie privée.
-
-## 🇫🇷 Fonctionnalités
-
-- 🛡️ Bloque automatiquement les numéros
-- 📱 Application native Android
-- 🔒 Respect de la vie privée : aucune donnée d'appel n'est collectée
-- 🔄 Mises à jour régulières de la base de données des numéros
-
-## 🇬🇧 Description
+## Description
 
 Saracroche is an Android app that protects you from unwanted calls by blocking spam phone calls. It's designed to be simple, effective, and privacy-friendly.
 
-> 📱 **Also available for iOS**: Check out [Saracroche iOS](https://github.com/cbouvat/saracroche) for iPhone and iPad users!
-
-## 🇬🇧 Features
+## Features
 
 - 🛡️ Automatically blocks numbers
 - 📱 Native Android application
 - 🔒 Privacy-respectful: no call data is collected
 - 🔄 Regular updates of the number database
-
----
 
 ## Installation
 
