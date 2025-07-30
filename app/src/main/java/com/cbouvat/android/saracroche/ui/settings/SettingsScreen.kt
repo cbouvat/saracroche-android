@@ -296,7 +296,12 @@ fun SettingsScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Version 1.0.0",
+                        text = "Version de l'application : ${
+                            context.packageManager.getPackageInfo(
+                                context.packageName,
+                                0
+                            ).versionName
+                        }",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
