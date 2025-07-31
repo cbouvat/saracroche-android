@@ -101,17 +101,6 @@ fun HomeScreen() {
         topBar = {
             LargeTopAppBar(
                 title = { Text("Saracroche", fontWeight = FontWeight.Bold) },
-                actions = {
-                    IconButton(
-                        onClick = { showDonationSheet = true }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Favorite,
-                            contentDescription = "Soutenir Saracroche",
-                            tint = Color.Red
-                        )
-                    }
-                },
                 scrollBehavior = scrollBehavior,
                 windowInsets = WindowInsets.statusBars
             )
@@ -145,6 +134,10 @@ fun HomeScreen() {
                     context = context
                 )
             }
+
+            SupportProjectCard(
+                onDonationClick = { showDonationSheet = true }
+            )
         }
     }
 
@@ -208,6 +201,56 @@ fun CallScreeningPermissionCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Activer le bloqueur")
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun SupportProjectCard(
+    onDonationClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Rounded.Favorite,
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                    tint = Color.Red
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "Application gratuite et open-source",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            Text(
+                text = "Saracroche est une application entièrement gratuite et open-source. Elle vit grâce aux dons de ses utilisateurs pour continuer à évoluer et rester sans publicité.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Button(
+                onClick = onDonationClick,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Favorite,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Soutenez")
             }
         }
     }
