@@ -197,7 +197,7 @@ fun HelpScreen() {
             }
         ),
         HelpItem(
-            title = "Respect de la vie privée",
+            title = "Respect de la vie privée ?",
             icon = Icons.Rounded.Lock,
             content = "Saracroche ne collecte aucune donnée personnelle, n'utilise aucun service tiers et ne transmet aucune information à qui que ce soit. Toutes les données restent sur votre appareil. Le respect de la vie privée est un droit fondamental, même si on n'a rien à cacher."
         ),
@@ -214,7 +214,7 @@ fun HelpScreen() {
         HelpItem(
             title = "Pourquoi une patte d'ours ?",
             icon = Icons.Rounded.Bolt,
-            content = "Sarah est une ourse qui a été sauvée par Camille, le développeur de l'application. C'est elle qui raccroche en disant : « Tu connais Sarah ? », l'autre répond : « Sarah qui ? », et elle répond : « Sarah Croche ! » à chaque appel indésirable qu'elle reçoit. Merci à Sarah",
+            content = "Sarah est une ourse qui a été sauvée par Camille, le développeur de l'application. C'est elle qui raccroche en disant : « Tu connais Sarah ? », l'autre répond : « Sarah qui ? », et elle répond : « Sarah Croche ! » à chaque appel indésirable qu'elle reçoit. Merci à Sarah.",
         )
     )
 
