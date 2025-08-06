@@ -390,6 +390,11 @@
         "pattern": "33189366###"
     },
     {
+        "operator": "COCR",
+        "prefix": "+3318949",
+        "pattern": "3318949####"
+    },
+    {
         "operator": "LGC",
         "prefix": "+3318961",
         "pattern": "3318961####"
@@ -778,6 +783,11 @@
         "operator": "OPEN",
         "prefix": "+33258419",
         "pattern": "33258419###"
+    },
+    {
+        "operator": "COCR",
+        "prefix": "+3325849",
+        "pattern": "3325849####"
     },
     {
         "operator": "BJTP",
@@ -1470,6 +1480,11 @@
         "pattern": "3337577####"
     },
     {
+        "operator": "COCR",
+        "prefix": "+3337584",
+        "pattern": "3337584####"
+    },
+    {
         "operator": "BJTP",
         "prefix": "+33375880",
         "pattern": "33375880###"
@@ -2120,6 +2135,11 @@
         "pattern": "3345109####"
     },
     {
+        "operator": "COCR",
+        "prefix": "+3345129",
+        "pattern": "3345129####"
+    },
+    {
         "operator": "BJTP",
         "prefix": "+33451370",
         "pattern": "33451370###"
@@ -2708,6 +2728,11 @@
         "operator": "OXIL",
         "prefix": "+3353666",
         "pattern": "3353666####"
+    },
+    {
+        "operator": "COCR",
+        "prefix": "+3353690",
+        "pattern": "3353690####"
     },
     {
         "operator": "BJTP",
@@ -3618,6 +3643,11 @@
         "operator": "UBIC",
         "prefix": "+3397276",
         "pattern": "3397276####"
+    },
+    {
+        "operator": "COCR",
+        "prefix": "+3397342",
+        "pattern": "3397342####"
     },
     {
         "operator": "OPEN",
