@@ -12,10 +12,10 @@ android {
         applicationId = "com.cbouvat.android.saracroche"
         minSdk = 29
         targetSdk = 36
-        versionCode = 7
+        versionCode = 8
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        versionName = "1.3.3"
+        versionName = "1.4.0"
     }
 
     buildTypes {
