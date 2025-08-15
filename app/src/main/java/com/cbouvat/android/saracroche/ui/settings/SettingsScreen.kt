@@ -6,15 +6,14 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -44,6 +43,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -74,7 +74,7 @@ fun SettingsSection(
             text = title,
             style = MaterialTheme.typography.titleSmall.copy(
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.onPrimary
             ),
             modifier = Modifier.padding(16.dp)
         )
@@ -228,7 +228,7 @@ fun SettingsScreen() {
                 windowInsets = WindowInsets.statusBars
             )
         },
-        contentWindowInsets = WindowInsets.navigationBars
+        contentWindowInsets = WindowInsets.displayCutout
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -236,9 +236,9 @@ fun SettingsScreen() {
                 .padding(paddingValues)
                 .verticalScroll(scrollState)
         ) {
-            // System Settings Section
+            // Configuration Section
             SettingsSection(
-                title = "Configuration système",
+                title = "Configuration",
                 items = listOf(
                     SettingsItem.Action(
                         title = "Application par défaut pour le blocage d'appels",
@@ -251,8 +251,20 @@ fun SettingsScreen() {
 
             // Links Section
             SettingsSection(
-                title = "Liens utiles",
+                title = "Liens",
                 items = listOf(
+                    SettingsItem.Action(
+                        title = "Site officiel",
+                        subtitle = "Consulter le site officiel",
+                        icon = Icons.Rounded.Link,
+                        onClick = { openOfficialWebsite(context) }
+                    ),
+                    SettingsItem.Action(
+                        title = "Noter l'application",
+                        subtitle = "Évaluer l'app sur le Google Play Store",
+                        icon = Icons.Rounded.Star,
+                        onClick = { openPlayStore(context) }
+                    ),
                     SettingsItem.Action(
                         title = "Code source",
                         subtitle = "Voir le code sur GitHub",
@@ -260,10 +272,10 @@ fun SettingsScreen() {
                         onClick = { openGitHub(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Site officiel",
-                        subtitle = "Consulter le site officiel",
-                        icon = Icons.Rounded.Link,
-                        onClick = { openOfficialWebsite(context) }
+                        title = "Contactez le développeur",
+                        subtitle = "Faire part d'une suggestion ou autre",
+                        icon = Icons.Rounded.AddComment,
+                        onClick = { openBugReport(context) }
                     ),
                     SettingsItem.Action(
                         title = "Mastodon : @cbouvat",
@@ -274,50 +286,24 @@ fun SettingsScreen() {
                 )
             )
 
-            // Support Section
-            SettingsSection(
-                title = "Application",
-                items = listOf(
-                    SettingsItem.Action(
-                        title = "Noter l'application",
-                        subtitle = "Évaluer l'app sur le Play Store",
-                        icon = Icons.Rounded.Star,
-                        onClick = { openPlayStore(context) }
-                    ),
-                    SettingsItem.Action(
-                        title = "Signaler un bug ou suggérer une amélioration",
-                        subtitle = "Nous faire part d'un bug ou d'une suggestion",
-                        icon = Icons.Rounded.AddComment,
-                        onClick = { openBugReport(context) }
-                    )
-                )
-            )
-
             // Footer
-            Box(
+            Text(
+                text = "Version ${
+                    context.packageManager.getPackageInfo(
+                        context.packageName,
+                        0
+                    ).versionName
+                }",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(32.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Version de l'application : ${
-                            context.packageManager.getPackageInfo(
-                                context.packageName,
-                                0
-                            ).versionName
-                        }",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                    )
-                }
-            }
+                    .padding(16.dp)
+            )
 
             // Space to ensure content is not cut off
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         }
     }
 }
@@ -384,7 +370,7 @@ private fun openBugReport(context: Context) {
             """.trimIndent()
             putExtra(
                 Intent.EXTRA_TEXT,
-                "Bonjour,\n\nJe souhaite signaler un problème ou faire une suggestion concernant l'application :\n\n$deviceInfo\n\nBisou 😘"
+                "Bonjour,\n\n(Votre message ici)\n\n$deviceInfo"
             )
         }
         context.startActivity(intent)

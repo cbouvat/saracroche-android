@@ -3,30 +3,30 @@ package com.cbouvat.android.saracroche.ui.donation
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Savings
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
@@ -52,7 +52,8 @@ fun DonationSheet(
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        sheetState = bottomSheetState
+        sheetState = bottomSheetState,
+        contentWindowInsets = { WindowInsets.statusBars },
     ) {
         Column(
             modifier = Modifier
@@ -61,44 +62,31 @@ fun DonationSheet(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Header
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Spacer(modifier = Modifier.width(48.dp))
-                Text(
-                    text = "Soutenez Saracroche",
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
-                )
-                IconButton(onClick = onDismiss) {
-                    Icon(
-                        imageVector = Icons.Rounded.Close,
-                        contentDescription = "Fermer"
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
             // Heart icon
             Icon(
                 imageVector = Icons.Rounded.Favorite,
                 contentDescription = null,
-                modifier = Modifier.size(48.dp),
+                modifier = Modifier.size(60.dp),
                 tint = Color(0xFFE91E63) // Pink color
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = "Soutenez Saracroche",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             // Description
             Text(
-                text = "Saracroche est développée bénévolement par Camille sur son temps libre. Votre don l'aide à consacrer plus de temps à l'amélioration de l'app et au maintien des listes de blocage.",
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 8.dp)
+                text = "Saracroche est développée bénévolement par Camille sur son temps libre. Vos dons lui permettent d’améliorer l’application et de maintenir les listes de blocage à jour. Une note sur le store, ça fait toujours plaisir et aide beaucoup !",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -111,11 +99,11 @@ fun DonationSheet(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Code,
-                title = "Projet open-source",
+                title = "Projet open source",
                 description = "Code source ouvert et transparent"
             )
 
@@ -143,33 +131,71 @@ fun DonationSheet(
                 description = "Aucune donnée collectée, tout reste sur votre appareil"
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Donation buttons
+            DonationButton(
+                text = "Carte bancaire",
+                // Indigo color for Stripe
+                backgroundColor = Color(0xFF6772E5),
+                textColor = Color.White,
+                onClick = { openUrl(context, "https://buy.stripe.com/9B6aEXcJ8flofsgfIU2oE01") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             DonationButton(
                 text = "PayPal",
                 backgroundColor = Color(0xFF0070BA),
                 textColor = Color.White,
-                onClick = { openUrl(context, "https://paypal.me/cbouvat") }
+                onClick = { openUrl(context, "https://paypal.me/cbouvat") },
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            DonationButton(
-                text = "GitHub Sponsors",
-                backgroundColor = Color.Black,
-                textColor = Color.White,
-                onClick = { openUrl(context, "https://github.com/sponsors/cbouvat") }
-            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                DonationButton(
+                    text = "GitHub Sponsors",
+                    backgroundColor = Color.Black,
+                    textColor = Color.White,
+                    onClick = { openUrl(context, "https://github.com/sponsors/cbouvat") },
+                    modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                DonationButton(
+                    text = "Liberapay",
+                    backgroundColor = Color(0xFFF6C915),
+                    textColor = Color.Black,
+                    onClick = { openUrl(context, "https://liberapay.com/cbouvat") },
+                    modifier = Modifier.weight(1f)
+                )
+            }
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            DonationButton(
-                text = "Liberapay",
-                backgroundColor = Color(0xFFF6C915),
-                textColor = Color.Black,
-                onClick = { openUrl(context, "https://liberapay.com/cbouvat") }
-            )
+            // App rating button
+            Button(
+                onClick = { openPlayStore(context) },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFE91E63), // Pink color
+                    contentColor = Color.White
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Star,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "Noter l'application",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
 
             Spacer(modifier = Modifier.height(32.dp))
         }
@@ -192,7 +218,7 @@ fun DonationBenefitRow(
             imageVector = icon,
             contentDescription = null,
             modifier = Modifier.size(24.dp),
-            tint = MaterialTheme.colorScheme.primary
+            tint = MaterialTheme.colorScheme.onPrimary
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -219,11 +245,12 @@ fun DonationButton(
     text: String,
     backgroundColor: Color,
     textColor: Color,
+    modifier: Modifier,
     onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor,
             contentColor = textColor
@@ -235,7 +262,7 @@ fun DonationButton(
             modifier = Modifier.size(18.dp)
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text)
+        Text(text, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
     }
 }
 
@@ -245,6 +272,26 @@ private fun openUrl(context: Context, url: String) {
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
+    }
+}
+
+private fun openPlayStore(context: Context) {
+    try {
+        // Try to open the app page in Google Play Store app
+        val playStoreIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName}"))
+        context.startActivity(playStoreIntent)
+    } catch (e: Exception) {
+        // If Play Store app is not available, open in browser
+        try {
+            val browserIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+            )
+            context.startActivity(browserIntent)
+        } catch (e: Exception) {
+            // Handle error silently
+        }
     }
 }
 

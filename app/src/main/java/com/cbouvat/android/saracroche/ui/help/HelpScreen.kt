@@ -6,20 +6,21 @@ import android.net.Uri
 import android.os.Build
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AttachMoney
@@ -29,18 +30,23 @@ import androidx.compose.material.icons.rounded.ClearAll
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Flag
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Shield
-import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Warning
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,10 +56,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,7 +78,7 @@ fun HelpSection(
             text = title,
             style = MaterialTheme.typography.titleSmall.copy(
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.onPrimary
             ),
             modifier = Modifier.padding(16.dp)
         )
@@ -95,7 +103,7 @@ fun HelpItemView(helpItem: HelpItem) {
         targetValue = if (isExpanded) 180f else 0f,
         label = "arrow_rotation"
     )
-    val context = LocalContext.current
+    LocalContext.current
 
     Column(
         modifier = Modifier
@@ -110,7 +118,7 @@ fun HelpItemView(helpItem: HelpItem) {
             Icon(
                 imageVector = helpItem.icon,
                 contentDescription = null,
-                modifier = Modifier.size(24.dp),
+                modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -139,7 +147,7 @@ fun HelpItemView(helpItem: HelpItem) {
 
             if (helpItem.actionText != null && helpItem.actionIcon != null && helpItem.onActionClick != null) {
                 Spacer(modifier = Modifier.height(8.dp))
-                TextButton(
+                Button(
                     onClick = { helpItem.onActionClick.invoke() },
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
@@ -151,6 +159,78 @@ fun HelpItemView(helpItem: HelpItem) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(helpItem.actionText)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun SupportSection(context: Context) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        ),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Text(
+                text = "Vous avez besoin d'aide ?",
+                style = MaterialTheme.typography.bodyMedium
+            )
+
+            // Email button
+            Button(
+                onClick = { openEmailClient(context) },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = Color.Black
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Email,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "Envoyer un e-mail",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+            // GitHub issues button
+            Button(
+                onClick = {
+                    openWebsite(
+                        context,
+                        "https://github.com/cbouvat/saracroche-android/issues"
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Black, // Black color like GitHub button in DonationSheet
+                    contentColor = Color.White
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.BugReport,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "Créer une issue sur GitHub",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
     }
@@ -169,12 +249,12 @@ fun HelpScreen() {
         HelpItem(
             title = "Quels numéros sont bloqués ?",
             icon = Icons.Rounded.QuestionMark,
-            content = "L'application bloque les préfixes suivants, communiqués par l'ARCEP : 0162, 0163, 0270, 0271, 0377, 0378, 0424, 0425, 0568, 0569, 0948, 0949, ainsi que ceux allant de 09475 à 09479. Ces préfixes sont réservés au démarchage téléphonique. Elle bloque aussi des numéros de téléphone de certains opérateurs comme Manifone, DVS Connect, Ze Telecom, Oxilog, BJT Partners, Ubicentrex, Destiny, Kav El International, Spartel Services et d'autres."
+            content = "L'application bloque les préfixes suivants, communiqués par l'ARCEP : 0162, 0163, 0270, 0271, 0377, 0378, 0424, 0425, 0568, 0569, 0948, 0949, ainsi que ceux allant de 09475 à 09479. Ces préfixes sont réservés au démarchage téléphonique. Elle bloque aussi des numéros de téléphone de certains opérateurs comme Manifone, DVS Connect, Ze Telecom, Oxilog, BJT Partners, Ubicentrex, Destiny, Kav El International, Spartel Services et Comunik CRM."
         ),
         HelpItem(
             title = "Comment fonctionne l'application ?",
             icon = Icons.Rounded.Info,
-            content = "L'application utilise une extension de blocage d'appels et de SMS fournie par le système pour filtrer les numéros indésirables. Elle est conçue pour être simple et efficace, sans nécessiter de configuration complexe."
+            content = "L'application utilise une extension de blocage d'appels fournie par le système pour filtrer les numéros indésirables. Elle est conçue pour être simple et efficace, sans nécessiter de configuration complexe."
         ),
         HelpItem(
             title = "Comment signaler un numéro ?",
@@ -189,8 +269,8 @@ fun HelpScreen() {
         HelpItem(
             title = "Comment soutenir le projet ?",
             icon = Icons.Rounded.Favorite,
-            content = "Si vous appréciez l'application et souhaitez soutenir son développement, vous pouvez faire un don. Cela permet de financer le temps de développement et d'amélioration de l'application. Vous pouvez également partager l'application avec vos amis et votre famille pour aider à la faire connaître.",
-            actionText = "Faire un don",
+            content = "Si vous appréciez l'application et souhaitez soutenir son développement, vous pouvez faire un don et noter l'application. Cela permet de financer le temps de développement et d'amélioration de l'application. Vous pouvez également partager l'application avec vos amis et votre famille pour aider à la faire connaître.",
+            actionText = "Soutenez Saracroche",
             actionIcon = Icons.Rounded.Favorite,
             onActionClick = {
                 showDonationSheet = true
@@ -204,8 +284,8 @@ fun HelpScreen() {
         HelpItem(
             title = "Pourquoi l'application est-elle gratuite et sans publicité ?",
             icon = Icons.Rounded.AttachMoney,
-            content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don.",
-            actionText = "Faire un don",
+            content = "Elle est développée bénévolement par un développeur indépendant (Camille), qui en avait assez de recevoir des appels indésirables. L'application est développée sur son temps libre. Vous pouvez soutenir le projet en faisant un don et noter l'application.",
+            actionText = "Soutenez Saracroche",
             actionIcon = Icons.Rounded.Favorite,
             onActionClick = {
                 showDonationSheet = true
@@ -214,30 +294,35 @@ fun HelpScreen() {
         HelpItem(
             title = "Pourquoi une patte d'ours ?",
             icon = Icons.Rounded.Bolt,
-            content = "Sarah est une ourse qui a été sauvée par Camille, le développeur de l'application. C'est elle qui raccroche en disant : « Tu connais Sarah ? », l'autre répond : « Sarah qui ? », et elle répond : « Sarah Croche ! » à chaque appel indésirable qu'elle reçoit. Merci à Sarah.",
-        )
-    )
-
-    val supportItems = listOf(
+            content = "Sarah est une ourse qui a été sauvée par Camille, le développeur de l'application. C'est elle qui raccroche en disant : « Tu connais Sarah ? », l'autre répond : « Sarah qui ? », et elle répond : « Sarah Croche ! » à chaque appel indésirable qu'elle reçoit. Merci à Sarah."
+        ),
         HelpItem(
-            title = "Comment signaler un bug ?",
-            icon = Icons.Rounded.BugReport,
-            content = "En cas de bug ou de problème avec l'application, merci de le signaler sur GitHub ou par e-mail.",
-            actionText = "Signaler un bug",
-            actionIcon = Icons.Rounded.Email,
+            title = "C'est quoi le service 33700 ?",
+            icon = Icons.Rounded.Flag,
+            content = "Le service 33700 est un service gratuit mis en place par les opérateurs de téléphonie mobile pour signaler les appels et SMS indésirables. Il permet aux utilisateurs de signaler les numéros directement auprès de leur opérateur, qui peut ensuite prendre des mesures pour bloquer ces numéros.",
+            actionText = "Accéder au service 33700",
+            actionIcon = Icons.Rounded.Flag,
             onActionClick = {
-                openEmailClient(context)
+                openWebsite(context, "https://www.33700.fr/")
             }
         ),
         HelpItem(
-            title = "Comment noter l'application ?",
-            icon = Icons.Rounded.Star,
-            content = "Si l'application Saracroche vous est utile, une évaluation sur le Play Store serait appréciée. Ce soutien aide à toucher davantage de personnes et à améliorer continuellement l'application.",
-            actionText = "Noter l'application",
-            actionIcon = Icons.Rounded.Star,
+            title = "Comment connaître l'opérateur d'un numéro ?",
+            icon = Icons.Rounded.Person,
+            content = "Pour connaître l'opérateur d'un numéro, vous pouvez utiliser le service gratuit de l'ARCEP. Le service est accessible via le lien ci-dessous. Il vous suffit de saisir le numéro de téléphone pour obtenir des informations sur l'opérateur.",
+            actionText = "Connaître l'opérateur",
+            actionIcon = Icons.Rounded.Person,
             onActionClick = {
-                openPlayStore(context)
+                openWebsite(
+                    context,
+                    "https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/base-numerotation.html"
+                )
             }
+        ),
+        HelpItem(
+            title = "L'application rencontre un problème ?",
+            icon = Icons.Rounded.Warning,
+            content = "Vérifiez que l'extension de blocage d'appels est activée dans les réglages.\n\nSi le problème persiste :\n\n1. Désactivez Saracroche dans les réglages.\n2. Désinstallez l'application Saracroche.\n3. Redémarrez votre appareil.\n4. Réinstallez l'application Saracroche depuis le Play Store.\n\nSi malgré tout le problème perdure, signalez-le."
         )
     )
 
@@ -255,7 +340,7 @@ fun HelpScreen() {
                 windowInsets = WindowInsets.statusBars
             )
         },
-        contentWindowInsets = WindowInsets.navigationBars
+        contentWindowInsets = WindowInsets.displayCutout
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -270,31 +355,21 @@ fun HelpScreen() {
             }
 
             HelpSection(title = "Support") {
-                supportItems.forEach { item ->
-                    HelpItemView(helpItem = item)
-                }
+                SupportSection(context = context)
             }
 
-            // Footer
-            Box(
+            Text(
+                text = "Bisou 😘",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(32.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Bisou 😘",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                    )
-                }
-            }
+                    .padding(16.dp)
+            )
 
             // Space to ensure content is not cut off
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         }
     }
 
@@ -302,6 +377,15 @@ fun HelpScreen() {
         DonationSheet(
             onDismiss = { showDonationSheet = false }
         )
+    }
+}
+
+private fun openWebsite(context: Context, url: String) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        // Handle error silently
     }
 }
 
@@ -324,7 +408,7 @@ private fun openEmailClient(context: Context) {
             """.trimIndent()
             putExtra(
                 Intent.EXTRA_TEXT,
-                "Bonjour,\n\nJ'ai rencontré un problème avec l'application et voici une capture d'écran :\n\n$deviceInfo\n\nBisou 😘"
+                "Bonjour,\n\n(Votre message ici ou description du bug avec une capture d'écran si possible)\n\n$deviceInfo"
             )
         }
         context.startActivity(intent)
