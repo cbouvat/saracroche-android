@@ -1,16 +1,13 @@
 package com.cbouvat.android.saracroche.ui.report
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
@@ -20,10 +17,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowCircleRight
-import androidx.compose.material.icons.rounded.Flag
-import androidx.compose.material.icons.rounded.PhoneEnabled
-import androidx.compose.material.icons.rounded.Quiz
+import androidx.compose.material.icons.rounded.Send
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -43,7 +37,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -63,7 +56,7 @@ fun ReportScreen(
     viewModel: ReportViewModel = viewModel(factory = ReportViewModelFactory(LocalContext.current))
 ) {
     val scrollState = rememberScrollState()
-    val context = LocalContext.current
+    LocalContext.current
     val focusManager = LocalFocusManager.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val uiState by viewModel.uiState.collectAsState()
@@ -82,46 +75,30 @@ fun ReportScreen(
                 windowInsets = WindowInsets.statusBars
             )
         },
-        contentWindowInsets = WindowInsets.navigationBars
+        contentWindowInsets = WindowInsets.displayCutout
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(paddingValues)
                 .verticalScroll(scrollState)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Main report card
-            ReportCard(
-                uiState = uiState,
-                onPhoneNumberChange = viewModel::updatePhoneNumber,
-                onSubmit = viewModel::submitPhoneNumber,
-                focusManager = focusManager
-            )
-
-            // Service 33700 card
-            ServiceCard(
-                title = "Service 33700",
-                icon = Icons.Rounded.Flag,
-                description = "Le service 33700 est un service gratuit mis en place par les opérateurs de téléphonie mobile pour signaler les appels et SMS indésirables. Il permet aux utilisateurs de signaler les numéros directement auprès de leur opérateur, qui peut ensuite prendre des mesures pour bloquer ces numéros.",
-                buttonText = "Accéder au service 33700",
-                url = "https://www.33700.fr/",
-                context = context
-            )
-
-            // ARCEP service card
-            ServiceCard(
-                title = "Connaître l'opérateur du numéro",
-                icon = Icons.Rounded.Quiz,
-                description = "Pour connaître l'opérateur d'un numéro, vous pouvez utiliser le service gratuit de l'ARCEP. Le service est accessible via le lien ci-dessous. Il vous suffit de saisir le numéro de téléphone pour obtenir des informations sur l'opérateur.",
-                buttonText = "Connaître l'opérateur",
-                url = "https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/base-numerotation.html",
-                context = context
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                // Main report card
+                ReportCard(
+                    uiState = uiState,
+                    onPhoneNumberChange = viewModel::updatePhoneNumber,
+                    onSubmit = viewModel::submitPhoneNumber,
+                    focusManager = focusManager
+                )
+            }
 
             // Space to ensure content is not cut off
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         }
     }
 
@@ -158,33 +135,15 @@ private fun ReportCard(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Header
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.PhoneEnabled,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "Signaler un numéro (Beta)",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            // Description
             Text(
-                text = "Dans le but d'améliorer le blocage des appels et SMS indésirables, il est possible de signaler les numéros qui ne sont pas bloqués par l'application. Cela contribuera à établir une liste de blocage et à rendre l'application plus efficace.",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                text = "Signaler un numéro",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
             )
 
             // Input instruction
             Text(
-                text = "Saisissez le numéro de téléphone au format international E.164",
+                text = "Saisissez le numéro de téléphone au format international, par exemple +33612345678 pour la France.",
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -205,7 +164,9 @@ private fun ReportCard(
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    focusedLabelColor = MaterialTheme.colorScheme.primary
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    focusedContainerColor = MaterialTheme.colorScheme.background,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.background
                 ),
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
@@ -228,79 +189,20 @@ private fun ReportCard(
                     )
                 } else {
                     Icon(
-                        imageVector = Icons.Rounded.ArrowCircleRight,
+                        imageVector = Icons.Rounded.Send,
                         contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Envoyer")
                 }
             }
-        }
-    }
-}
 
-@Composable
-private fun ServiceCard(
-    title: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    description: String,
-    buttonText: String,
-    url: String,
-    context: android.content.Context
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
-        ),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            // Header
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            // Description
+            // Footer description
             Text(
-                text = description,
-                style = MaterialTheme.typography.bodyMedium,
+                text = "Signaler un numéro, contribue à améliorer la liste de blocage et à rendre l'application plus efficace.",
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-
-            // Action button
-            Button(
-                onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                    context.startActivity(intent)
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(buttonText)
-            }
         }
     }
 }

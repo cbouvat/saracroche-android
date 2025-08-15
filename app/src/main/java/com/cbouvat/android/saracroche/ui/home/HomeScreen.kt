@@ -7,10 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -19,10 +19,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AddModerator
-import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Checklist
 import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.Numbers
+import androidx.compose.material.icons.rounded.VerifiedUser
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
@@ -104,39 +105,45 @@ fun HomeScreen() {
                 windowInsets = WindowInsets.statusBars
             )
         },
-        contentWindowInsets = WindowInsets.navigationBars
+        contentWindowInsets = WindowInsets.displayCutout
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp)
                 .verticalScroll(scrollState),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CallScreeningPermissionCard(
-                isEnabled = isCallScreeningEnabled,
-                onSettingsClick = {
-                    val intent = PermissionUtils.createCallScreeningRoleIntent(context)
-                    if (intent != null) {
-                        callScreeningRoleLauncher.launch(intent)
-                    } else {
-                        PermissionUtils.openCallScreeningSettings(context)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                CallScreeningPermissionCard(
+                    isEnabled = isCallScreeningEnabled,
+                    onSettingsClick = {
+                        val intent = PermissionUtils.createCallScreeningRoleIntent(context)
+                        if (intent != null) {
+                            callScreeningRoleLauncher.launch(intent)
+                        } else {
+                            PermissionUtils.openCallScreeningSettings(context)
+                        }
                     }
+                )
+
+                if (isCallScreeningEnabled) {
+                    BlockedPatternsStatsCard(
+                        totalBlockedNumbers = totalBlockedNumbers,
+                        context = context
+                    )
+
+                    SupportProjectCard(
+                        onDonationClick = { showDonationSheet = true }
+                    )
                 }
-            )
-
-            if (isCallScreeningEnabled) {
-                BlockedPatternsStatsCard(
-                    totalBlockedNumbers = totalBlockedNumbers,
-                    context = context
-                )
-
-                SupportProjectCard(
-                    onDonationClick = { showDonationSheet = true }
-                )
             }
+
+            // Space to ensure content is not cut off
+            Spacer(modifier = Modifier.height(128.dp))
         }
     }
 
@@ -155,51 +162,97 @@ fun CallScreeningPermissionCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = if (isEnabled) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.errorContainer
+            containerColor = if (isEnabled) MaterialTheme.colorScheme.tertiaryContainer else MaterialTheme.colorScheme.errorContainer
         )
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
                 Icon(
-                    imageVector = if (isEnabled) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
+                    imageVector = if (isEnabled) Icons.Rounded.VerifiedUser else Icons.Rounded.Error,
                     contentDescription = null,
-                    modifier = Modifier.size(24.dp),
-                    tint = if (isEnabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+                    modifier = Modifier.size(48.dp),
+                    tint = if (isEnabled) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.error
                 )
-                Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = if (isEnabled) "Bloqueur actif" else "Bloqueur inactif",
+                    text = if (isEnabled) "Le bloqueur d'appels est actif" else "Le bloqueur d'appels n'est pas activé",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = if (isEnabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+                    color = if (isEnabled) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.error
                 )
-            }
-            Text(
-                text = if (isEnabled) {
-                    "Saracroche bloque automatiquement les appels indésirables."
-                } else {
-                    "Activez le bloqueur pour bloquer les appels indésirables."
-                },
-                style = MaterialTheme.typography.bodyMedium,
-                color = if (isEnabled) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onErrorContainer
-            )
-            if (!isEnabled) {
-                Spacer(modifier = Modifier.height(8.dp))
-                Button(
-                    onClick = onSettingsClick,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.AddModerator,
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp)
+
+                if (!isEnabled) {
+                    Text(
+                        text = "Activez le bloqueur pour bloquer les appels indésirables en cliquant sur le bouton ci-dessous et choisissez Saracroche dans la liste des applications.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onErrorContainer,
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text("Activer le bloqueur")
+                    Button(
+                        onClick = onSettingsClick,
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.error,
+                            contentColor = MaterialTheme.colorScheme.onError
+                        )
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.AddModerator,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Activer le bloqueur")
+                    }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun BlockedPatternsStatsCard(
+    totalBlockedNumbers: Long,
+    context: android.content.Context
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Checklist,
+                    contentDescription = null,
+                    modifier = Modifier.size(48.dp),
+                    tint = MaterialTheme.colorScheme.tertiary
+                )
+
+                Text(
+                    text = "$totalBlockedNumbers numéros bloqués",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+
+                Text(
+                    text = "Les appels bloqués apparaîtront dans le journal d'appels avec un symbole indiquant qu'ils ont été bloqués. Vous recevrez aucune notification pour ces appels.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }
@@ -228,20 +281,24 @@ fun SupportProjectCard(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Application gratuite et open-source",
+                    text = "Application gratuite et open source",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
             }
             Text(
-                text = "Saracroche est une application entièrement gratuite et open-source. Elle vit grâce aux dons de ses utilisateurs pour continuer à évoluer et rester sans publicité.",
+                text = "Saracroche est une application entièrement gratuite et open source. Elle vit grâce aux dons de ses utilisateurs pour continuer à évoluer et rester sans publicité.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Button(
                 onClick = onDonationClick,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = Color.Red,
+                    contentColor = Color.White
+                )
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Favorite,
@@ -249,47 +306,12 @@ fun SupportProjectCard(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Soutenez")
-            }
-        }
-    }
-}
-
-@Composable
-fun BlockedPatternsStatsCard(
-    totalBlockedNumbers: Long,
-    context: android.content.Context
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
-        )
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Rounded.Numbers,
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "$totalBlockedNumbers numéros bloqués",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
+                    "Soutenez",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
-            Text(
-                text = "La liste des numéros bloqués est basée sur des préfixes d'opérateurs téléphoniques.",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
         }
     }
 }

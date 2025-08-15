@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.QuestionMark
@@ -22,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -48,7 +46,6 @@ private val bottomNavItems = listOf(
 )
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -61,24 +58,30 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview
 @Composable
 fun SaracrocheApp() {
     val navController = rememberNavController()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        bottomBar = { BottomNavigationBar(navController) },
-        contentWindowInsets = WindowInsets(0)
-    ) { innerPadding ->
-        AppNavigation(navController, innerPadding)
+        bottomBar = { BottomNavigationBar(navController) }
+    ) { paddingValues ->
+        NavHost(
+            navController = navController,
+            startDestination = "home"
+        ) {
+            composable("home") { HomeScreen() }
+            composable("report") { ReportScreen() }
+            composable("help") { HelpScreen() }
+            composable("settings") { SettingsScreen() }
+        }
     }
 }
 
 @Composable
 private fun BottomNavigationBar(navController: NavHostController) {
-    NavigationBar(
-        windowInsets = WindowInsets.navigationBars
-    ) {
+    NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
@@ -98,21 +101,5 @@ private fun BottomNavigationBar(navController: NavHostController) {
                 }
             )
         }
-    }
-}
-
-@Composable
-private fun AppNavigation(
-    navController: NavHostController,
-    innerPadding: PaddingValues,
-) {
-    NavHost(
-        navController = navController,
-        startDestination = "home"
-    ) {
-        composable("home") { HomeScreen() }
-        composable("report") { ReportScreen() }
-        composable("help") { HelpScreen() }
-        composable("settings") { SettingsScreen() }
     }
 }
