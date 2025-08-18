@@ -28,30 +28,30 @@ class NetworkService(private val context: Context) {
             val connection = url.openConnection() as HttpURLConnection
 
             try {
-                // Configuration de la connexion
+                // Connection configuration
                 connection.requestMethod = "POST"
                 connection.setRequestProperty("Content-Type", "application/json")
                 connection.doOutput = true
                 connection.connectTimeout = TIMEOUT_SECONDS * 1000
                 connection.readTimeout = RESOURCE_TIMEOUT_SECONDS * 1000
 
-                // Création de la requête
+                // Build request body
                 val requestData = ReportRequest(
                     number = phoneNumber,
                     deviceId = getDeviceId(),
                     appVersion = getAppVersion()
                 )
 
-                // Envoi des données
+                // Send JSON payload
                 val jsonData = gson.toJson(requestData)
                 connection.outputStream.use { outputStream ->
                     outputStream.write(jsonData.toByteArray(StandardCharsets.UTF_8))
                 }
 
-                // Vérification de la réponse
+                // Handle response status code
                 when (val responseCode = connection.responseCode) {
                     in 200..299 -> {
-                        // Succès, rien à faire
+                        // Success: nothing else to do
                         return@withContext
                     }
 
@@ -84,12 +84,12 @@ class NetworkService(private val context: Context) {
             if (errorStream != null) {
                 val errorText = errorStream.bufferedReader().use { it.readText() }
 
-                // Tentative de parsing JSON
+                // Try to parse JSON structured error
                 try {
                     val errorResponse = gson.fromJson(errorText, ErrorResponse::class.java)
                     errorResponse.message ?: errorResponse.error ?: errorResponse.detail
                 } catch (e: JsonSyntaxException) {
-                    // Si ce n'est pas du JSON, retourner le texte brut
+                    // Not JSON: return raw text if present
                     if (errorText.isNotBlank()) errorText else null
                 }
             } else {
