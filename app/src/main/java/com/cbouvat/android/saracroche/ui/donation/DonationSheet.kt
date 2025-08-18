@@ -17,12 +17,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.CreditCard
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Savings
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Wallet
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -133,49 +135,86 @@ fun DonationSheet(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Donation buttons
-            DonationButton(
-                text = "Carte bancaire",
-                // Indigo color for Stripe
-                backgroundColor = Color(0xFF6772E5),
-                textColor = Color.White,
+            Button(
                 onClick = { openUrl(context, "https://buy.stripe.com/9B6aEXcJ8flofsgfIU2oE01") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            DonationButton(
-                text = "PayPal",
-                backgroundColor = Color(0xFF0070BA),
-                textColor = Color.White,
-                onClick = { openUrl(context, "https://paypal.me/cbouvat") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Row(modifier = Modifier.fillMaxWidth()) {
-                DonationButton(
-                    text = "GitHub Sponsors",
-                    backgroundColor = Color.Black,
-                    textColor = Color.White,
-                    onClick = { openUrl(context, "https://github.com/sponsors/cbouvat") },
-                    modifier = Modifier.weight(1f)
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF6772E5), // Stripe indigo
+                    contentColor = Color.White
                 )
-                Spacer(modifier = Modifier.width(12.dp))
-                DonationButton(
-                    text = "Liberapay",
-                    backgroundColor = Color(0xFFF6C915),
-                    textColor = Color.Black,
-                    onClick = { openUrl(context, "https://liberapay.com/cbouvat") },
-                    modifier = Modifier.weight(1f)
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.CreditCard,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "Carte bancaire & Google Pay",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // App rating button
+            Button(
+                onClick = { openUrl(context, "https://paypal.me/cbouvat") },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF0070BA), // PayPal blue
+                    contentColor = Color.White
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Wallet,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "PayPal",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = { openUrl(context, "https://github.com/sponsors/cbouvat") },
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Black,
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text(
+                        "GitHub",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                Button(
+                    onClick = { openUrl(context, "https://liberapay.com/cbouvat") },
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFF6C915), // Liberapay yellow
+                        contentColor = Color.Black
+                    )
+                ) {
+                    Text(
+                        "Liberapay",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
             Button(
                 onClick = { openPlayStore(context) },
                 modifier = Modifier.fillMaxWidth(),
@@ -240,32 +279,6 @@ fun DonationBenefitRow(
     }
 }
 
-@Composable
-fun DonationButton(
-    text: String,
-    backgroundColor: Color,
-    textColor: Color,
-    modifier: Modifier,
-    onClick: () -> Unit
-) {
-    Button(
-        onClick = onClick,
-        modifier = modifier,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = backgroundColor,
-            contentColor = textColor
-        )
-    ) {
-        Icon(
-            imageVector = Icons.Rounded.Favorite,
-            contentDescription = null,
-            modifier = Modifier.size(18.dp)
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
-    }
-}
-
 private fun openUrl(context: Context, url: String) {
     try {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -277,12 +290,10 @@ private fun openUrl(context: Context, url: String) {
 
 private fun openPlayStore(context: Context) {
     try {
-        // Try to open the app page in Google Play Store app
         val playStoreIntent =
             Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName}"))
         context.startActivity(playStoreIntent)
     } catch (e: Exception) {
-        // If Play Store app is not available, open in browser
         try {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
