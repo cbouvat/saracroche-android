@@ -393,7 +393,7 @@ private fun openEmailClient(context: Context) {
     try {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("saracroche@cbouvat.com"))
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("mail@cbouvat.com"))
             putExtra(Intent.EXTRA_SUBJECT, "Bug - Saracroche Android")
             // Add info about the device, version in French
             val deviceInfo = """
