@@ -46,7 +46,7 @@ class CallScreeningService : CallScreeningService() {
     private fun shouldBlockNumber(phoneNumber: String): Boolean {
         val normalizedNumber = normalizePhoneNumber(phoneNumber)
         val blockedPatterns = BlockedPatternManager.getBlockedPatterns(this)
-        
+
         return blockedPatterns.any { pattern ->
             matchesPattern(normalizedNumber, pattern.pattern)
         }
@@ -71,7 +71,7 @@ class CallScreeningService : CallScreeningService() {
         if (phoneNumber.length != pattern.length) {
             return false
         }
-        
+
         return pattern.indices.all { i ->
             pattern[i] == '#' || pattern[i] == phoneNumber[i]
         }
