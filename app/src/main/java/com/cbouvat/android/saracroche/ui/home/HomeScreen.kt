@@ -53,7 +53,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.cbouvat.android.saracroche.ui.donation.DonationSheet
-import com.cbouvat.android.saracroche.util.BlockedPrefixManager
+import com.cbouvat.android.saracroche.util.BlockedPatternManager
 import com.cbouvat.android.saracroche.util.PermissionUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,7 +77,7 @@ fun HomeScreen() {
     // Update permissions status on app resume or initial load
     fun updatePermissionsStatus() {
         isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
-        totalBlockedNumbers = BlockedPrefixManager.calculateTotalBlockedNumbers(context)
+        totalBlockedNumbers = BlockedPatternManager.calculateTotalBlockedNumbers(context)
     }
 
     LaunchedEffect(Unit) {

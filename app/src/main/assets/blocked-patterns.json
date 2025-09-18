@@ -1,0 +1,3438 @@
+[
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33162######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33163######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33270######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33271######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33377######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33378######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33424######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33425######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33568######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33569######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33948######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "33949######"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "339475#####"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "339476#####"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "339477#####"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "339478#####"
+    },
+    {
+        "operator_name": "ARCEP",
+        "pattern": "339479#####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3315920####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3315928####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3315929####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3317650####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3317972####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3317973####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3317975####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318410####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318460####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318474####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318475####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318476####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318477####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318478####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318479####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318480####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318481####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318535####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318536####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318537####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318538####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318583####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318584####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318586####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318587####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318623####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318624####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318628####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318629####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318630####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318632####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318633####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318634####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318635####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318636####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318637####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318638####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318639####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3318656####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33186706###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3318721####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3318764####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318766####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3318831####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3318840####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188440###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188441###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188442###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188443###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188444###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188445###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188446###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188447###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188448###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33188449###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318857####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318870####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318871####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318872####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318873####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3318900####"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "3318926####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33189366###"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33189379###"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3318949####"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3318960####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3318961####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189620###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189621###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189622###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189623###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189624###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189625###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189626###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189627###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189628###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33189629###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3318970####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3318978####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3318986####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3321900####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3321901####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3321906####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33219310###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33219319###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219340###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219348###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219350###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219354###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219355###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219360###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219370###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33219371###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3322000####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3322001####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3322002####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33220030###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33220031###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33220032###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33220033###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322108####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322161####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322162####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3322164####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322169####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33221890###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33221899###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3322196####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33221990###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33221999###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3322244####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322290####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3322291####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324205####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324206####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324207####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324225####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324226####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324244####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324298####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3324299####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3324484####"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "33252149###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325269####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325271####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325275####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325298####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325299####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325500####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325508####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3325542####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325543####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3325545####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325552####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325553####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325565####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3325566####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325588####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325589####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325590####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3325599####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325794####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325795####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325796####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325797####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325798####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325799####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3325806####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258340###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258349###"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3325835####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258370###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258379###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258380###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258389###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33258419###"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3325849####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33258530###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33258535###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258580###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258581###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258582###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258583###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258584###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258585###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33258589###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33259190###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33259199###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259380###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259390###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259393###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259395###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259399###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259400###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259404###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259405###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33259410###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3325950####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33259530###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33259539###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259590###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259591###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259592###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259593###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259594###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259595###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259596###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259597###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259598###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33259599###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3326179####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3326180####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3326190####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3326205####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3326266####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33263020###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33263070###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33263071###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3326314####"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33269026###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33269040###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3326950####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3327915####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3327916####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279430###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279434###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279439###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279440###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279449###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279450###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279459###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279470###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33279550###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33279555###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33279560###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33279565###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279590###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33279599###"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33279769###"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3327983####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3328567####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3331045####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3333949####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3333956####"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33339582###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33339620###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33339629###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33339660###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33339666###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3333981####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3333983####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3333989####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335278####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335290####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3335349####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335350####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335351####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353700###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353702###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353705###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353707###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353710###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353711###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353712###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33353718###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335417####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335611####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335613####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335614####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335615####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335653####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3335659####"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "33356664###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356800###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356801###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356805###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356808###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356810###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33356817###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3336202####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336226####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336658####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336729####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3336747####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3336748####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336750####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336751####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336761####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336766####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3336775####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336782####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3336783####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3336838####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337251####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337280####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337285####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337294####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337299####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337362####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337381####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337422####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3337432####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3337447####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3337466####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337478####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337479####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337480####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337481####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337483####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337494####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337514####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337515####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337516####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337518####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337519####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337521####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337524####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337527####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337548####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3337577####"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3337584####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33375880###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33375888###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33375890###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33375892###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337603####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33376110###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33376111###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33376115###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33376230###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33376239###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3337629####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33376300###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33376303###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3337637####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33376440###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33376441###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33376449###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376470###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376471###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376472###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376473###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376474###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376475###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376476###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376477###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376478###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33376479###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337908####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3337933####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337942####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3337943####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33379510###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33379519###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33379600###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33379609###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33379620###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33379630###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33379640###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33392180###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33392181###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33392185###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33392190###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3339223####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3341202####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412050###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412051###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412052###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412053###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412054###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412055###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412057###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33412059###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3341226####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33412270###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33412276###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3341233####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412370###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412371###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412372###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412373###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412374###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412377###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412378###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33412379###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3341333####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3341554####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3341582####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3341583####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33415960###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33415969###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33415970###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33415990###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33415999###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342019####"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33420230###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33420960###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33420965###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33420969###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342245####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342258####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342259####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342260####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342266####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3342275####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3342285####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342288####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342289####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3342310####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423240###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423242###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423244###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423245###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423246###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423430###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423431###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423432###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423433###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33423434###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342688####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3342810####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342843####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342864####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342868####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342871####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342872####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342873####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342874####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3342879####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3343448####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33444080###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33444084###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33444085###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33444088###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344447####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344827####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344850####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344851####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344852####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344853####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344854####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3344866####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3344902####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449360###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449370###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449372###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449380###"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "33449381###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449382###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449383###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449390###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449392###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449393###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449394###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33449399###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33449450###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33449459###"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3345109####"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3345129####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33451370###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33451380###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33451382###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33451390###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3345140####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3345145####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33451610###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33451619###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451630###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451631###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451632###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451633###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451634###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451635###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451636###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451637###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451638###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33451639###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345619####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345839####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345840####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345842####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345857####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3345883####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346500####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346526####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346528####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346529####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346530####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346532####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3346563####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346569####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346570####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3346580####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3346584####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3346996####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3348082####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481060###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481061###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481062###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481064###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481065###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481066###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33481069###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348112####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348113####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348114####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348115####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3348333####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3348343####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3348440####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3348450####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348540####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348542####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485510###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485513###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485515###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33485570###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485600###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485602###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485605###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485606###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485608###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485610###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485611###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485614###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33485616###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348586####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348587####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348589####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348593####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348601####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348721####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348722####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348726####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3348772####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3348793####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3348794####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3351807####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33518250###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33518252###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33518255###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3351908####"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33519093###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3351998####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3352484####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33525000###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33525002###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33525004###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33525006###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33525009###"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "33525261###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3352547####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33525490###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33525495###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3352550####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33525510###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33525515###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33525516###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33525610###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33525611###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33525612###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33525615###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "33525619###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3353160####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353197####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3353230####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353240####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33532770###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33532777###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33532779###"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3353292####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3353294####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353609####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33536100###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33536101###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33536102###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353629####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353630####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353633####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353634####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353638####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353646####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3353648####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3353666####"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3353690####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3353700####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33537010###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3353707####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537160###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537161###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537162###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537163###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537164###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537165###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537166###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537167###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537168###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33537169###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33548210###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33548219###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548240###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548242###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548244###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548250###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548252###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548255###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548260###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548270###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33548272###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33548300###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33548309###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355400####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355401####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355403####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355404####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355405####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355408####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355412####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3355421####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3355454####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3355462####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3355464####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3355465####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3356431####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3356474####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358628####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358645####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358651####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358675####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358681####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358682####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358683####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358685####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358687####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3358699####"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590160###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590162###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590169###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3359030####"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590340###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590344###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590345###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33590349###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3359069####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3359410####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3359441####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33594920###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33594921###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33594923###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33594929###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33594950###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33594952###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33594959###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3359610####"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "33596450###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3359649####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3364466####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3364467####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3364468####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3364469####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3374302####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743030###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743031###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743032###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743033###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743039###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374317####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374318####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374319####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374320####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374321####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743420###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743421###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743422###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743423###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33743424###"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "3374403####"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3374406####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374430####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374431####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374432####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374433####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374434####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374435####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3374436####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374588####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3374589####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748930###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748931###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748932###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748933###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748934###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33748935###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755502###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755505###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755506###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755510###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755513###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755515###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755516###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755523###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755525###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755526###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755527###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755528###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33755529###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33755545###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3375621####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "337568#####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "337569#####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3375780####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3375781####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3375782####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3375783####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "3375784####"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3375786####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3375788####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3375789####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757933###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33757936###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757940###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757942###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33757943###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757946###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757947###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33757948###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757953###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757954###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "33757956###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757957###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33757958###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3375798####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "337809#####"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3380136####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3380184####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3380300####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3380538####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805390###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805391###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805392###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805393###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805394###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805395###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805396###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805397###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805398###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33805399###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "33806020###"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3380603####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3381138####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3381148####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3381154####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3381168####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812020###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812021###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812022###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812023###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812024###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812025###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812026###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812027###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812028###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33812029###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3382138####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3382175####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3382514####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825180###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825181###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825182###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825183###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825184###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825185###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825186###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825187###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825188###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33825189###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3382638####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3382699####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389020####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389034####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389035####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389075####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389138####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389148####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389238####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389248####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389275####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33895123###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33895200###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389710####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389738####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389750####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389844####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3389938####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393902####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939311###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393932####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393936####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3393938####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393939####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33939401###"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393941####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3393942####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939521###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939621###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939721###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939811###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "33939931###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397019####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3397070####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397071####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3397107####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3397108####"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33972048###"
+    },
+    {
+        "operator_name": "Onoff telecom",
+        "pattern": "33972049###"
+    },
+    {
+        "operator_name": "Plug and tel",
+        "pattern": "3397274####"
+    },
+    {
+        "operator_name": "Ubicentrex",
+        "pattern": "3397276####"
+    },
+    {
+        "operator_name": "Comunik CRM",
+        "pattern": "3397342####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397344####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397345####"
+    },
+    {
+        "operator_name": "Lineconnects",
+        "pattern": "33973703###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397379####"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3397396####"
+    },
+    {
+        "operator_name": "ZE telecom",
+        "pattern": "3397403####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974071###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397408####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3397433####"
+    },
+    {
+        "operator_name": "BICS",
+        "pattern": "3397459####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974720###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974721###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974722###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974723###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974724###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974725###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974726###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974727###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974728###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33974729###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974960###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974961###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974962###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974963###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974964###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974965###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974966###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974967###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974968###"
+    },
+    {
+        "operator_name": "Spartel services",
+        "pattern": "33974969###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33976280###"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "33976281###"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397828####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397831####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3397849####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3397882####"
+    },
+    {
+        "operator_name": "Oxilog France",
+        "pattern": "3397883####"
+    },
+    {
+        "operator_name": "BJT Partners",
+        "pattern": "3398080####"
+    },
+    {
+        "operator_name": "Destiny France Partenaires",
+        "pattern": "3398299####"
+    },
+    {
+        "operator_name": "Kav El International",
+        "pattern": "3398540####"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33987282###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33987283###"
+    },
+    {
+        "operator_name": "DVS Connect",
+        "pattern": "33987284###"
+    },
+    {
+        "operator_name": "Manifone",
+        "pattern": "3398829####"
+    }
+]

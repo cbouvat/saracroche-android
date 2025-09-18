@@ -1,6 +1,6 @@
 package com.cbouvat.android.saracroche
 
-import com.cbouvat.android.saracroche.util.BlockedPrefix
+import com.cbouvat.android.saracroche.util.BlockedPattern
 import org.junit.Test
 import org.junit.Assert.*
 
@@ -39,19 +39,19 @@ class CallScreeningLogicTest {
     }
 
     /**
-     * Test should block logic with common blocked prefixes
+     * Test should block logic with common blocked patterns
      */
     @Test
     fun testShouldBlockNumber() {
-        val blockedPrefixes = listOf(
-            BlockedPrefix("ARCEP", "33162", "33162######")
+        val blockedPatterns = listOf(
+            BlockedPattern("ARCEP", "33162######")
         )
 
         // Basic test - should block
-        assertTrue("Should block 33162123456", shouldBlockNumber("33162123456", blockedPrefixes))
+        assertTrue("Should block 33162123456", shouldBlockNumber("33162123456", blockedPatterns))
         
         // Basic test - should not block
-        assertFalse("Should not block 33161123456", shouldBlockNumber("33161123456", blockedPrefixes))
+        assertFalse("Should not block 33161123456", shouldBlockNumber("33161123456", blockedPatterns))
     }
 
     // Helper methods that mirror the service logic
@@ -75,10 +75,10 @@ class CallScreeningLogicTest {
         return phoneNumber.replace(Regex("[^0-9+]"), "")
     }
 
-    private fun shouldBlockNumber(phoneNumber: String, blockedPrefixes: List<BlockedPrefix>): Boolean {
+    private fun shouldBlockNumber(phoneNumber: String, blockedPatterns: List<BlockedPattern>): Boolean {
         val cleanNumber = cleanNumber(phoneNumber)
-        return blockedPrefixes.any { prefix ->
-            matchesPattern(cleanNumber, prefix.pattern)
+        return blockedPatterns.any { pattern ->
+            matchesPattern(cleanNumber, pattern.pattern)
         }
     }
 }
