@@ -12,10 +12,9 @@ android {
         applicationId = "com.cbouvat.android.saracroche"
         minSdk = 29
         targetSdk = 36
-        versionCode = 14
-
+        versionCode = 15
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        versionName = "1.8.0"
+        versionName = "1.9.0"
     }
 
     buildTypes {
@@ -34,9 +33,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -83,5 +79,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.compose.bom)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
