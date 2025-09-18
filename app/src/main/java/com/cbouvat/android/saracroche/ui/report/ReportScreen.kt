@@ -17,7 +17,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Send
+import androidx.compose.material.icons.rounded.AddAlert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -189,7 +189,7 @@ private fun ReportCard(
                     )
                 } else {
                     Icon(
-                        imageVector = Icons.Rounded.Send,
+                        imageVector = Icons.Rounded.AddAlert,
                         contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(8.dp))
