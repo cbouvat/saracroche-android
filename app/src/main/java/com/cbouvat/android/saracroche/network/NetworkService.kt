@@ -1,7 +1,6 @@
 package com.cbouvat.android.saracroche.network
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.provider.Settings
 import com.cbouvat.android.saracroche.config.Config
 import com.google.gson.Gson
@@ -38,8 +37,7 @@ class NetworkService(private val context: Context) {
                 // Build request body
                 val requestData = ReportRequest(
                     number = phoneNumber,
-                    deviceId = getDeviceId(),
-                    appVersion = getAppVersion()
+                    deviceId = getDeviceId()
                 )
 
                 // Send JSON payload
@@ -105,15 +103,6 @@ class NetworkService(private val context: Context) {
             Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
                 ?: "unknown"
         } catch (e: Exception) {
-            "unknown"
-        }
-    }
-
-    private fun getAppVersion(): String {
-        return try {
-            val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
-            packageInfo.versionName ?: "unknown"
-        } catch (e: PackageManager.NameNotFoundException) {
             "unknown"
         }
     }
