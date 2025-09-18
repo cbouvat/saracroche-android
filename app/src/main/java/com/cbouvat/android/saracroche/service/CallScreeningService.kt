@@ -4,6 +4,11 @@ import android.telecom.Call
 import android.telecom.CallScreeningService
 import android.util.Log
 import com.cbouvat.android.saracroche.util.BlockedPatternManager
+import com.cbouvat.android.saracroche.util.PreferencesManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 /**
  * Simple call screening service that blocks calls based on predefined prefixes
@@ -18,7 +23,7 @@ class CallScreeningService : CallScreeningService() {
         val phoneNumber = callDetails.handle?.schemeSpecificPart
         Log.d(TAG, "Incoming call from: $phoneNumber")
 
-        val shouldBlock = phoneNumber?.let { shouldBlockNumber(it) } ?: false
+        val shouldBlock = shouldBlockNumber(phoneNumber)
 
         val response = if (shouldBlock) {
             Log.d(TAG, "Blocking call from: $phoneNumber")
@@ -40,10 +45,22 @@ class CallScreeningService : CallScreeningService() {
     }
 
     /**
-     * Check if a phone number should be blocked based on blocked patterns
-     * Removes the + prefix if present before checking patterns
+     * Check if a phone number should be blocked based on blocked patterns or anonymous call setting
      */
-    private fun shouldBlockNumber(phoneNumber: String): Boolean {
+    private fun shouldBlockNumber(phoneNumber: String?): Boolean {
+        // Check if this is an anonymous call (null or empty phone number)
+        if (phoneNumber.isNullOrBlank()) {
+            return runBlocking {
+                try {
+                    PreferencesManager.getBlockAnonymousCalls(this@CallScreeningService)
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error checking anonymous call preference", e)
+                    false
+                }
+            }
+        }
+        
+        // Check blocked patterns for regular phone numbers
         val normalizedNumber = normalizePhoneNumber(phoneNumber)
         val blockedPatterns = BlockedPatternManager.getBlockedPatterns(this)
 
