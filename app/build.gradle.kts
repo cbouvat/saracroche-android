@@ -77,6 +77,9 @@ dependencies {
     // Gson for JSON parsing
     implementation(libs.gson)
 
+    // DataStore for preferences
+    implementation(libs.androidx.datastore.preferences)
+
     // For debugging
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

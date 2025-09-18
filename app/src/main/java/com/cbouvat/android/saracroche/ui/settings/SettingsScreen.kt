@@ -36,6 +36,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,6 +48,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cbouvat.android.saracroche.util.PreferencesManager
+import kotlinx.coroutines.launch
 
 sealed class SettingsItem {
     data class Action(
@@ -187,25 +191,6 @@ fun SettingsSwitchItem(
     }
 }
 
-@Composable
-fun SettingsSection(
-    title: String,
-    items: @Composable () -> Unit
-) {
-    Column {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleSmall.copy(
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
-            ),
-            modifier = Modifier.padding(16.dp)
-        )
-
-        items()
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
@@ -213,6 +198,11 @@ fun SettingsScreen() {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    
+    // DataStore state for anonymous call blocking
+    val coroutineScope = rememberCoroutineScope()
+    val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
+        .collectAsState(initial = false)
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -245,6 +235,17 @@ fun SettingsScreen() {
                         subtitle = "Configurer l'application par défaut pour le blocage de spam dans les réglages du téléphone",
                         icon = Icons.Rounded.Settings,
                         onClick = { openCallBlockingSettings(context) }
+                    ),
+                    SettingsItem.Switch(
+                        title = "Bloquer les appels anonymes",
+                        subtitle = "Bloquer automatiquement tous les appels provenant de numéros anonymes ou masqués",
+                        icon = Icons.Rounded.Settings,
+                        checked = blockAnonymousCallsState.value,
+                        onCheckedChange = { newValue ->
+                            coroutineScope.launch {
+                                PreferencesManager.setBlockAnonymousCalls(context, newValue)
+                            }
+                        }
                     )
                 )
             )
