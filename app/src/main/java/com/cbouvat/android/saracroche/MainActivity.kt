@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Report
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Icon
@@ -26,7 +25,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.cbouvat.android.saracroche.ui.help.HelpScreen
 import com.cbouvat.android.saracroche.ui.home.HomeScreen
 import com.cbouvat.android.saracroche.ui.report.ReportScreen
 import com.cbouvat.android.saracroche.ui.settings.SettingsScreen
@@ -41,7 +39,6 @@ data class BottomNavItem(
 private val bottomNavItems = listOf(
     BottomNavItem("home", "Accueil", Icons.Rounded.Home),
     BottomNavItem("report", "Signaler", Icons.Rounded.Report),
-    BottomNavItem("help", "Aide", Icons.Rounded.QuestionMark),
     BottomNavItem("settings", "Réglages", Icons.Rounded.Settings)
 )
 
@@ -73,7 +70,6 @@ fun SaracrocheApp() {
         ) {
             composable("home") { HomeScreen() }
             composable("report") { ReportScreen() }
-            composable("help") { HelpScreen() }
             composable("settings") { SettingsScreen() }
         }
     }
