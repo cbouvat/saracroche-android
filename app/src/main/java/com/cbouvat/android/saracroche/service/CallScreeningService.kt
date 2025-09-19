@@ -5,9 +5,6 @@ import android.telecom.CallScreeningService
 import android.util.Log
 import com.cbouvat.android.saracroche.util.BlockedPatternManager
 import com.cbouvat.android.saracroche.util.PreferencesManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -59,7 +56,7 @@ class CallScreeningService : CallScreeningService() {
                 }
             }
         }
-        
+
         // Check blocked patterns for regular phone numbers
         val normalizedNumber = normalizePhoneNumber(phoneNumber)
         val blockedPatterns = BlockedPatternManager.getBlockedPatterns(this)

@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.ui.text.google.fonts)
-    
+
     // Jetpack Compose BOM
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -77,7 +77,7 @@ dependencies {
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
-    
+
     // Gson for JSON parsing
     implementation(libs.gson)
 
@@ -87,7 +87,7 @@ dependencies {
     // For debugging
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

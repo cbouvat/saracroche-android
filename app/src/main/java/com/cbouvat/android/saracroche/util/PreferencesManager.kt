@@ -17,9 +17,9 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
  * Manager for app preferences using DataStore
  */
 object PreferencesManager {
-    
+
     private val BLOCK_ANONYMOUS_CALLS_KEY = booleanPreferencesKey("block_anonymous_calls")
-    
+
     /**
      * Get the flow of block anonymous calls setting
      */
@@ -28,7 +28,7 @@ object PreferencesManager {
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
         }
     }
-    
+
     /**
      * Set the block anonymous calls setting
      */
@@ -37,7 +37,7 @@ object PreferencesManager {
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] = blockAnonymous
         }
     }
-    
+
     /**
      * Get the current value of block anonymous calls setting (suspend function)
      */
