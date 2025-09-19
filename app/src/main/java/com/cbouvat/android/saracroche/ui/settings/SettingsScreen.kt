@@ -26,6 +26,7 @@ import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Link
+import androidx.compose.material.icons.rounded.PhoneDisabled
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,9 +37,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -198,7 +199,7 @@ fun SettingsScreen() {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-    
+
     // DataStore state for anonymous call blocking
     val coroutineScope = rememberCoroutineScope()
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
@@ -239,7 +240,7 @@ fun SettingsScreen() {
                     SettingsItem.Switch(
                         title = "Bloquer les appels anonymes",
                         subtitle = "Bloquer automatiquement tous les appels provenant de numéros anonymes ou masqués",
-                        icon = Icons.Rounded.Settings,
+                        icon = Icons.Rounded.PhoneDisabled,
                         checked = blockAnonymousCallsState.value,
                         onCheckedChange = { newValue ->
                             coroutineScope.launch {
