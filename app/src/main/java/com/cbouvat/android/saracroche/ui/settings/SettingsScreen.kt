@@ -21,13 +21,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Help
 import androidx.compose.material.icons.rounded.AddComment
 import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Link
+import androidx.compose.material.icons.rounded.Mail
 import androidx.compose.material.icons.rounded.PhoneDisabled
+import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -256,6 +260,18 @@ fun SettingsScreen() {
                 title = "Liens",
                 items = listOf(
                     SettingsItem.Action(
+                        title = "Aide et FAQ",
+                        subtitle = "Questions fréquentes et guide d'utilisation",
+                        icon = Icons.Rounded.QuestionMark,
+                        onClick = { openHelpDialog(context) }
+                    ),
+                    SettingsItem.Action(
+                        title = "Confidentialité",
+                        subtitle = "En savoir plus sur la politique de confidentialité",
+                        icon = Icons.Rounded.Shield,
+                        onClick = { openPrivacyPolicy(context) }
+                    ),
+                    SettingsItem.Action(
                         title = "Site officiel",
                         subtitle = "Consulter le site officiel",
                         icon = Icons.Rounded.Link,
@@ -272,16 +288,23 @@ fun SettingsScreen() {
                         subtitle = "Voir le code sur GitHub",
                         icon = Icons.Rounded.Code,
                         onClick = { openGitHub(context) }
-                    ),
+                    )
+                )
+            )
+
+            // Contact Section
+            SettingsSection(
+                title = "Contact",
+                items = listOf(
                     SettingsItem.Action(
-                        title = "Contactez le développeur",
-                        subtitle = "Faire part d'une suggestion ou autre",
-                        icon = Icons.Rounded.AddComment,
+                        title = "Contacter par e-mail",
+                        subtitle = "Signaler un bug ou suggérer une fonctionnalité par e-mail",
+                        icon = Icons.Rounded.Mail,
                         onClick = { openBugReport(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Mastodon : @cbouvat",
-                        subtitle = "Me suivre sur Mastodon et discuter",
+                        title = "Mastodon",
+                        subtitle = "Suivre @cbouvat sur le réseau social Mastodon",
                         icon = Icons.Rounded.ChatBubble,
                         onClick = { openMastodon(context) }
                     )
@@ -295,7 +318,7 @@ fun SettingsScreen() {
                         context.packageName,
                         0
                     ).versionName
-                }",
+                }\n\nBisou 😘",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                 textAlign = TextAlign.Center,
@@ -310,6 +333,7 @@ fun SettingsScreen() {
     }
 }
 
+// Configuration system functions
 private fun openCallBlockingSettings(context: Context) {
     try {
         val intent = Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
@@ -325,10 +349,19 @@ private fun openCallBlockingSettings(context: Context) {
     }
 }
 
-private fun openGitHub(context: Context) {
+// Links functions
+private fun openHelpDialog(context: Context) {
     try {
-        val intent =
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/cbouvat/saracroche-android"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/help/"))
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        // Handle error silently
+    }
+}
+
+private fun openPrivacyPolicy(context: Context) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/privacy/"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
@@ -344,15 +377,36 @@ private fun openOfficialWebsite(context: Context) {
     }
 }
 
-private fun openMastodon(context: Context) {
+private fun openGitHub(context: Context) {
     try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://mastodon.social/@cbouvat"))
+        val intent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/cbouvat/saracroche-android"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
     }
 }
 
+// Store functions
+private fun openPlayStore(context: Context) {
+    try {
+        val intent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName}"))
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        try {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+            )
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            // Handle error silently
+        }
+    }
+}
+
+// Contact functions
 private fun openBugReport(context: Context) {
     try {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
@@ -381,20 +435,11 @@ private fun openBugReport(context: Context) {
     }
 }
 
-private fun openPlayStore(context: Context) {
+private fun openMastodon(context: Context) {
     try {
-        val intent =
-            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName}"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://mastodon.social/@cbouvat"))
         context.startActivity(intent)
     } catch (e: Exception) {
-        try {
-            val intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
-            )
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            // Handle error silently
-        }
+        // Handle error silently
     }
 }
