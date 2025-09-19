@@ -21,8 +21,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.Help
-import androidx.compose.material.icons.rounded.AddComment
 import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
@@ -361,7 +359,8 @@ private fun openHelpDialog(context: Context) {
 
 private fun openPrivacyPolicy(context: Context) {
     try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/privacy/"))
+        val intent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/privacy/"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
