@@ -76,9 +76,9 @@ class ReportViewModel(private val context: Context) : ViewModel() {
                 showError("Le numéro doit être au format E.164 (ex: +33612345678).")
                 return false
             }
-            // Validation for French numbers
-            trimmedNumber.startsWith("+33") && trimmedNumber.length != 12 -> {
-                showError("Les numéros français doivent contenir 12 caractères au total.")
+            // Validation for French numbers (12 or 16 digits)
+            trimmedNumber.startsWith("+33") && trimmedNumber.length != 12 && trimmedNumber.length != 16 -> {
+                showError("Les numéros français doivent contenir 12 ou 16 caractères au total.")
                 return false
             }
         }
