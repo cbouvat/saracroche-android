@@ -1,4 +1,4 @@
-# Copilot Instructions for Saracroche Android
+# Agents Instructions for Saracroche Android
 
 ## Project Context
 Saracroche is an Android call blocking app:
