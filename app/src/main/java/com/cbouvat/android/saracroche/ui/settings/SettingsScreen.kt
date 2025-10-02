@@ -240,8 +240,8 @@ fun SettingsScreen() {
                         onClick = { openCallBlockingSettings(context) }
                     ),
                     SettingsItem.Switch(
-                        title = "Bloquer les appels anonymes",
-                        subtitle = "Bloquer automatiquement tous les appels provenant de numéros anonymes ou masqués",
+                        title = "Bloquer les appels masqués",
+                        subtitle = "Bloquer automatiquement tous les appels provenant de numéros masqués ou privés",
                         icon = Icons.Rounded.PhoneDisabled,
                         checked = blockAnonymousCallsState.value,
                         onCheckedChange = { newValue ->
