@@ -136,7 +136,7 @@ fun DonationSheet(
             Spacer(modifier = Modifier.height(24.dp))
 
             Button(
-                onClick = { openUrl(context, "https://buy.stripe.com/9B6aEXcJ8flofsgfIU2oE01") },
+                onClick = { openUrl(context, "https://donate.stripe.com/9B6aEXcJ8flofsgfIU2oE01") },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF6772E5), // Stripe indigo
