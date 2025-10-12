@@ -1,3 +1,5 @@
+Note: This application is intended for use in France only.
+
 Saracroche is an Android app that protects you from unwanted calls by automatically blocking spam phone calls. It's designed to be simple, effective, and privacy-friendly.
 
 <b>Features:</b>
@@ -16,6 +18,7 @@ The app uses Android's Call Screening Service to automatically identify and bloc
 <b>Requirements:</b>
 • Android 10 (API level 29) or higher
 • Permission to be set as the default Phone app for call screening
+• Intended for use in France only
 
 <b>Open Source:</b>
 Saracroche is open source software. You can review the code, contribute, or build it yourself from the source code available on GitHub.
