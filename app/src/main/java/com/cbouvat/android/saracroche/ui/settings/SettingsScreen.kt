@@ -350,7 +350,7 @@ private fun openCallBlockingSettings(context: Context) {
 // Links functions
 private fun openHelpDialog(context: Context) {
     try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/help/"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://saracroche.org/fr/help/"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
@@ -360,7 +360,7 @@ private fun openHelpDialog(context: Context) {
 private fun openPrivacyPolicy(context: Context) {
     try {
         val intent =
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/privacy/"))
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://saracroche.org/fr/privacy/"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
@@ -369,7 +369,7 @@ private fun openPrivacyPolicy(context: Context) {
 
 private fun openOfficialWebsite(context: Context) {
     try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cbouvat.com/saracroche/"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://saracroche.org/"))
         context.startActivity(intent)
     } catch (e: Exception) {
         // Handle error silently
