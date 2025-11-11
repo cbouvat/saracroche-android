@@ -43,7 +43,8 @@ class ReportViewModel(private val context: Context) : ViewModel() {
             _uiState.value = _uiState.value.copy(isLoading = true)
 
             try {
-                networkService.reportPhoneNumber(_uiState.value.phoneNumber)
+                val phoneNumberAsLong = stringToLong(_uiState.value.phoneNumber)
+                networkService.reportPhoneNumber(phoneNumberAsLong)
                 handleSuccess()
             } catch (e: NetworkError) {
                 handleNetworkError(e)
@@ -116,5 +117,9 @@ class ReportViewModel(private val context: Context) : ViewModel() {
 
     private fun formatPhoneNumber(input: String): String {
         return input.replace(" ", "").filter { it.isDigit() || it == '+' }
+    }
+
+    private fun stringToLong(value: String): Long {
+        return value.replace("+", "").replace(" ", "").toLongOrNull() ?: 0L
     }
 }

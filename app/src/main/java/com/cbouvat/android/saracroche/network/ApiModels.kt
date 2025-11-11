@@ -1,8 +1,8 @@
 package com.cbouvat.android.saracroche.network
 
 data class ReportRequest(
-    val number: String,
-    val deviceId: String
+    val phone: Long,
+    val device_id: String
 )
 
 data class ErrorResponse(

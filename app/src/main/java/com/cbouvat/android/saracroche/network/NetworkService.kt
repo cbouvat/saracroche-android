@@ -21,7 +21,7 @@ class NetworkService(private val context: Context) {
         private const val RESOURCE_TIMEOUT_SECONDS = 30
     }
 
-    suspend fun reportPhoneNumber(phoneNumber: String) {
+    suspend fun reportPhoneNumber(phoneNumber: Long) {
         withContext(Dispatchers.IO) {
             val url = URL(Config.REPORT_SERVER_URL)
             val connection = url.openConnection() as HttpURLConnection
@@ -30,14 +30,15 @@ class NetworkService(private val context: Context) {
                 // Connection configuration
                 connection.requestMethod = "POST"
                 connection.setRequestProperty("Content-Type", "application/json")
+                connection.setRequestProperty("Accept", "application/json")
                 connection.doOutput = true
                 connection.connectTimeout = TIMEOUT_SECONDS * 1000
                 connection.readTimeout = RESOURCE_TIMEOUT_SECONDS * 1000
 
                 // Build request body
                 val requestData = ReportRequest(
-                    number = phoneNumber,
-                    deviceId = getDeviceId()
+                    phone = phoneNumber,
+                    device_id = getDeviceId()
                 )
 
                 // Send JSON payload
