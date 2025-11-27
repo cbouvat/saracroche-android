@@ -132,12 +132,6 @@
         "end": "33159169999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3315920####",
-        "start": "33159200000",
-        "end": "33159209999"
-    },
-    {
         "operator_name": "Marketing online",
         "pattern": "33159260###",
         "start": "33159260000",
@@ -256,12 +250,6 @@
         "pattern": "33186706###",
         "start": "33186706000",
         "end": "33186706999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3318721####",
-        "start": "33187210000",
-        "end": "33187219999"
     },
     {
         "operator_name": "Diabolocom SAS",
@@ -1080,12 +1068,6 @@
         "end": "33255459999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3325566####",
-        "start": "33255660000",
-        "end": "33255669999"
-    },
-    {
         "operator_name": "Fonitex technologie",
         "pattern": "33258201###",
         "start": "33258201000",
@@ -1818,12 +1800,6 @@
         "end": "33367489999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3336775####",
-        "start": "33367750000",
-        "end": "33367759999"
-    },
-    {
         "operator_name": "Iagility",
         "pattern": "33373356###",
         "start": "33373356000",
@@ -1846,12 +1822,6 @@
         "pattern": "33373359###",
         "start": "33373359000",
         "end": "33373359999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3337432####",
-        "start": "33374320000",
-        "end": "33374329999"
     },
     {
         "operator_name": "Iagility",
@@ -2604,12 +2574,6 @@
         "end": "33420265999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3342275####",
-        "start": "33422750000",
-        "end": "33422759999"
-    },
-    {
         "operator_name": "Manifone",
         "pattern": "3342285####",
         "start": "33422850000",
@@ -3096,22 +3060,10 @@
         "end": "33465639999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3348082####",
-        "start": "33480820000",
-        "end": "33480829999"
-    },
-    {
         "operator_name": "Diabolocom SAS",
         "pattern": "3348431####",
         "start": "33484310000",
         "end": "33484319999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3348440####",
-        "start": "33484400000",
-        "end": "33484409999"
     },
     {
         "operator_name": "Aircall",
@@ -3184,12 +3136,6 @@
         "pattern": "3348793####",
         "start": "33487930000",
         "end": "33487939999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3348794####",
-        "start": "33487940000",
-        "end": "33487949999"
     },
     {
         "operator_name": "Diabolocom SAS",
@@ -3510,12 +3456,6 @@
         "end": "33525619999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3353230####",
-        "start": "33532300000",
-        "end": "33532309999"
-    },
-    {
         "operator_name": "Get & go telecom",
         "pattern": "3353257####",
         "start": "33532570000",
@@ -3756,12 +3696,6 @@
         "end": "33548294999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3355421####",
-        "start": "33554210000",
-        "end": "33554219999"
-    },
-    {
         "operator_name": "Manifone",
         "pattern": "3355464####",
         "start": "33554640000",
@@ -3916,12 +3850,6 @@
         "pattern": "3364469####",
         "start": "33644690000",
         "end": "33644699999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3374302####",
-        "start": "33743020000",
-        "end": "33743029999"
     },
     {
         "operator_name": "Movius interactive corporation",
@@ -4254,12 +4182,6 @@
         "end": "33757949999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3375798####",
-        "start": "33757980000",
-        "end": "33757989999"
-    },
-    {
         "operator_name": "Onoff telecom",
         "pattern": "337809#####",
         "start": "33780900000",
@@ -4300,12 +4222,6 @@
         "pattern": "3380136####",
         "start": "33801360000",
         "end": "33801369999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3380184####",
-        "start": "33801840000",
-        "end": "33801849999"
     },
     {
         "operator_name": "Manifone",
@@ -4422,12 +4338,6 @@
         "end": "33939010999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3393902####",
-        "start": "33939020000",
-        "end": "33939029999"
-    },
-    {
         "operator_name": "Twilio Ireland Limited",
         "pattern": "3393903####",
         "start": "33939030000",
@@ -4464,46 +4374,16 @@
         "end": "33939249999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3393932####",
-        "start": "33939320000",
-        "end": "33939329999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3393936####",
-        "start": "33939360000",
-        "end": "33939369999"
-    },
-    {
         "operator_name": "Plug and tel",
         "pattern": "33939375###",
         "start": "33939375000",
         "end": "33939375999"
     },
     {
-        "operator_name": "BICS",
-        "pattern": "3393939####",
-        "start": "33939390000",
-        "end": "33939399999"
-    },
-    {
         "operator_name": "DVS Connect",
         "pattern": "33939401###",
         "start": "33939401000",
         "end": "33939401999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3393941####",
-        "start": "33939410000",
-        "end": "33939419999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3393942####",
-        "start": "33939420000",
-        "end": "33939429999"
     },
     {
         "operator_name": "Diabolocom SAS",
@@ -4534,18 +4414,6 @@
         "pattern": "3397025####",
         "start": "33970250000",
         "end": "33970259999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3397107####",
-        "start": "33971070000",
-        "end": "33971079999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3397108####",
-        "start": "33971080000",
-        "end": "33971089999"
     },
     {
         "operator_name": "Destiny global infra services",
@@ -4660,12 +4528,6 @@
         "pattern": "33974378###",
         "start": "33974378000",
         "end": "33974378999"
-    },
-    {
-        "operator_name": "BICS",
-        "pattern": "3397459####",
-        "start": "33974590000",
-        "end": "33974599999"
     },
     {
         "operator_name": "DVS Connect",
