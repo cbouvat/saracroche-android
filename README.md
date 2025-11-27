@@ -16,10 +16,12 @@ Saracroche is an Android app that protects you from unwanted calls by blocking s
 ## Installation
 
 ### Google Play Store
-Saracroche is available on the Google Play Store : [Download Saracroche](https://play.google.com/store/apps/details?id=com.cbouvat.android.saracroche)
+
+[Saracroche is available on the Google Play Store](https://play.google.com/store/apps/details?id=com.cbouvat.android.saracroche)
 
 ### F-Droid
-Saracroche will soon be available on F-Droid for users who prefer open-source app stores.
+
+[Saracroche is also available on F-Droid](https://f-droid.org/en/packages/com.cbouvat.android.saracroche/)
 
 ### Building from Source
 1. Clone the repository
@@ -41,16 +43,7 @@ Saracroche will soon be available on F-Droid for users who prefer open-source ap
 
 ## List of prefix numbers
 
-The first list is the one containing numbers reserved for telemarketing by ARCEP : https://www.arcep.fr/la-regulation/grands-dossiers-thematiques-transverses/la-numerotation.html
-And other numbers by the community.
-
-### Information about prefixes
-
-All prefixes are communicated by ARCEP : https://www.data.gouv.fr/fr/datasets/ressources-en-numerotation-telephonique/ and https://www.data.gouv.fr/fr/datasets/identifiants-de-communications-electroniques/
-- `MAJNUM.csv` file for the list of prefixes : https://extranet.arcep.fr/uploads/MAJNUM.csv
-- `identifiants_CE.csv` file for the operators of the prefixes : https://extranet.arcep.fr/uploads/identifiants_CE.csv
-
-Tool to identify the operator by prefix : https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/base-numerotation.html
+The list of prefix numbers is in `blocked-patterns.json` file in the repository.
 
 ## Contributing
 
@@ -66,7 +59,7 @@ Contributions are welcome! Here's how you can help:
 
 If you find Saracroche useful, consider sponsoring the project to help with maintenance and new features:
 
-- [GitHub Sponsors](https://github.com/sponsors/cbouvat)
+- [Sponsor and support on Saracroche.org](https://saracroche.org/fr/support)
 
 ## Star the Project ⭐
 
