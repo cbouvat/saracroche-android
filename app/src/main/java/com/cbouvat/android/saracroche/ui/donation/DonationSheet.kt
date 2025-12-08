@@ -159,7 +159,7 @@ fun DonationSheet(
             Spacer(modifier = Modifier.height(12.dp))
 
             Button(
-                onClick = { openUrl(context, "https://paypal.me/cbouvat") },
+                onClick = { openUrl(context, "https://www.paypal.com/donate/?hosted_button_id=WJYS344L5MMYJ") },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF0070BA), // PayPal blue
