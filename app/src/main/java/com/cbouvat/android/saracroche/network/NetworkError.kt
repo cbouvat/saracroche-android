@@ -1,19 +1,39 @@
 package com.cbouvat.android.saracroche.network
 
-sealed class NetworkError(message: String) : Exception(message) {
-    object InvalidURL : NetworkError("URL invalide.")
-    object NoData : NetworkError("Aucune donnée reçue du serveur.")
-    object DecodingError : NetworkError("Erreur lors du traitement des données.")
+import android.content.Context
+import androidx.annotation.StringRes
+import com.cbouvat.android.saracroche.R
+
+sealed class NetworkError(@param:StringRes val messageRes: Int, vararg val formatArgs: Any) : Exception() {
+    object InvalidURL : NetworkError(R.string.error_invalid_url)
+    object NoData : NetworkError(R.string.error_no_data)
+    object DecodingError : NetworkError(R.string.error_decoding)
     data class ServerError(val code: Int, val serverMessage: String?) : NetworkError(
-        serverMessage ?: "Erreur serveur ($code). Veuillez réessayer plus tard."
+        if (serverMessage != null) R.string.error_server_with_message else R.string.error_server,
+        code, serverMessage ?: ""
     )
 
-    object NetworkUnavailable :
-        NetworkError("Connexion réseau indisponible. Vérifiez votre connexion Internet.")
+    object NetworkUnavailable : NetworkError(R.string.error_network_unavailable)
+    object Timeout : NetworkError(R.string.error_timeout)
+    object Unknown : NetworkError(R.string.error_unknown)
 
-    object Timeout : NetworkError("Délai d'attente dépassé. Veuillez réessayer.")
-    object Unknown : NetworkError("Une erreur inattendue s'est produite.")
+    fun getUserMessage(context: Context): String {
+        return if (formatArgs.isNotEmpty()) {
+            context.getString(messageRes, *formatArgs)
+        } else {
+            context.getString(messageRes)
+        }
+    }
 
     val userMessage: String
-        get() = message ?: "Une erreur inattendue s'est produite."
+    get() = when (this) {
+        is ServerError -> {
+            if (formatArgs.isNotEmpty() && formatArgs[0] is Int && formatArgs[1] is String) {
+                "R.string.error_server_with_message"
+            } else {
+                "R.string.error_server"
+            }
+        }
+        else -> "R.string.error_unknown"
+    }
 }

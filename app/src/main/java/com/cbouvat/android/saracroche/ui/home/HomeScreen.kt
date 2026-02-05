@@ -45,6 +45,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,6 +56,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.cbouvat.android.saracroche.ui.donation.DonationSheet
 import com.cbouvat.android.saracroche.util.BlockedPatternManager
 import com.cbouvat.android.saracroche.util.PermissionUtils
+import com.cbouvat.android.saracroche.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -180,7 +182,7 @@ fun CallScreeningPermissionCard(
                     tint = if (isEnabled) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.error
                 )
                 Text(
-                    text = if (isEnabled) "Le bloqueur d'appels est actif" else "Le bloqueur d'appels n'est pas activé",
+                    text = stringResource(id = if (isEnabled) R.string.call_screening_enabled else R.string.call_screening_disabled),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = if (isEnabled) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.error
@@ -188,7 +190,7 @@ fun CallScreeningPermissionCard(
 
                 if (!isEnabled) {
                     Text(
-                        text = "Activez le bloqueur pour bloquer les appels indésirables en cliquant sur le bouton ci-dessous et choisissez Saracroche dans la liste des applications.",
+                        text = stringResource(id = R.string.enable_call_blocker_description),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onErrorContainer,
                     )
@@ -206,7 +208,7 @@ fun CallScreeningPermissionCard(
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Activer le bloqueur")
+                        Text(stringResource(id = R.string.enable_blocker_button))
                     }
                 }
             }
@@ -241,14 +243,14 @@ fun BlockedPatternsStatsCard(
                 )
 
                 Text(
-                    text = "$totalBlockedNumbers numéros bloqués",
+                    text = stringResource(id = R.string.blocked_numbers_stats, totalBlockedNumbers),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
                 Text(
-                    text = "Les appels bloqués apparaissent dans le journal d’appels avec un symbole indiquant leur blocage. Aucune notification n’est envoyée pour ces appels.",
+                    text = stringResource(id = R.string.blocked_calls_explanation),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center
@@ -281,14 +283,14 @@ fun SupportProjectCard(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Application gratuite et open source",
+                    text = stringResource(id = R.string.free_open_source_app),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
             }
             Text(
-                text = "Saracroche est une application entièrement gratuite et open source. Elle vit grâce aux dons de ses utilisateurs pour continuer à évoluer et rester sans publicité.",
+                text = stringResource(id = R.string.support_app_description),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -307,7 +309,7 @@ fun SupportProjectCard(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "Soutenez",
+                    text = stringResource(id = R.string.support_button),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
