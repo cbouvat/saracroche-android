@@ -35,8 +35,8 @@ object PermissionUtils {
 
             // Return true if any of the call screening mechanisms are enabled
             isDefaultDialer || hasCallScreeningRole
-        } catch (e: Exception) {
-            Log.e(TAG, "Error checking call screening status", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error checking call screening status", t)
             false
         }
     }
@@ -49,8 +49,8 @@ object PermissionUtils {
             val roleManager =
                 context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
             roleManager?.isRoleHeld(android.app.role.RoleManager.ROLE_CALL_SCREENING) ?: false
-        } catch (e: Exception) {
-            Log.e(TAG, "Error checking call screening role", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error checking call screening role", t)
             false
         }
     }
@@ -64,8 +64,8 @@ object PermissionUtils {
             val roleManager =
                 context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
             roleManager?.createRequestRoleIntent(android.app.role.RoleManager.ROLE_CALL_SCREENING)
-        } catch (e: Exception) {
-            Log.e(TAG, "Error creating call screening role intent", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error creating call screening role intent", t)
             null
         }
     }
@@ -98,8 +98,8 @@ object PermissionUtils {
             // Final fallback: open general phone settings
             Log.d(TAG, "Final fallback: Opening phone settings")
             openPhoneSettings(context)
-        } catch (e: Exception) {
-            Log.e(TAG, "Error opening call screening settings", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error opening call screening settings", t)
             openPhoneSettings(context)
         }
     }
@@ -125,8 +125,8 @@ object PermissionUtils {
                     false
                 }
             } ?: false
-        } catch (e: Exception) {
-            Log.e(TAG, "Error requesting call screening role", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error requesting call screening role", t)
             false
         }
     }
@@ -151,8 +151,8 @@ object PermissionUtils {
                     context.startActivity(intent)
                     return true
                 }
-            } catch (e: Exception) {
-                Log.w(TAG, "Could not open default apps settings with intent: ${intent.action}", e)
+            } catch (t: Throwable) {
+                Log.w(TAG, "Could not open default apps settings with intent: ${intent.action}", t)
             }
         }
 
@@ -190,8 +190,8 @@ object PermissionUtils {
                     Log.d(TAG, "Opened settings with intent: ${intent.action}")
                     return
                 }
-            } catch (e: Exception) {
-                Log.w(TAG, "Could not open settings with intent: ${intent.action}", e)
+            } catch (t: Throwable) {
+                Log.w(TAG, "Could not open settings with intent: ${intent.action}", t)
             }
         }
 
