@@ -25,7 +25,7 @@ object PreferencesManager {
      * Get the flow of block anonymous calls setting
      */
     fun getBlockAnonymousCallsFlow(context: Context): Flow<Boolean> {
-        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
+        return context.dataStore.data.map { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
         }
     }
@@ -43,7 +43,7 @@ object PreferencesManager {
      * Get the current value of block anonymous calls setting (suspend function)
      */
     suspend fun getBlockAnonymousCalls(context: Context): Boolean {
-        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
+        return context.dataStore.data.map { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
         }.first()
     }
@@ -54,9 +54,15 @@ object PreferencesManager {
         }
     }
 
-    fun getBlockedCallNotification(context: Context): Flow<Boolean> {
-        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
+    fun getBlockedCallNotificationFlow(context: Context): Flow<Boolean> {
+        return context.dataStore.data.map { preferences ->
             preferences[BLOCKED_CALL_NOTIFICATION_KEY] ?: false
         };
+    }
+
+    suspend fun getBlockedCallNotification(context: Context): Boolean {
+        return context.dataStore.data.map { preferences ->
+            preferences[BLOCKED_CALL_NOTIFICATION_KEY] ?: false
+        }.first();
     }
 }

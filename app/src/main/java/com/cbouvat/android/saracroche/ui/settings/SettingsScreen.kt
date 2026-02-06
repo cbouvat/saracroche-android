@@ -210,7 +210,7 @@ fun SettingsScreen() {
     val coroutineScope = rememberCoroutineScope()
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
         .collectAsState(initial = false)
-    val blockedCallNotification = PreferencesManager.getBlockedCallNotification(context)
+    val blockedCallNotification = PreferencesManager.getBlockedCallNotificationFlow(context)
         .collectAsState(initial = false);
 
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
@@ -271,6 +271,7 @@ fun SettingsScreen() {
                         icon = Icons.Rounded.Notifications,
                         checked = blockedCallNotification.value,
                         onCheckedChange = { isEnabled ->
+                            // TODO: handle case in which user refuses once.
                             if (isEnabled) {
                                 // on Android 13+ it is required to ask permission
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

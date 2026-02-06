@@ -5,7 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 
 object NotificationUtils {
-    private val BLOCKED_CALL_CHANNEL_ID = "blocked_call_channel"
+    val BLOCKED_CALL_CHANNEL_ID = "blocked_call_channel"
     val BLOCKED_CALL_CHANNEL_NAME = "Appels bloqués"
     val BLOCKED_CALL_CHANNEL_DESCRIPTION = "Notifications des appels bloqués."
     val BLOCKED_CALL_CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_DEFAULT
