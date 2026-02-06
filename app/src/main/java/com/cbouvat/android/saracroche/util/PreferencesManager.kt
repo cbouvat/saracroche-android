@@ -19,12 +19,13 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 object PreferencesManager {
 
     private val BLOCK_ANONYMOUS_CALLS_KEY = booleanPreferencesKey("block_anonymous_calls")
+    private val BLOCKED_CALL_NOTIFICATION_KEY = booleanPreferencesKey("blocked_call_notification")
 
     /**
      * Get the flow of block anonymous calls setting
      */
     fun getBlockAnonymousCallsFlow(context: Context): Flow<Boolean> {
-        return context.dataStore.data.map { preferences ->
+        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
         }
     }
@@ -42,8 +43,20 @@ object PreferencesManager {
      * Get the current value of block anonymous calls setting (suspend function)
      */
     suspend fun getBlockAnonymousCalls(context: Context): Boolean {
-        return context.dataStore.data.map { preferences ->
+        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
         }.first()
+    }
+
+    suspend fun setBlockedCallNotification(context: Context, blockedCallNotifications: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[BLOCKED_CALL_NOTIFICATION_KEY] = blockedCallNotifications
+        }
+    }
+
+    fun getBlockedCallNotification(context: Context): Flow<Boolean> {
+        return context.dataStore.data.map<Preferences, Boolean> { preferences ->
+            preferences[BLOCKED_CALL_NOTIFICATION_KEY] ?: false
+        };
     }
 }

@@ -26,6 +26,7 @@ import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.Mail
+import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.PhoneDisabled
 import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Settings
@@ -206,6 +207,8 @@ fun SettingsScreen() {
     val coroutineScope = rememberCoroutineScope()
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
         .collectAsState(initial = false)
+    val blockedCallNotification = PreferencesManager.getBlockedCallNotification(context)
+        .collectAsState(initial = false);
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -248,6 +251,18 @@ fun SettingsScreen() {
                             coroutineScope.launch {
                                 PreferencesManager.setBlockAnonymousCalls(context, newValue)
                             }
+                        }
+                    ),
+                    SettingsItem.Switch(
+                        title = "Notification d'appel bloqué",
+                        subtitle = "Recevoir une notification quand un appel est bloqué.",
+                        icon = Icons.Rounded.Notifications,
+                        checked = blockedCallNotification.value,
+                        onCheckedChange = {
+                            newValue ->
+                                coroutineScope.launch {
+                                    PreferencesManager.setBlockedCallNotification(context, newValue)
+                                }
                         }
                     )
                 )
