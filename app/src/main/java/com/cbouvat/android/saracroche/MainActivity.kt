@@ -29,6 +29,7 @@ import com.cbouvat.android.saracroche.ui.home.HomeScreen
 import com.cbouvat.android.saracroche.ui.report.ReportScreen
 import com.cbouvat.android.saracroche.ui.settings.SettingsScreen
 import com.cbouvat.android.saracroche.ui.theme.AppTheme
+import com.cbouvat.android.saracroche.util.NotificationUtils
 
 data class BottomNavItem(
     val route: String,
@@ -46,6 +47,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        NotificationUtils.createNotificationChannel(this)
 
         setContent {
             AppTheme {

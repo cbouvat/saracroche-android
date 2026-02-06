@@ -1,10 +1,13 @@
 package com.cbouvat.android.saracroche.ui.settings
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -210,6 +213,15 @@ fun SettingsScreen() {
     val blockedCallNotification = PreferencesManager.getBlockedCallNotification(context)
         .collectAsState(initial = false);
 
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = { isGranted ->
+            coroutineScope.launch {
+                PreferencesManager.setBlockedCallNotification(context, isGranted)
+            }
+        }
+    )
+
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -258,11 +270,16 @@ fun SettingsScreen() {
                         subtitle = "Recevoir une notification quand un appel est bloqué.",
                         icon = Icons.Rounded.Notifications,
                         checked = blockedCallNotification.value,
-                        onCheckedChange = {
-                            newValue ->
-                                coroutineScope.launch {
-                                    PreferencesManager.setBlockedCallNotification(context, newValue)
+                        onCheckedChange = { isEnabled ->
+                            if (isEnabled) {
+                                // on Android 13+ it is required to ask permission
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
                                 }
+                            }
+                            coroutineScope.launch {
+                                PreferencesManager.setBlockedCallNotification(context, isEnabled)
+                            }
                         }
                     )
                 )
