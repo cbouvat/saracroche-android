@@ -211,7 +211,7 @@ fun SettingsScreen() {
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
         .collectAsState(initial = false)
     val blockedCallNotification = PreferencesManager.getBlockedCallNotificationFlow(context)
-        .collectAsState(initial = false);
+        .collectAsState(initial = false)
 
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
@@ -275,7 +275,7 @@ fun SettingsScreen() {
                             if (isEnabled) {
                                 // on Android 13+ it is required to ask permission
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                                 }
                             }
                             coroutineScope.launch {

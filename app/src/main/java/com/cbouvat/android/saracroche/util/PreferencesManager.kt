@@ -57,12 +57,12 @@ object PreferencesManager {
     fun getBlockedCallNotificationFlow(context: Context): Flow<Boolean> {
         return context.dataStore.data.map { preferences ->
             preferences[BLOCKED_CALL_NOTIFICATION_KEY] ?: false
-        };
+        }
     }
 
     suspend fun getBlockedCallNotification(context: Context): Boolean {
         return context.dataStore.data.map { preferences ->
             preferences[BLOCKED_CALL_NOTIFICATION_KEY] ?: false
-        }.first();
+        }.first()
     }
 }

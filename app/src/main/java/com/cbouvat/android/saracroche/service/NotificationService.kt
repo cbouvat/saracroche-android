@@ -11,8 +11,8 @@ import com.cbouvat.android.saracroche.util.NotificationUtils
 
 object NotificationService {
     fun sendBlockedCallNotification(context: Context, phoneNumber: String?) {
-        Log.d("NotificationService", "Sending notification for blocked call from: $phoneNumber");
-        val notificationId = "${phoneNumber}-${System.currentTimeMillis()}".hashCode();
+        Log.d("NotificationService", "Sending notification for blocked call from: $phoneNumber")
+        val notificationId = "${phoneNumber}-${System.currentTimeMillis()}".hashCode()
 
         val notification =
             NotificationCompat.Builder(context, NotificationUtils.BLOCKED_CALL_CHANNEL_ID)
