@@ -4,6 +4,8 @@ import android.telecom.Call
 import android.telecom.CallScreeningService
 import android.util.Log
 import com.cbouvat.android.saracroche.util.BlockedPatternManager
+import com.cbouvat.android.saracroche.util.ContactsUtils
+import com.cbouvat.android.saracroche.util.PermissionUtils
 import com.cbouvat.android.saracroche.util.PreferencesManager
 import kotlinx.coroutines.runBlocking
 
@@ -59,11 +61,39 @@ class CallScreeningService : CallScreeningService() {
 
         // Check blocked patterns for regular phone numbers
         val normalizedNumber = normalizePhoneNumber(phoneNumber)
+
+        if (shouldBlockUnknownNumber(phoneNumber)) return true
+
         val blockedPatterns = BlockedPatternManager.getBlockedPatterns(this)
 
         return blockedPatterns.any { pattern ->
             matchesPattern(normalizedNumber, pattern.pattern)
         }
+    }
+
+    private fun shouldBlockUnknownNumber(phoneNumber: String): Boolean {
+        // Block unknown numbers (not in contacts) if the option is enabled
+        val blockUnknownNumbersEnabled = runBlocking {
+            try {
+                PreferencesManager.getBlockUnknownNumbers(this@CallScreeningService)
+            } catch (e: Exception) {
+                Log.e(TAG, "Error checking unknown numbers preference", e)
+                false
+            }
+        }
+
+        if (!blockUnknownNumbersEnabled) return false
+
+        // If we don't have contacts permission, we can't reliably decide: do not block.
+        if (!PermissionUtils.hasContactsPermission(this)) {
+            Log.w(
+                TAG,
+                "Block unknown numbers enabled but contacts permission missing; allowing call."
+            )
+            return false
+        }
+
+        return !ContactsUtils.isPhoneNumberInContacts(this, phoneNumber)
     }
 
     /**

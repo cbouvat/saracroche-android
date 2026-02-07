@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.DeviceUnknown
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.Mail
 import androidx.compose.material.icons.rounded.PhoneDisabled
@@ -40,8 +41,13 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -51,6 +57,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cbouvat.android.saracroche.util.PermissionUtils
 import com.cbouvat.android.saracroche.util.PreferencesManager
 import kotlinx.coroutines.launch
 
@@ -207,6 +214,27 @@ fun SettingsScreen() {
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
         .collectAsState(initial = false)
 
+    // DataStore state for anonymous and unknown number call blocking
+    val blockUnknownNumbersState = PreferencesManager.getBlockUnknownNumbersFlow(context)
+        .collectAsState(initial = false)
+
+    // Local UI state for the "block unknown numbers" switch
+    var blockUnknownNumbersUiState by remember {
+        mutableStateOf(blockUnknownNumbersState.value)
+    }
+
+    LaunchedEffect(blockUnknownNumbersState.value) {
+        val hasPermission = PermissionUtils.hasContactsPermission(context)
+        if (!hasPermission && blockUnknownNumbersState.value) {
+            blockUnknownNumbersUiState = false
+            coroutineScope.launch {
+                PreferencesManager.setBlockUnknownNumbers(context, false)
+            }
+        } else {
+            blockUnknownNumbersUiState = blockUnknownNumbersState.value
+        }
+    }
+
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -249,9 +277,50 @@ fun SettingsScreen() {
                                 PreferencesManager.setBlockAnonymousCalls(context, newValue)
                             }
                         }
+                    ),
+                    SettingsItem.Switch(
+                        title = "Bloquer les numéros inconnus",
+                        subtitle = "Bloquer les appels provenant de numéros qui ne sont pas dans vos contacts",
+                        icon = Icons.Rounded.DeviceUnknown,
+                        checked = blockUnknownNumbersUiState,
+                        onCheckedChange = { newValue ->
+                            if (!PermissionUtils.hasContactsPermission(context)) return@Switch
+
+                            blockUnknownNumbersUiState = newValue
+                            coroutineScope.launch {
+                                PreferencesManager.setBlockUnknownNumbers(context, newValue)
+                            }
+                        }
                     )
                 )
             )
+
+            if (!PermissionUtils.hasContactsPermission(context)) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Text(
+                        text = "Pour activer le blocage des numéros inconnus, autorisez l’accès aux contacts.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Autoriser l’accès aux contacts",
+                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .clickable {
+                                val intent =
+                                    PermissionUtils.createContactsPermissionSettingsIntent(context)
+                                context.startActivity(intent)
+                            }
+                            .padding(vertical = 4.dp)
+                    )
+                }
+            }
 
             // Links Section
             SettingsSection(

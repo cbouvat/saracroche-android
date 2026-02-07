@@ -2,17 +2,42 @@ package com.cbouvat.android.saracroche.util
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
 import android.telecom.TelecomManager
 import android.util.Log
+import androidx.core.app.ActivityCompat
 
 /**
- * Utility for managing call screening permissions
+ * Utility for managing call screening and related permissions
  */
 object PermissionUtils {
 
     private const val TAG = "PermissionUtils"
+
+    /**
+     * Check if READ_CONTACTS permission is granted
+     */
+    fun hasContactsPermission(context: Context): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.READ_CONTACTS
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    /**
+     * Create an intent that opens the app settings screen so the user can
+     * manually grant the contacts permission when it has been refused
+     */
+    fun createContactsPermissionSettingsIntent(context: Context): Intent {
+        return Intent(
+            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+            Uri.fromParts("package", context.packageName, null)
+        ).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 
     /**
      * Check if the app is set as the default call screening app

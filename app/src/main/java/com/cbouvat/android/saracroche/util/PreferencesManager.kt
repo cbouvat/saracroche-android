@@ -19,6 +19,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 object PreferencesManager {
 
     private val BLOCK_ANONYMOUS_CALLS_KEY = booleanPreferencesKey("block_anonymous_calls")
+    private val BLOCK_UNKNOWN_NUMBERS_KEY = booleanPreferencesKey("block_unknown_numbers")
 
     /**
      * Get the flow of block anonymous calls setting
@@ -44,6 +45,33 @@ object PreferencesManager {
     suspend fun getBlockAnonymousCalls(context: Context): Boolean {
         return context.dataStore.data.map { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
+        }.first()
+    }
+
+    /**
+     * Get the flow of block unknown numbers setting
+     */
+    fun getBlockUnknownNumbersFlow(context: Context): Flow<Boolean> {
+        return context.dataStore.data.map { preferences ->
+            preferences[BLOCK_UNKNOWN_NUMBERS_KEY] ?: false
+        }
+    }
+
+    /**
+     * Set the block unknown numbers setting
+     */
+    suspend fun setBlockUnknownNumbers(context: Context, blockUnknown: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[BLOCK_UNKNOWN_NUMBERS_KEY] = blockUnknown
+        }
+    }
+
+    /**
+     * Get the current value of block unknown numbers setting (suspend function)
+     */
+    suspend fun getBlockUnknownNumbers(context: Context): Boolean {
+        return context.dataStore.data.map { preferences ->
+            preferences[BLOCK_UNKNOWN_NUMBERS_KEY] ?: false
         }.first()
     }
 }

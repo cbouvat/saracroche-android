@@ -1,5 +1,6 @@
 package com.cbouvat.android.saracroche.ui.home
 
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +23,7 @@ import androidx.compose.material.icons.rounded.AddModerator
 import androidx.compose.material.icons.rounded.Checklist
 import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.VerifiedUser
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -43,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -55,6 +58,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.cbouvat.android.saracroche.ui.donation.DonationSheet
 import com.cbouvat.android.saracroche.util.BlockedPatternManager
 import com.cbouvat.android.saracroche.util.PermissionUtils
+import com.cbouvat.android.saracroche.util.PreferencesManager
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -65,6 +70,8 @@ fun HomeScreen() {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     var isCallScreeningEnabled by remember { mutableStateOf(false) }
+    var hasContactsPermission by remember { mutableStateOf(false) }
+    var blockUnknownNumbersEnabled by remember { mutableStateOf(false) }
     var totalBlockedNumbers by remember { mutableStateOf(0L) }
     var showDonationSheet by remember { mutableStateOf(false) }
 
@@ -72,11 +79,21 @@ fun HomeScreen() {
         contract = ActivityResultContracts.StartActivityForResult()
     ) {
         isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
+        hasContactsPermission = PermissionUtils.hasContactsPermission(context)
     }
 
     // Update permissions status on app resume or initial load
     fun updatePermissionsStatus() {
         isCallScreeningEnabled = PermissionUtils.isCallScreeningEnabled(context)
+        hasContactsPermission = PermissionUtils.hasContactsPermission(context)
+        blockUnknownNumbersEnabled = runBlocking {
+            try {
+                PreferencesManager.getBlockUnknownNumbers(context)
+            } catch (exception: Exception) {
+                Log.e("HomeScreen", "Error checking unknown numbers preference", exception)
+                false
+            }
+        }
         totalBlockedNumbers = BlockedPatternManager.calculateTotalBlockedNumbers(context)
     }
 
@@ -131,6 +148,12 @@ fun HomeScreen() {
                 )
 
                 if (isCallScreeningEnabled) {
+                    UnknownNumbersStatusCard(
+                        context = context,
+                        blockUnknownNumbersEnabled = blockUnknownNumbersEnabled,
+                        hasContactsPermission = hasContactsPermission
+                    )
+
                     BlockedPatternsStatsCard(
                         totalBlockedNumbers = totalBlockedNumbers,
                         context = context
@@ -210,6 +233,66 @@ fun CallScreeningPermissionCard(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun UnknownNumbersStatusCard(
+    context: android.content.Context,
+    blockUnknownNumbersEnabled: Boolean,
+    hasContactsPermission: Boolean
+) {
+    var imageVector: ImageVector
+    var tint: Color
+    var title: String
+    var description: String
+
+    if (blockUnknownNumbersEnabled && hasContactsPermission) {
+        imageVector = Icons.Rounded.VerifiedUser
+        tint = MaterialTheme.colorScheme.tertiary
+        title = "Les numéros inconnus sont bloqués"
+        description = "Les appels provenant de numéros qui ne sont pas dans vos contacts seront automatiquement bloqués."
+    } else {
+        imageVector = Icons.Rounded.Shield
+        tint = MaterialTheme.colorScheme.outline
+        title = "Blocage des numéros inconnus"
+        description = "Activez l’option de blocage des numéros inconnus dans les réglages pour bloquer les appels provenant de numéros qui ne sont pas dans vos contacts."
+    }
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = imageVector,
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = tint
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
