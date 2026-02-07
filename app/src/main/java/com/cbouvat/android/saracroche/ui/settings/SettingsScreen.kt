@@ -1,8 +1,10 @@
 package com.cbouvat.android.saracroche.ui.settings
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -35,6 +37,7 @@ import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
@@ -42,10 +45,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -55,6 +63,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.cbouvat.android.saracroche.util.PreferencesManager
 import kotlinx.coroutines.launch
 
@@ -198,6 +207,32 @@ fun SettingsSwitchItem(
     }
 }
 
+@Composable
+fun NotificationPermissionRationaleDialog(
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Permission requise") },
+        text = { Text("L'application a besoin de la permission pour envoyer des notifications.") },
+        confirmButton = {
+            TextButton(
+                onClick = onConfirm
+            ) {
+                Text("Ouvrir les paramètres")
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = onDismiss
+            ) {
+                Text("Annuler")
+            }
+        }
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
@@ -221,6 +256,26 @@ fun SettingsScreen() {
             }
         }
     )
+
+    var showNotificationPermissionRationaleDialog by remember { mutableStateOf(false) }
+
+    if (showNotificationPermissionRationaleDialog) {
+        NotificationPermissionRationaleDialog(
+            onDismiss = {
+                coroutineScope.launch {
+                    PreferencesManager.setBlockedCallNotification(context, false)
+                }
+                showNotificationPermissionRationaleDialog = false
+            },
+            onConfirm = {
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                    data = Uri.fromParts("package", context.packageName, null)
+                }
+                context.startActivity(intent)
+                showNotificationPermissionRationaleDialog = false
+            }
+        )
+    }
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -271,15 +326,45 @@ fun SettingsScreen() {
                         icon = Icons.Rounded.Notifications,
                         checked = blockedCallNotification.value,
                         onCheckedChange = { isEnabled ->
-                            // TODO: handle case in which user refuses once.
                             if (isEnabled) {
                                 // on Android 13+ it is required to ask permission
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                    val activity = context as? Activity ?: return@Switch
+
+                                    when {
+                                        // Case 1 : permission already granted -> let the user re-enable it
+                                        ContextCompat.checkSelfPermission(
+                                            context,
+                                            Manifest.permission.POST_NOTIFICATIONS
+                                        ) == PackageManager.PERMISSION_GRANTED -> {
+                                            coroutineScope.launch {
+                                                PreferencesManager.setBlockedCallNotification(
+                                                    context,
+                                                    true
+                                                )
+                                            }
+                                        }
+
+                                        // Case 2 : show rational
+                                        activity.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
+                                            showNotificationPermissionRationaleDialog = true
+                                        }
+
+                                        // Case 3 : first time asking -> launch permission request
+                                        else -> {
+                                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                        }
+                                    }
+                                } else {
+                                    // On older devices, no check required
+                                    coroutineScope.launch {
+                                        PreferencesManager.setBlockedCallNotification(context, true)
+                                    }
                                 }
-                            }
-                            coroutineScope.launch {
-                                PreferencesManager.setBlockedCallNotification(context, isEnabled)
+                            } else {
+                                coroutineScope.launch {
+                                    PreferencesManager.setBlockedCallNotification(context, false)
+                                }
                             }
                         }
                     )
