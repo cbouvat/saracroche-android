@@ -248,7 +248,7 @@ fun BlockedPatternsStatsCard(
                 )
 
                 Text(
-                    text = "Les appels bloqués apparaissent dans le journal d’appels avec un symbole indiquant leur blocage. Aucune notification n’est envoyée pour ces appels.",
+                    text = "Les appels bloqués apparaissent dans le journal d’appels avec un symbole indiquant leur blocage.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center
