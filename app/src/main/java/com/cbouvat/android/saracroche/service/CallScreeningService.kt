@@ -49,6 +49,7 @@ class CallScreeningService : CallScreeningService() {
                     false
                 }
             }
+
             if (shouldNotify) {
                 NotificationService.sendBlockedCallNotification(this, phoneNumber ?: "")
             }

@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        NotificationUtils.createNotificationChannel(this)
+        NotificationUtils.createAllNotificationChannels(this)
 
         setContent {
             AppTheme {
