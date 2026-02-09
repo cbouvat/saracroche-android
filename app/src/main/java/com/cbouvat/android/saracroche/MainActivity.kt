@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -32,14 +33,14 @@ import com.cbouvat.android.saracroche.ui.theme.AppTheme
 
 data class BottomNavItem(
     val route: String,
-    val title: String,
+    val title: Int,
     val icon: ImageVector
 )
 
 private val bottomNavItems = listOf(
-    BottomNavItem("home", "Accueil", Icons.Rounded.Home),
-    BottomNavItem("report", "Signaler", Icons.Rounded.Report),
-    BottomNavItem("settings", "Réglages", Icons.Rounded.Settings)
+    BottomNavItem("home", R.string.nav_home, Icons.Rounded.Home),
+    BottomNavItem("report", R.string.nav_report, Icons.Rounded.Report),
+    BottomNavItem("settings", R.string.nav_settings, Icons.Rounded.Settings)
 )
 
 class MainActivity : ComponentActivity() {
@@ -83,8 +84,8 @@ private fun BottomNavigationBar(navController: NavHostController) {
 
         bottomNavItems.forEach { item ->
             NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = item.title) },
-                label = { Text(item.title) },
+                icon = { Icon(item.icon, contentDescription = stringResource(id = item.title)) },
+                label = { Text(stringResource(id = item.title)) },
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {

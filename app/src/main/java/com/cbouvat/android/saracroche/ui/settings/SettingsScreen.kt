@@ -51,7 +51,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import com.cbouvat.android.saracroche.util.PreferencesManager
+import com.cbouvat.android.saracroche.R
 import kotlinx.coroutines.launch
 
 sealed class SettingsItem {
@@ -213,7 +215,7 @@ fun SettingsScreen() {
             LargeTopAppBar(
                 title = {
                     Text(
-                        "Réglages",
+                        text = stringResource(id = R.string.settings_title),
                         fontWeight = FontWeight.Bold
                     )
                 },
@@ -231,17 +233,17 @@ fun SettingsScreen() {
         ) {
             // Configuration Section
             SettingsSection(
-                title = "Configuration",
+                title = stringResource(id = R.string.settings_configuration_title),
                 items = listOf(
                     SettingsItem.Action(
-                        title = "Application par défaut pour le blocage d'appels",
-                        subtitle = "Configurer l'application par défaut pour le blocage de spam dans les réglages du téléphone",
+                        title = stringResource(id = R.string.call_blocking_app_title),
+                        subtitle = stringResource(id = R.string.call_blocking_app_subtitle),
                         icon = Icons.Rounded.Settings,
                         onClick = { openCallBlockingSettings(context) }
                     ),
                     SettingsItem.Switch(
-                        title = "Bloquer les appels masqués",
-                        subtitle = "Bloquer automatiquement tous les appels provenant de numéros masqués ou privés",
+                        title = stringResource(id = R.string.block_anonymous_calls_title),
+                        subtitle = stringResource(id = R.string.block_anonymous_calls_subtitle),
                         icon = Icons.Rounded.PhoneDisabled,
                         checked = blockAnonymousCallsState.value,
                         onCheckedChange = { newValue ->
@@ -255,35 +257,35 @@ fun SettingsScreen() {
 
             // Links Section
             SettingsSection(
-                title = "Liens",
+                title = stringResource(id = R.string.settings_links_title),
                 items = listOf(
                     SettingsItem.Action(
-                        title = "Aide et FAQ",
-                        subtitle = "Questions fréquentes et guide d'utilisation",
+                        title = stringResource(id = R.string.help_faq_title),
+                        subtitle = stringResource(id = R.string.help_faq_subtitle),
                         icon = Icons.Rounded.QuestionMark,
                         onClick = { openHelpDialog(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Confidentialité",
-                        subtitle = "En savoir plus sur la politique de confidentialité",
+                        title = stringResource(id = R.string.privacy_policy_title),
+                        subtitle = stringResource(id = R.string.privacy_policy_subtitle),
                         icon = Icons.Rounded.Shield,
                         onClick = { openPrivacyPolicy(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Site officiel",
-                        subtitle = "Consulter le site officiel",
+                        title = stringResource(id = R.string.official_website_title),
+                        subtitle = stringResource(id = R.string.official_website_subtitle),
                         icon = Icons.Rounded.Link,
                         onClick = { openOfficialWebsite(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Noter l'application",
-                        subtitle = "Évaluer l'app sur le Google Play Store",
+                        title = stringResource(id = R.string.rate_app_title),
+                        subtitle = stringResource(id = R.string.rate_app_subtitle),
                         icon = Icons.Rounded.Star,
                         onClick = { openPlayStore(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Code source",
-                        subtitle = "Voir le code sur GitHub",
+                        title = stringResource(id = R.string.source_code_title),
+                        subtitle = stringResource(id = R.string.source_code_subtitle),
                         icon = Icons.Rounded.Code,
                         onClick = { openGitHub(context) }
                     )
@@ -292,17 +294,17 @@ fun SettingsScreen() {
 
             // Contact Section
             SettingsSection(
-                title = "Contact",
+                title = stringResource(id = R.string.settings_contact_title),
                 items = listOf(
                     SettingsItem.Action(
-                        title = "Contacter par e-mail",
-                        subtitle = "Signaler un bug ou suggérer une fonctionnalité par e-mail",
+                        title = stringResource(id = R.string.contact_email_title),
+                        subtitle = stringResource(id = R.string.contact_email_subtitle),
                         icon = Icons.Rounded.Mail,
                         onClick = { openBugReport(context) }
                     ),
                     SettingsItem.Action(
-                        title = "Mastodon",
-                        subtitle = "Suivre @cbouvat sur le réseau social Mastodon",
+                        title = stringResource(id = R.string.mastodon_title),
+                        subtitle = stringResource(id = R.string.mastodon_subtitle),
                         icon = Icons.Rounded.ChatBubble,
                         onClick = { openMastodon(context) }
                     )
@@ -311,12 +313,9 @@ fun SettingsScreen() {
 
             // Footer
             Text(
-                text = "Version ${
-                    context.packageManager.getPackageInfo(
-                        context.packageName,
-                        0
-                    ).versionName
-                }\n\nBisou 😘",
+                text = stringResource(
+                    id = R.string.version_footer,
+                    context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: "Unknown"),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                 textAlign = TextAlign.Center,
@@ -411,22 +410,17 @@ private fun openBugReport(context: Context) {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, arrayOf("mail@cbouvat.com"))
-            putExtra(Intent.EXTRA_SUBJECT, "Contact - Saracroche Android")
-            // Add info about the device, version in French
-            val deviceInfo = """
-                Appareil : ${Build.MODEL} (${Build.MANUFACTURER})
-                Version Android : ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})
-                Version de l'application : ${
-                context.packageManager.getPackageInfo(
-                    context.packageName,
-                    0
-                ).versionName
-            }
-            """.trimIndent()
-            putExtra(
-                Intent.EXTRA_TEXT,
-                "Bonjour,\n\n(Votre message ici)\n\n$deviceInfo"
+            putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.email_subject))
+
+            val deviceInfo = context.getString(
+                R.string.email_body_template,
+                Build.MODEL,
+                Build.MANUFACTURER,
+                Build.VERSION.RELEASE,
+                Build.VERSION.SDK_INT,
+                context.packageManager.getPackageInfo(context.packageName, 0).versionName
             )
+            putExtra(Intent.EXTRA_TEXT, deviceInfo)
         }
         context.startActivity(intent)
     } catch (e: Exception) {
