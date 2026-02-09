@@ -7,10 +7,12 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.cbouvat.android.saracroche.R
 import com.cbouvat.android.saracroche.util.NotificationUtils
 
 object NotificationService {
-    private const val TAG = "PermissionUtils"
+    private const val TAG = "NotificationService"
+    private val NOTIFICATION_ICON = R.drawable.notification_icon;
 
     fun sendBlockedCallNotification(context: Context, phoneNumber: String?) {
         if (phoneNumber.isNullOrBlank()) {
@@ -27,8 +29,7 @@ object NotificationService {
 
         val notification =
             NotificationCompat.Builder(context, NotificationUtils.BLOCKED_UNKNOWN_CALLS_CHANNEL_ID)
-                //TODO: icon
-                .setSmallIcon(android.R.drawable.ic_notification_overlay)
+                .setSmallIcon(NOTIFICATION_ICON)
                 .setContentTitle("Appel bloqué")
                 .setContentText("Numéro masqué")
                 .setPriority(NotificationUtils.BLOCKED_UNKNOWN_CALLS_NOTIFICATION_PRIORITY)
@@ -45,8 +46,7 @@ object NotificationService {
 
         val notification =
             NotificationCompat.Builder(context, NotificationUtils.BLOCKED_CALLS_CHANNEL_ID)
-                //TODO: icon
-                .setSmallIcon(android.R.drawable.ic_notification_overlay)
+                .setSmallIcon(NOTIFICATION_ICON)
                 .setContentTitle("Appel bloqué")
                 .setContentText(phoneNumber)
                 .setPriority(NotificationUtils.BLOCKED_CALLS_NOTIFICATION_PRIORITY)
