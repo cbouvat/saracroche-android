@@ -13,7 +13,7 @@ object NotificationUtils {
     const val BLOCKED_CALLS_NOTIFICATION_PRIORITY = NotificationCompat.PRIORITY_DEFAULT
 
     const val BLOCKED_UNKNOWN_CALLS_CHANNEL_ID = "blocked_unknown_calls_channel"
-    const val BLOCKED_UNKNOWN_CALLS_CHANNEL_NAME = "Apples masqués bloqués"
+    const val BLOCKED_UNKNOWN_CALLS_CHANNEL_NAME = "Appels masqués bloqués"
     const val BLOCKED_UNKNOWN_CALLS_CHANNEL_DESCRIPTION =
         "Notifications des appels masqués bloqués."
     const val BLOCKED_UNKNOWN_CALLS_CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_DEFAULT
