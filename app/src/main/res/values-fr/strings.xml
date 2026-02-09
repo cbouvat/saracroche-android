@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Saracroche</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_report">Signaler</string>
+    <string name="nav_settings">Réglages</string>
+
+    <!-- Network Errors -->
+    <string name="error_invalid_url">URL invalide.</string>
+    <string name="error_no_data">Aucune donnée reçue du serveur.</string>
+    <string name="error_decoding">Erreur lors du traitement des données.</string>
+    <string name="error_server">Erreur serveur (%1$d). Veuillez réessayer plus tard.</string>
+    <string name="error_server_with_message">%2$s (Code: %1$d)</string>
+    <string name="error_network_unavailable">Connexion réseau indisponible. Vérifiez votre connexion Internet.</string>
+    <string name="error_timeout">Délai d\'attente dépassé. Veuillez réessayer.</string>
+    <string name="error_unknown">Une erreur inattendue s\'est produite.</string>
+
+    <!-- Home Screen -->
+    <string name="call_screening_enabled">Le bloqueur d\'appels est actif</string>
+    <string name="call_screening_disabled">Le bloqueur d\'appels n\'est pas activé</string>
+    <string name="enable_call_blocker_description">Activez le bloqueur pour bloquer les appels indésirables en cliquant sur le bouton ci-dessous et choisissez Saracroche dans la liste des applications.</string>
+    <string name="enable_blocker_button">Activer le bloqueur</string>
+    <string name="blocked_numbers_stats">%d numéros bloqués</string>
+    <string name="blocked_calls_explanation">Les appels bloqués apparaissent dans le journal d\'appels avec un symbole indiquant leur blocage. Aucune notification n\'est envoyée pour ces appels.</string>
+    <string name="free_open_source_app">Application gratuite et open source</string>
+    <string name="support_app_description">Saracroche est une application entièrement gratuite et open source. Elle vit grâce aux dons de ses utilisateurs pour continuer à évoluer et rester sans publicité.</string>
+    <string name="support_button">Soutenez</string>
+
+    <!-- Donation Sheet -->
+    <string name="donation_title">Soutenez Saracroche</string>
+    <string name="donation_description">Saracroche est développée bénévolement par Camille sur son temps libre. Vos dons lui permettent d\'améliorer l\'application et de maintenir les listes de blocage à jour. Une note sur le store, ça fait toujours plaisir et aide beaucoup !</string>
+    <string name="donation_why_give">Pourquoi donner ?</string>
+
+    <!-- Benefits -->
+    <string name="benefit_open_source_title">Projet open source</string>
+    <string name="benefit_open_source_desc">Code source ouvert et transparent</string>
+    <string name="benefit_free_title">Entièrement gratuit</string>
+    <string name="benefit_free_desc">Pas de pub, pas d\'abonnement, pas de version premium</string>
+    <string name="benefit_independent_title">Développeur indépendant</string>
+    <string name="benefit_independent_desc">Camille développe bénévolement sur son temps libre</string>
+    <string name="benefit_updates_title">Mises à jour régulières</string>
+    <string name="benefit_updates_desc">Nouvelles listes de blocage et améliorations continues</string>
+    <string name="benefit_privacy_title">Confidentialité respectée</string>
+    <string name="benefit_privacy_desc">Aucune donnée collectée, tout reste sur votre appareil</string>
+
+    <!-- Payment buttons -->
+    <string name="payment_credit_card">Carte bancaire &amp; Google Pay</string>
+    <string name="payment_paypal">PayPal</string>
+    <string name="payment_github">GitHub</string>
+    <string name="payment_liberapay">Liberapay</string>
+    <string name="payment_rate_app">Noter l\'application</string>
+
+    <!-- Report Screen -->
+    <string name="report_title">Signaler</string>
+    <string name="report_card_title">Signaler un numéro</string>
+    <string name="report_instruction">Saisissez le numéro de téléphone au format international, par exemple +33612345678 pour la France.</string>
+    <string name="phone_number_label">Numéro de téléphone</string>
+    <string name="phone_number_placeholder">+33612345678</string>
+    <string name="report_submit_button">Envoyer</string>
+    <string name="report_footer_text">Signaler un numéro, contribue à améliorer la liste de blocage et à rendre l\'application plus efficace.</string>
+    <string name="alert_ok_button">OK</string>
+
+    <!-- Report ViewModel -->
+    <string name="success_title">Succès</string>
+    <string name="error_title">Erreur</string>
+    <string name="info_title">Information</string>
+    <string name="report_empty_number_error">Veuillez saisir un numéro de téléphone.</string>
+    <string name="report_invalid_format_error">Le numéro doit être au format E.164 (ex: +33612345678).</string>
+    <string name="report_success_message">Numéro signalé avec succès ! Merci de votre contribution 😊</string>
+    <string name="report_unexpected_error">Une erreur inattendue s\'est produite. Veuillez réessayer.</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Réglages</string>
+
+    <!-- Configuration Section -->
+    <string name="settings_configuration_title">Configuration</string>
+    <string name="call_blocking_app_title">Application par défaut pour le blocage d\'appels</string>
+    <string name="call_blocking_app_subtitle">Configurer l\'application par défaut pour le blocage de spam dans les réglages du téléphone</string>
+    <string name="block_anonymous_calls_title">Bloquer les appels masqués</string>
+    <string name="block_anonymous_calls_subtitle">Bloquer automatiquement tous les appels provenant de numéros masqués ou privés</string>
+
+    <!-- Links Section -->
+    <string name="settings_links_title">Liens</string>
+    <string name="help_faq_title">Aide et FAQ</string>
+    <string name="help_faq_subtitle">Questions fréquentes et guide d\'utilisation</string>
+    <string name="privacy_policy_title">Confidentialité</string>
+    <string name="privacy_policy_subtitle">En savoir plus sur la politique de confidentialité</string>
+    <string name="official_website_title">Site officiel</string>
+    <string name="official_website_subtitle">Consulter le site officiel</string>
+    <string name="rate_app_title">Noter l\'application</string>
+    <string name="rate_app_subtitle">Évaluer l\'app sur le Google Play Store</string>
+    <string name="source_code_title">Code source</string>
+    <string name="source_code_subtitle">Voir le code sur GitHub</string>
+
+    <!-- Contact Section -->
+    <string name="settings_contact_title">Contact</string>
+    <string name="contact_email_title">Contacter par e-mail</string>
+    <string name="contact_email_subtitle">Signaler un bug ou suggérer une fonctionnalité par e-mail</string>
+    <string name="mastodon_title">Mastodon</string>
+    <string name="mastodon_subtitle">Suivre @cbouvat sur le réseau social Mastodon</string>
+
+    <!-- Footer -->
+    <string name="version_footer" formatted="false">Version %s\n\nBisou 😘</string>
+
+    <!-- Error messages -->
+    <string name="email_subject">Contact - Saracroche Android</string>
+    <string name="email_body_template" formatted="false">Bonjour,\n\n(Votre message ici)\n\nAppareil : %s (%s)\nVersion Android : %s (SDK %d)\nVersion de l\'application : %s</string>
+</resources>

@@ -1,3 +1,109 @@
 <resources>
     <string name="app_name">Saracroche</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_report">Report</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Network Errors -->
+    <string name="error_invalid_url">Invalid URL.</string>
+    <string name="error_no_data">No data received from server.</string>
+    <string name="error_decoding">Error processing data.</string>
+    <string name="error_server">Server error (%1$d). Please try again later.</string>
+    <string name="error_server_with_message">%2$s (Code: %1$d)</string>
+    <string name="error_network_unavailable">Network connection unavailable. Please check your internet connection.</string>
+    <string name="error_timeout">Timeout exceeded. Please try again.</string>
+    <string name="error_unknown">An unexpected error occurred.</string>
+
+    <!-- Home Screen -->
+    <string name="call_screening_enabled">Call blocker is active</string>
+    <string name="call_screening_disabled">Call blocker is not active</string>
+    <string name="enable_call_blocker_description">Enable the blocker to block unwanted calls by clicking the button below and select Saracroche from the app list.</string>
+    <string name="enable_blocker_button">Enable blocker</string>
+    <string name="blocked_numbers_stats">%d blocked numbers</string>
+    <string name="blocked_calls_explanation">Blocked calls appear in the call log with a blocking symbol. No notifications are sent for these calls.</string>
+    <string name="free_open_source_app">Free and open source app</string>
+    <string name="support_app_description">Saracroche is a completely free and open source app. It lives thanks to user donations to continue evolving and remain ad-free.</string>
+    <string name="support_button">Support</string>
+
+    <!-- Donation Sheet -->
+    <string name="donation_title">Support Saracroche</string>
+    <string name="donation_description">Saracroche is developed voluntarily by Camille in his free time. Your donations help him improve the app and keep the block lists up to date. A rating on the store is always appreciated and helps a lot!</string>
+    <string name="donation_why_give">Why donate?</string>
+
+    <!-- Benefits -->
+    <string name="benefit_open_source_title">Open source project</string>
+    <string name="benefit_open_source_desc">Open and transparent source code</string>
+    <string name="benefit_free_title">Completely free</string>
+    <string name="benefit_free_desc">No ads, no subscription, no premium version</string>
+    <string name="benefit_independent_title">Independent developer</string>
+    <string name="benefit_independent_desc">Camille develops voluntarily in her free time</string>
+    <string name="benefit_updates_title">Regular updates</string>
+    <string name="benefit_updates_desc">New block lists and continuous improvements</string>
+    <string name="benefit_privacy_title">Privacy respected</string>
+    <string name="benefit_privacy_desc">No data collected, everything stays on your device</string>
+
+    <!-- Payment buttons -->
+    <string name="payment_credit_card">Credit card &amp; Google Pay</string>
+    <string name="payment_paypal">PayPal</string>
+    <string name="payment_github">GitHub</string>
+    <string name="payment_liberapay">Liberapay</string>
+    <string name="payment_rate_app">Rate the app</string>
+
+    <!-- Report Screen -->
+    <string name="report_title">Report</string>
+    <string name="report_card_title">Report a number</string>
+    <string name="report_instruction">Enter the phone number in international format, for example +33612345678 for France.</string>
+    <string name="phone_number_label">Phone number</string>
+    <string name="phone_number_placeholder">+33612345678</string>
+    <string name="report_submit_button">Send</string>
+    <string name="report_footer_text">Reporting a number helps improve the block list and makes the app more effective.</string>
+    <string name="alert_ok_button">OK</string>
+
+    <!-- Report ViewModel -->
+    <string name="success_title">Success</string>
+    <string name="error_title">Error</string>
+    <string name="info_title">Information</string>
+    <string name="report_empty_number_error">Please enter a phone number.</string>
+    <string name="report_invalid_format_error">The number must be in E.164 format (e.g.: +33612345678).</string>
+    <string name="report_success_message">Number reported successfully! Thank you for your contribution 😊</string>
+    <string name="report_unexpected_error">An unexpected error occurred. Please try again.</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+
+    <!-- Configuration Section -->
+    <string name="settings_configuration_title">Configuration</string>
+    <string name="call_blocking_app_title">Default call blocking app</string>
+    <string name="call_blocking_app_subtitle">Configure the default app for spam blocking in phone settings</string>
+    <string name="block_anonymous_calls_title">Block anonymous calls</string>
+    <string name="block_anonymous_calls_subtitle">Automatically block all calls from hidden or private numbers</string>
+
+    <!-- Links Section -->
+    <string name="settings_links_title">Links</string>
+    <string name="help_faq_title">Help and FAQ</string>
+    <string name="help_faq_subtitle">Frequently asked questions and usage guide</string>
+    <string name="privacy_policy_title">Privacy</string>
+    <string name="privacy_policy_subtitle">Learn more about the privacy policy</string>
+    <string name="official_website_title">Official website</string>
+    <string name="official_website_subtitle">Visit the official website</string>
+    <string name="rate_app_title">Rate the app</string>
+    <string name="rate_app_subtitle">Rate the app on Google Play Store</string>
+    <string name="source_code_title">Source code</string>
+    <string name="source_code_subtitle">View code on GitHub</string>
+
+    <!-- Contact Section -->
+    <string name="settings_contact_title">Contact</string>
+    <string name="contact_email_title">Contact by email</string>
+    <string name="contact_email_subtitle">Report a bug or suggest a feature by email</string>
+    <string name="mastodon_title">Mastodon</string>
+    <string name="mastodon_subtitle">Follow @cbouvat on Mastodon social network</string>
+
+    <!-- Footer -->
+    <string name="version_footer" formatted="false">Version %s\n\nKiss 😘</string>
+
+    <!-- Email Templates -->
+    <string name="email_subject">Contact - Saracroche Android</string>
+    <string name="email_body_template" formatted="false">Hello,\n\n(Your message here)\n\nDevice: %s (%s)\nAndroid version: %s (SDK %d)\nApp version: %s</string>
 </resources>
