@@ -47,7 +47,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.cbouvat.android.saracroche.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -56,7 +58,7 @@ fun ReportScreen(
     viewModel: ReportViewModel = viewModel(factory = ReportViewModelFactory(LocalContext.current))
 ) {
     val scrollState = rememberScrollState()
-    LocalContext.current
+    val context = LocalContext.current
     val focusManager = LocalFocusManager.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val uiState by viewModel.uiState.collectAsState()
@@ -67,7 +69,7 @@ fun ReportScreen(
             LargeTopAppBar(
                 title = {
                     Text(
-                        "Signaler",
+                        text = stringResource(id = R.string.report_title),
                         fontWeight = FontWeight.Bold
                     )
                 },
@@ -106,11 +108,11 @@ fun ReportScreen(
     if (uiState.showAlert) {
         AlertDialog(
             onDismissRequest = viewModel::dismissAlert,
-            title = { Text(uiState.alertType.title) },
+            title = { Text(stringResource(id = uiState.alertType.titleRes)) },
             text = { Text(uiState.alertMessage) },
             confirmButton = {
                 TextButton(onClick = viewModel::dismissAlert) {
-                    Text("OK")
+                    Text(stringResource(id = R.string.alert_ok_button))
                 }
             }
         )
@@ -136,14 +138,14 @@ private fun ReportCard(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Signaler un numéro",
+                text = stringResource(id = R.string.report_card_title),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
 
             // Input instruction
             Text(
-                text = "Saisissez le numéro de téléphone au format international, par exemple +33612345678 pour la France.",
+                text = stringResource(id = R.string.report_instruction),
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -152,8 +154,8 @@ private fun ReportCard(
             OutlinedTextField(
                 value = uiState.phoneNumber,
                 onValueChange = onPhoneNumberChange,
-                label = { Text("Numéro de téléphone") },
-                placeholder = { Text("+33612345678") },
+                label = { Text(stringResource(id = R.string.phone_number_label)) },
+                placeholder = { Text(stringResource(id = R.string.phone_number_placeholder)) },
                 enabled = !uiState.isLoading,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Phone,
@@ -193,17 +195,16 @@ private fun ReportCard(
                         contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Envoyer")
+                    Text(stringResource(id = R.string.report_submit_button))
                 }
             }
 
             // Footer description
             Text(
-                text = "Signaler un numéro, contribue à améliorer la liste de blocage et à rendre l'application plus efficace.",
+                text = stringResource(id = R.string.report_footer_text),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
 }
-

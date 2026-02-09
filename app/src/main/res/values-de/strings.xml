@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">Saracroche</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Startseite</string>
+    <string name="nav_report">Melden</string>
+    <string name="nav_settings">Einstellungen</string>
+
+    <!-- Network Errors -->
+    <string name="error_invalid_url">Ungültige URL.</string>
+    <string name="error_no_data">Keine Daten vom Server erhalten.</string>
+    <string name="error_decoding">Fehler bei der Datenverarbeitung.</string>
+    <string name="error_server">Serverfehler (%1$d). Bitte versuchen Sie es später noch einmal.</string>
+    <string name="error_server_with_message">%2$s (Code: %1$d)</string>
+    <string name="error_network_unavailable">Netzwerkverbindung nicht verfügbar. Überprüfen Sie Ihre Internetverbindung.</string>
+    <string name="error_timeout">Zeitüberschreitung. Bitte versuchen Sie es erneut.</string>
+    <string name="error_unknown">Ein unerwarteter Fehler ist aufgetreten.</string>
+
+    <!-- Home Screen -->
+    <string name="call_screening_enabled">Die Anrufsperre ist aktiv</string>
+    <string name="call_screening_disabled">Die Anrufsperre ist nicht aktiviert</string>
+    <string name="enable_call_blocker_description">Aktivieren Sie den Blocker, um unerwünschte Anrufe zu blockieren, indem Sie auf die Schaltfläche unten klicken und Saracroche aus der Liste der Anwendungen auswählen.</string>
+    <string name="enable_blocker_button">Blocker aktivieren</string>
+    <string name="blocked_numbers_stats">%d blockierte Nummern</string>
+    <string name="blocked_calls_explanation">Blockierte Anrufe erscheinen im Anrufprotokoll mit einem Symbol, das ihre Blockierung anzeigt. Für diese Anrufe wird keine Benachrichtigung gesendet.</string>
+    <string name="free_open_source_app">Kostenlose und Open-Source-Anwendung</string>
+    <string name="support_app_description">Saracroche ist eine vollständig kostenlose und Open-Source-Anwendung. Sie lebt von den Spenden ihrer Nutzer, um weiterzuwachsen und werbefrei zu bleiben.</string>
+    <string name="support_button">Unterstützen</string>
+
+    <!-- Donation Sheet -->
+    <string name="donation_title">Unterstützen Sie Saracroche</string>
+    <string name="donation_description">Saracroche wird von Camille in seiner Freizeit ehrenamtlich entwickelt. Ihre Spenden ermöglichen es ihm, die Anwendung zu verbessern und die Blockierlisten aktuell zu halten. Eine Bewertung im Store macht immer Freude und hilft sehr!</string>
+    <string name="donation_why_give">Warum spenden?</string>
+
+    <!-- Benefits -->
+    <string name="benefit_open_source_title">Open-Source-Projekt</string>
+    <string name="benefit_open_source_desc">Offener und transparenter Quellcode</string>
+    <string name="benefit_free_title">Völlig kostenlos</string>
+    <string name="benefit_free_desc">Keine Werbung, keine Abonnements, keine Premium-Version</string>
+    <string name="benefit_independent_title">Unabhängiger Entwickler</string>
+    <string name="benefit_independent_desc">Camille entwickelt ehrenamtlich in ihrer Freizeit</string>
+    <string name="benefit_updates_title">Regelmäßige Updates</string>
+    <string name="benefit_updates_desc">Neue Blockierlisten und kontinuierliche Verbesserungen</string>
+    <string name="benefit_privacy_title">Privatsphäre respektiert</string>
+    <string name="benefit_privacy_desc">Keine Daten werden gesammelt, alles bleibt auf Ihrem Gerät</string>
+
+    <!-- Payment buttons -->
+    <string name="payment_credit_card">Bankkarte &amp; Google Pay</string>
+    <string name="payment_paypal">PayPal</string>
+    <string name="payment_github">GitHub</string>
+    <string name="payment_liberapay">Liberapay</string>
+    <string name="payment_rate_app">Bewerten Sie die Anwendung</string>
+
+    <!-- Report Screen -->
+    <string name="report_title">Melden</string>
+    <string name="report_card_title">Eine Nummer melden</string>
+    <string name="report_instruction">Geben Sie die Telefonnummer im internationalen Format ein, z.B. +49612345678 für Deutschland.</string>
+    <string name="phone_number_label">Telefonnummer</string>
+    <string name="phone_number_placeholder">+49612345678</string>
+    <string name="report_submit_button">Senden</string>
+    <string name="report_footer_text">Eine Nummer melden, hilft die Blockierliste zu verbessern und die Anwendung effizienter zu machen.</string>
+    <string name="alert_ok_button">OK</string>
+
+    <!-- Report ViewModel -->
+    <string name="report_empty_number_error">Bitte geben Sie eine Telefonnummer ein.</string>
+    <string name="report_invalid_format_error">Die Nummer muss im E.164-Format sein (z.B. +49612345678).</string>
+    <string name="report_success_message">Numero erfolgreich gemeldet! Vielen Dank für Ihren Beitrag 😊</string>
+    <string name="report_unexpected_error">Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Einstellungen</string>
+
+    <!-- Configuration Section -->
+    <string name="settings_configuration_title">Konfiguration</string>
+    <string name="call_blocking_app_title">Standardanwendung für Anrufsperre</string>
+    <string name="call_blocking_app_subtitle">Konfigurieren Sie die Standardanwendung für die Spam-Blockierung in den Telefoneinstellungen</string>
+    <string name="block_anonymous_calls_title">Anrufe von unterdrückten Nummern blockieren</string>
+    <string name="block_anonymous_calls_subtitle">Automatisch alle Anrufe von unterdrückten oder privaten Nummern blockieren</string>
+
+    <!-- Links Section -->
+    <string name="settings_links_title">Links</string>
+    <string name="help_faq_title">Hilfe und FAQ</string>
+    <string name="help_faq_subtitle">Häufige Fragen und Benutzerhandbuch</string>
+    <string name="privacy_policy_title">Datenschutz</string>
+    <string name="privacy_policy_subtitle">Mehr über die Datenschutzrichtlinie erfahren</string>
+    <string name="official_website_title">Offizielle Website</string>
+    <string name="official_website_subtitle">Besuchen Sie die offizielle Website</string>
+    <string name="rate_app_title">Bewerten Sie die Anwendung</string>
+    <string name="rate_app_subtitle">Bewerten Sie die App im Google Play Store</string>
+    <string name="source_code_title">Quellcode</string>
+    <string name="source_code_subtitle">Quellcode auf GitHub anzeigen</string>
+
+    <!-- Contact Section -->
+    <string name="settings_contact_title">Kontakt</string>
+    <string name="contact_email_title">Per E-Mail kontaktieren</string>
+    <string name="contact_email_subtitle">Melden Sie einen Fehler oder schlagen Sie eine Funktion per E-Mail vor</string>
+    <string name="mastodon_title">Mastodon</string>
+    <string name="mastodon_subtitle">Folgen Sie @cbouvat auf dem sozialen Netzwerk Mastodon</string>
+
+    <!-- Footer -->
+    <string name="version_footer" formatted="false">Version %s\n\nKuss 😘</string>
+
+    <!-- Error messages -->
+    <string name="email_subject">Kontakt - Saracroche Android</string>
+    <string name="email_body_template" formatted="false">Hallo,\n\n(Ihre Nachricht hier)\n\nGerät: %s (%s)\nAndroid-Version: %s (SDK %d)\nAnwendungsversion: %s</string>
+</resources>

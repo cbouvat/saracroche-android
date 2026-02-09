@@ -3,8 +3,10 @@ package com.cbouvat.android.saracroche.ui.report
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.compose.ui.res.stringResource
 import com.cbouvat.android.saracroche.network.NetworkError
 import com.cbouvat.android.saracroche.network.NetworkService
+import com.cbouvat.android.saracroche.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,10 +21,10 @@ data class ReportUiState(
     val alertType: AlertType = AlertType.INFO
 )
 
-enum class AlertType(val title: String) {
-    SUCCESS("Succès"),
-    ERROR("Erreur"),
-    INFO("Information")
+enum class AlertType(val titleRes: Int) {
+    SUCCESS(R.string.success_title),
+    ERROR(R.string.error_title),
+    INFO(R.string.info_title)
 }
 
 class ReportViewModel(private val context: Context) : ViewModel() {
@@ -69,12 +71,12 @@ class ReportViewModel(private val context: Context) : ViewModel() {
 
         when {
             trimmedNumber.isEmpty() -> {
-                showError("Veuillez saisir un numéro de téléphone.")
+                showError(context.getString(R.string.report_empty_number_error))
                 return false
             }
 
             !isValidFormat -> {
-                showError("Le numéro doit être au format E.164 (ex: +33612345678).")
+                showError(context.getString(R.string.report_invalid_format_error))
                 return false
             }
         }
@@ -86,7 +88,7 @@ class ReportViewModel(private val context: Context) : ViewModel() {
         _uiState.value = _uiState.value.copy(
             phoneNumber = "",
             alertType = AlertType.SUCCESS,
-            alertMessage = "Numéro signalé avec succès ! Merci de votre contribution 😊",
+            alertMessage = context.getString(R.string.report_success_message),
             showAlert = true
         )
     }
@@ -102,7 +104,7 @@ class ReportViewModel(private val context: Context) : ViewModel() {
     private fun handleError(error: Exception) {
         _uiState.value = _uiState.value.copy(
             alertType = AlertType.ERROR,
-            alertMessage = "Une erreur inattendue s'est produite. Veuillez réessayer.",
+            alertMessage = context.getString(R.string.report_unexpected_error),
             showAlert = true
         )
     }

@@ -43,6 +43,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.cbouvat.android.saracroche.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -75,7 +77,7 @@ fun DonationSheet(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Soutenez Saracroche",
+                text = stringResource(id = R.string.donation_title),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -86,7 +88,7 @@ fun DonationSheet(
 
             // Description
             Text(
-                text = "Saracroche est développée bénévolement par Camille sur son temps libre. Vos dons lui permettent d’améliorer l’application et de maintenir les listes de blocage à jour. Une note sur le store, ça fait toujours plaisir et aide beaucoup !",
+                text = stringResource(id = R.string.donation_description),
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -95,7 +97,7 @@ fun DonationSheet(
 
             // Benefits section
             Text(
-                text = "Pourquoi donner ?",
+                text = stringResource(id = R.string.donation_why_give),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.fillMaxWidth()
@@ -105,32 +107,32 @@ fun DonationSheet(
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Code,
-                title = "Projet open source",
-                description = "Code source ouvert et transparent"
+                title = stringResource(id = R.string.benefit_open_source_title),
+                description = stringResource(id = R.string.benefit_open_source_desc)
             )
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Savings,
-                title = "Entièrement gratuit",
-                description = "Pas de pub, pas d'abonnement, pas de version premium"
+                title = stringResource(id = R.string.benefit_free_title),
+                description = stringResource(id = R.string.benefit_free_desc)
             )
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Person,
-                title = "Développeur indépendant",
-                description = "Camille développe bénévolement sur son temps libre"
+                title = stringResource(id = R.string.benefit_independent_title),
+                description = stringResource(id = R.string.benefit_independent_desc)
             )
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Refresh,
-                title = "Mises à jour régulières",
-                description = "Nouvelles listes de blocage et améliorations continues"
+                title = stringResource(id = R.string.benefit_updates_title),
+                description = stringResource(id = R.string.benefit_updates_desc)
             )
 
             DonationBenefitRow(
                 icon = Icons.Rounded.Lock,
-                title = "Confidentialité respectée",
-                description = "Aucune donnée collectée, tout reste sur votre appareil"
+                title = stringResource(id = R.string.benefit_privacy_title),
+                description = stringResource(id = R.string.benefit_privacy_desc)
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -150,7 +152,7 @@ fun DonationSheet(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "Carte bancaire & Google Pay",
+                    text = stringResource(id = R.string.payment_credit_card),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -173,7 +175,7 @@ fun DonationSheet(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "PayPal",
+                    text = stringResource(id = R.string.payment_paypal),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -191,7 +193,7 @@ fun DonationSheet(
                     )
                 ) {
                     Text(
-                        "GitHub",
+                        text = stringResource(id = R.string.payment_github),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -206,7 +208,7 @@ fun DonationSheet(
                     )
                 ) {
                     Text(
-                        "Liberapay",
+                        text = stringResource(id = R.string.payment_liberapay),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -230,7 +232,7 @@ fun DonationSheet(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "Noter l'application",
+                    text = stringResource(id = R.string.payment_rate_app),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
