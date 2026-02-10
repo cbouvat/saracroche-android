@@ -1,11 +1,15 @@
 package com.cbouvat.android.saracroche.util
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import android.telecom.TelecomManager
 import android.util.Log
+import androidx.core.content.ContextCompat
 
 /**
  * Utility for managing call screening permissions
@@ -196,5 +200,29 @@ object PermissionUtils {
         }
 
         Log.e(TAG, "Failed to open any settings")
+    }
+
+    fun openAppNotificationsSettings(context: Context) {
+        try {
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                .putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+            context.startActivity(intent)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error opening app notifications settings", t)
+            // fallback try other settings
+            openPhoneSettings(context)
+        }
+    }
+
+    fun isNotificationPermissionGranted(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            // since notification permission is not required on Android <13 : act like it is granted
+            true
+        }
     }
 }

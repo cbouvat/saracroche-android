@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -48,6 +47,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -63,7 +63,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.cbouvat.android.saracroche.util.PermissionUtils
+import com.cbouvat.android.saracroche.util.PermissionUtils.isNotificationPermissionGranted
 import com.cbouvat.android.saracroche.util.PreferencesManager
 import kotlinx.coroutines.launch
 
@@ -239,6 +243,7 @@ fun NotificationPermissionRationaleDialog(
 fun SettingsScreen() {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     // DataStore state for anonymous call blocking
@@ -247,6 +252,32 @@ fun SettingsScreen() {
         .collectAsState(initial = false)
     val blockedCallNotification = PreferencesManager.getBlockedCallNotificationFlow(context)
         .collectAsState(initial = false)
+
+    var showNotificationPermissionRationaleDialog by remember { mutableStateOf(false) }
+
+    fun updateNotificationSwitch() {
+        val isNotificationPermissionGranted =
+            PermissionUtils.isNotificationPermissionGranted(context)
+
+        coroutineScope.launch {
+            PreferencesManager.setBlockedCallNotification(
+                context,
+                isNotificationPermissionGranted && blockedCallNotification.value
+            )
+        }
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                updateNotificationSwitch()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
 
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
@@ -257,7 +288,6 @@ fun SettingsScreen() {
         }
     )
 
-    var showNotificationPermissionRationaleDialog by remember { mutableStateOf(false) }
 
     if (showNotificationPermissionRationaleDialog) {
         NotificationPermissionRationaleDialog(
@@ -268,10 +298,15 @@ fun SettingsScreen() {
                 showNotificationPermissionRationaleDialog = false
             },
             onConfirm = {
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                    data = Uri.fromParts("package", context.packageName, null)
+                // temporary set the notification setting to true
+                // revoke it later after onResume event if the permission is not granted
+                coroutineScope.launch {
+                    PreferencesManager.setBlockedCallNotification(
+                        context,
+                        true
+                    )
                 }
-                context.startActivity(intent)
+                PermissionUtils.openAppNotificationsSettings(context)
                 showNotificationPermissionRationaleDialog = false
             }
         )
@@ -321,22 +356,18 @@ fun SettingsScreen() {
                         }
                     ),
                     SettingsItem.Switch(
-                        title = "Notification d'appel bloqué",
-                        subtitle = "Recevoir une notification quand un appel est bloqué.",
+                        title = "Notifications d'appels bloqués",
+                        subtitle = "Recevoir une notification quand un appel est bloqué",
                         icon = Icons.Rounded.Notifications,
                         checked = blockedCallNotification.value,
                         onCheckedChange = { isEnabled ->
                             if (isEnabled) {
-                                // on Android 13+ it is required to ask permission
+                                // Android 13 and up requires asking for notification permission
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                                     val activity = context as? Activity ?: return@Switch
-
                                     when {
-                                        // Case 1 : permission already granted -> let the user re-enable it
-                                        ContextCompat.checkSelfPermission(
-                                            context,
-                                            Manifest.permission.POST_NOTIFICATIONS
-                                        ) == PackageManager.PERMISSION_GRANTED -> {
+                                        // Case 1 : permission already granted -> let the user enable it
+                                        isNotificationPermissionGranted(context) -> {
                                             coroutineScope.launch {
                                                 PreferencesManager.setBlockedCallNotification(
                                                     context,
@@ -344,13 +375,12 @@ fun SettingsScreen() {
                                                 )
                                             }
                                         }
-
                                         // Case 2 : show rational
                                         activity.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
                                             showNotificationPermissionRationaleDialog = true
                                         }
 
-                                        // Case 3 : first time asking -> launch permission request
+                                        // Case 3 : first time asking
                                         else -> {
                                             notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                                         }
@@ -358,7 +388,10 @@ fun SettingsScreen() {
                                 } else {
                                     // On older devices, no check required
                                     coroutineScope.launch {
-                                        PreferencesManager.setBlockedCallNotification(context, true)
+                                        PreferencesManager.setBlockedCallNotification(
+                                            context,
+                                            true
+                                        )
                                     }
                                 }
                             } else {
