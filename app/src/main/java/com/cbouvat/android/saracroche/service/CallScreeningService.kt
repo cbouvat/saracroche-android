@@ -39,6 +39,21 @@ class CallScreeningService : CallScreeningService() {
         }
 
         respondToCall(callDetails, response)
+
+        if (shouldBlock) {
+            val shouldNotify = runBlocking {
+                try {
+                    PreferencesManager.getBlockedCallNotification(this@CallScreeningService)
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error checking blocked call notification preference", e)
+                    false
+                }
+            }
+
+            if (shouldNotify) {
+                NotificationService.sendBlockedCallNotification(this, phoneNumber ?: "")
+            }
+        }
     }
 
     /**

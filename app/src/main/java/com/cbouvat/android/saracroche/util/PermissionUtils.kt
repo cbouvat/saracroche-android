@@ -1,11 +1,15 @@
 package com.cbouvat.android.saracroche.util
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import android.telecom.TelecomManager
 import android.util.Log
+import androidx.core.content.ContextCompat
 
 /**
  * Utility for managing call screening permissions
@@ -35,8 +39,8 @@ object PermissionUtils {
 
             // Return true if any of the call screening mechanisms are enabled
             isDefaultDialer || hasCallScreeningRole
-        } catch (e: Exception) {
-            Log.e(TAG, "Error checking call screening status", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error checking call screening status", t)
             false
         }
     }
@@ -49,8 +53,8 @@ object PermissionUtils {
             val roleManager =
                 context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
             roleManager?.isRoleHeld(android.app.role.RoleManager.ROLE_CALL_SCREENING) ?: false
-        } catch (e: Exception) {
-            Log.e(TAG, "Error checking call screening role", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error checking call screening role", t)
             false
         }
     }
@@ -64,8 +68,8 @@ object PermissionUtils {
             val roleManager =
                 context.getSystemService(Context.ROLE_SERVICE) as android.app.role.RoleManager?
             roleManager?.createRequestRoleIntent(android.app.role.RoleManager.ROLE_CALL_SCREENING)
-        } catch (e: Exception) {
-            Log.e(TAG, "Error creating call screening role intent", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error creating call screening role intent", t)
             null
         }
     }
@@ -98,8 +102,8 @@ object PermissionUtils {
             // Final fallback: open general phone settings
             Log.d(TAG, "Final fallback: Opening phone settings")
             openPhoneSettings(context)
-        } catch (e: Exception) {
-            Log.e(TAG, "Error opening call screening settings", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error opening call screening settings", t)
             openPhoneSettings(context)
         }
     }
@@ -125,8 +129,8 @@ object PermissionUtils {
                     false
                 }
             } ?: false
-        } catch (e: Exception) {
-            Log.e(TAG, "Error requesting call screening role", e)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error requesting call screening role", t)
             false
         }
     }
@@ -151,8 +155,8 @@ object PermissionUtils {
                     context.startActivity(intent)
                     return true
                 }
-            } catch (e: Exception) {
-                Log.w(TAG, "Could not open default apps settings with intent: ${intent.action}", e)
+            } catch (t: Throwable) {
+                Log.w(TAG, "Could not open default apps settings with intent: ${intent.action}", t)
             }
         }
 
@@ -190,11 +194,35 @@ object PermissionUtils {
                     Log.d(TAG, "Opened settings with intent: ${intent.action}")
                     return
                 }
-            } catch (e: Exception) {
-                Log.w(TAG, "Could not open settings with intent: ${intent.action}", e)
+            } catch (t: Throwable) {
+                Log.w(TAG, "Could not open settings with intent: ${intent.action}", t)
             }
         }
 
         Log.e(TAG, "Failed to open any settings")
+    }
+
+    fun openAppNotificationsSettings(context: Context) {
+        try {
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                .putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+            context.startActivity(intent)
+        } catch (t: Throwable) {
+            Log.e(TAG, "Error opening app notifications settings", t)
+            // fallback try other settings
+            openPhoneSettings(context)
+        }
+    }
+
+    fun isNotificationPermissionGranted(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            // since notification permission is not required on Android <13 : act like it is granted
+            true
+        }
     }
 }
