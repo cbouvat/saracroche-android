@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.DeviceUnknown
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.Mail
 import androidx.compose.material.icons.rounded.PhoneDisabled
@@ -202,9 +203,14 @@ fun SettingsScreen() {
     val context = LocalContext.current
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
-    // DataStore state for anonymous call blocking
     val coroutineScope = rememberCoroutineScope()
+
+    // DataStore state for anonymous call blocking
     val blockAnonymousCallsState = PreferencesManager.getBlockAnonymousCallsFlow(context)
+        .collectAsState(initial = false)
+
+    // DataStore state for anonymous and unknown number call blocking
+    val blockUnknownNumbersState = PreferencesManager.getAllowOnlyContactsFlow(context)
         .collectAsState(initial = false)
 
     Scaffold(
@@ -247,6 +253,17 @@ fun SettingsScreen() {
                         onCheckedChange = { newValue ->
                             coroutineScope.launch {
                                 PreferencesManager.setBlockAnonymousCalls(context, newValue)
+                            }
+                        }
+                    ),
+                    SettingsItem.Switch(
+                        title = "Autoriser uniquement les contacts",
+                        subtitle = "Bloquer automatiquement tous les appels provenant de numéros non enregistrés dans votre répertoire",
+                        icon = Icons.Rounded.DeviceUnknown,
+                        checked = blockUnknownNumbersState.value,
+                        onCheckedChange = { newValue ->
+                            coroutineScope.launch {
+                                PreferencesManager.setAllowOnlyContacts(context, newValue)
                             }
                         }
                     )
