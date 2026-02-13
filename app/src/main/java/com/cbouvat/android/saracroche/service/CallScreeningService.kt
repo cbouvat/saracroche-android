@@ -57,6 +57,9 @@ class CallScreeningService : CallScreeningService() {
             }
         }
 
+        // Only allow calls from contacts if the option is enabled
+        if (shouldBlockUnknownNumber()) return true
+
         // Check blocked patterns for regular phone numbers
         val normalizedNumber = normalizePhoneNumber(phoneNumber)
         val blockedPatterns = BlockedPatternManager.getBlockedPatterns(this)
@@ -88,6 +91,17 @@ class CallScreeningService : CallScreeningService() {
 
         return pattern.indices.all { i ->
             pattern[i] == '#' || pattern[i] == phoneNumber[i]
+        }
+    }
+
+    private fun shouldBlockUnknownNumber(): Boolean {
+        return runBlocking {
+            try {
+                PreferencesManager.isOnlyContactsAllowed(this@CallScreeningService)
+            } catch (e: Exception) {
+                Log.e(TAG, "Error checking allow only contacts preference", e)
+                false
+            }
         }
     }
 }

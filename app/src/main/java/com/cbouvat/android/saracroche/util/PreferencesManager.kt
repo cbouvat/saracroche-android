@@ -19,6 +19,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 object PreferencesManager {
 
     private val BLOCK_ANONYMOUS_CALLS_KEY = booleanPreferencesKey("block_anonymous_calls")
+    private val ALLOW_ONLY_CONTACTS_CALLS_KEY = booleanPreferencesKey("allow_only_contacts_calls")
 
     /**
      * Get the flow of block anonymous calls setting
@@ -44,6 +45,33 @@ object PreferencesManager {
     suspend fun getBlockAnonymousCalls(context: Context): Boolean {
         return context.dataStore.data.map { preferences ->
             preferences[BLOCK_ANONYMOUS_CALLS_KEY] ?: false
+        }.first()
+    }
+
+    /**
+     * Get the flow of the allow only contacts setting
+     */
+    fun getAllowOnlyContactsFlow(context: Context): Flow<Boolean> {
+        return context.dataStore.data.map { preferences ->
+            preferences[ALLOW_ONLY_CONTACTS_CALLS_KEY] ?: false
+        }
+    }
+
+    /**
+     * Set the allow only contacts setting
+     */
+    suspend fun setAllowOnlyContacts(context: Context, allowOnlyContacts: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[ALLOW_ONLY_CONTACTS_CALLS_KEY] = allowOnlyContacts
+        }
+    }
+
+    /**
+     * Get the current value of the allow only contacts setting (suspend function)
+     */
+    suspend fun isOnlyContactsAllowed(context: Context): Boolean {
+        return context.dataStore.data.map { preferences ->
+            preferences[ALLOW_ONLY_CONTACTS_CALLS_KEY] ?: false
         }.first()
     }
 }
