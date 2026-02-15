@@ -1,7 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme for Compose. -->
-    <style name="Theme.Saracroche" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Enable edge-to-edge display -->
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
-    </style>
-</resources>
